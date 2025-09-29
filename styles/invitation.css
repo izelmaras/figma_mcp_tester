@@ -1,0 +1,473 @@
+/* Invitation Design - Built from Figma */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Circular Pro';
+    src: url('../fonts/CircularPro-Book.woff2') format('woff2'),
+         url('../fonts/CircularPro-Book.woff') format('woff'),
+         url('../fonts/CircularPro-Book.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Circular Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.invitation-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.invitation-card {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    background: #ffd633;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Event Details */
+.event-details {
+    position: absolute;
+    left: 71px;
+    top: 315px;
+    width: 94px;
+    height: 43px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5px;
+    align-items: flex-end;
+}
+
+.date-text,
+.time-text,
+.location-text {
+    font-family: 'Circular Pro', sans-serif;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 400;
+}
+
+.time-text {
+    color: #000;
+    font-weight: 500;
+}
+
+.date-line,
+.time-line,
+.location-line {
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Decorative Squares */
+.square {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+.bottom-square-1 {
+    left: 181px;
+    top: 311px;
+    background: #f32d00;
+}
+
+.bottom-square-2 {
+    left: 181px;
+    top: 59px;
+    background: #000;
+}
+
+/* Letter O's */
+.letter-o {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 53.5px;
+}
+
+.first-o {
+    left: 178px;
+    top: 134px;
+    background: #004afa;
+}
+
+.second-o {
+    left: 247px;
+    top: 132px;
+    background: #38bc47;
+}
+
+/* Letter R */
+.letter-r {
+    position: absolute;
+    left: 105px;
+    top: 124px;
+    width: 51px;
+    height: 72px;
+}
+
+.letter-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Letter F */
+.letter-f {
+    position: absolute;
+    left: 325px;
+    top: 124px;
+    width: 45px;
+    height: 72px;
+}
+
+/* Invitation Text */
+.invitation-text {
+    position: absolute;
+    left: 247px;
+    top: 70px;
+    width: 124px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Circular Pro', sans-serif;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: -0.3px;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 400;
+}
+
+.invitation-line {
+    white-space: nowrap;
+    margin: 0;
+    text-align: left;
+}
+
+/* Decorative Vector Icons */
+.vector-icon {
+    position: absolute;
+}
+
+.vector-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.vector-1 {
+    left: 316px;
+    top: 214px;
+    width: 64px;
+    height: 72px;
+}
+
+.vector-2 {
+    left: 245px;
+    top: 214px;
+    width: 59px;
+    height: 72px;
+}
+
+.vector-3 {
+    left: 181px;
+    top: 214px;
+    width: 51px;
+    height: 72px;
+}
+
+.vector-4 {
+    left: 94px;
+    top: 214px;
+    width: 71px;
+    height: 72px;
+}
+
+.vector-5 {
+    left: 39px;
+    top: 214px;
+    width: 50px;
+    height: 72px;
+}
+
+/* Small Vector Icon */
+.small-vector {
+    position: absolute;
+    left: 49px;
+    top: 149px;
+    width: 21px;
+    height: 22px;
+}
+
+.small-vector-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .invitation-container {
+        padding: 10px;
+    }
+    
+    .invitation-card {
+        width: 320px;
+        height: 320px;
+        transform: scale(0.76);
+    }
+    
+    /* Scale all positions proportionally */
+    .event-details {
+        left: 54px;
+        top: 240px;
+        width: 71px;
+        height: 33px;
+    }
+    
+    .square {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .bottom-square-1 {
+        left: 138px;
+        top: 237px;
+    }
+    
+    .bottom-square-2 {
+        left: 138px;
+        top: 45px;
+    }
+    
+    .letter-o {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .first-o {
+        left: 135px;
+        top: 102px;
+    }
+    
+    .second-o {
+        left: 188px;
+        top: 100px;
+    }
+    
+    .letter-r {
+        left: 80px;
+        top: 94px;
+        width: 39px;
+        height: 55px;
+    }
+    
+    .letter-f {
+        left: 247px;
+        top: 94px;
+        width: 34px;
+        height: 55px;
+    }
+    
+    .invitation-text {
+        left: 188px;
+        top: 53px;
+        width: 94px;
+        height: 21px;
+        font-size: 8px;
+        line-height: 11px;
+    }
+    
+    .vector-icon {
+        /* SVG images will scale naturally */
+    }
+    
+    .vector-1 {
+        left: 240px;
+        top: 163px;
+        width: 49px;
+        height: 55px;
+    }
+    
+    .vector-2 {
+        left: 186px;
+        top: 163px;
+        width: 45px;
+        height: 55px;
+    }
+    
+    .vector-3 {
+        left: 138px;
+        top: 163px;
+        width: 39px;
+        height: 55px;
+    }
+    
+    .vector-4 {
+        left: 71px;
+        top: 163px;
+        width: 54px;
+        height: 55px;
+    }
+    
+    .vector-5 {
+        left: 30px;
+        top: 163px;
+        width: 38px;
+        height: 55px;
+    }
+    
+    .small-vector {
+        left: 37px;
+        top: 113px;
+        width: 16px;
+        height: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-card {
+        width: 280px;
+        height: 280px;
+        transform: scale(0.67);
+    }
+    
+    /* Further scale adjustments for very small screens */
+    .event-details {
+        left: 47px;
+        top: 210px;
+        width: 62px;
+        height: 29px;
+    }
+    
+    .square {
+        width: 33px;
+        height: 33px;
+    }
+    
+    .bottom-square-1 {
+        left: 121px;
+        top: 207px;
+    }
+    
+    .bottom-square-2 {
+        left: 121px;
+        top: 39px;
+    }
+    
+    .letter-o {
+        width: 37px;
+        height: 37px;
+    }
+    
+    .first-o {
+        left: 118px;
+        top: 89px;
+    }
+    
+    .second-o {
+        left: 164px;
+        top: 88px;
+    }
+    
+    .letter-r {
+        left: 70px;
+        top: 82px;
+        width: 34px;
+        height: 48px;
+    }
+    
+    .letter-f {
+        left: 216px;
+        top: 82px;
+        width: 30px;
+        height: 48px;
+    }
+    
+    .invitation-text {
+        left: 164px;
+        top: 47px;
+        width: 82px;
+        height: 18px;
+        font-size: 7px;
+        line-height: 10px;
+    }
+    
+    .vector-1 {
+        left: 210px;
+        top: 143px;
+        width: 43px;
+        height: 48px;
+    }
+    
+    .vector-2 {
+        left: 163px;
+        top: 143px;
+        width: 39px;
+        height: 48px;
+    }
+    
+    .vector-3 {
+        left: 121px;
+        top: 143px;
+        width: 34px;
+        height: 48px;
+    }
+    
+    .vector-4 {
+        left: 62px;
+        top: 143px;
+        width: 47px;
+        height: 48px;
+    }
+    
+    .vector-5 {
+        left: 26px;
+        top: 143px;
+        width: 33px;
+        height: 48px;
+    }
+    
+    .small-vector {
+        left: 32px;
+        top: 99px;
+        width: 14px;
+        height: 15px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .invitation-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
