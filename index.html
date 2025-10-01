@@ -3,77 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive - Izel Maras</title>
-    <link rel="stylesheet" href="styles/archive.css">
+    <title>Izel Maras - Archive</title>
+    <link rel="stylesheet" href="styles/archive-v2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="archive-container">
-        <!-- Left Archive Menu -->
-        <nav class="archive-menu">
-            <div class="archive-header">
-                <h1>Archive</h1>
-                <p>Izel Maras</p>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Side - Name and About -->
+        <div class="left-side">
+            <div class="name-section">
+                <h1 class="name">Izel Maras</h1>
             </div>
-            
-            <div class="archive-years">
-                <div class="year-section">
-                    <h2>2024</h2>
-                    <ul class="project-list">
-                        <li class="project-item active" data-project="invitation">
-                            <span class="project-date">Oct 4</span>
-                            <span class="project-title">Party Invitation</span>
-                        </li>
-                        <li class="project-item" data-project="coming-soon-1">
-                            <span class="project-date">Dec 15</span>
-                            <span class="project-title">Coming Soon</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="year-section">
-                    <h2>2023</h2>
-                    <ul class="project-list">
-                        <li class="project-item" data-project="coming-soon-2">
-                            <span class="project-date">Sep 22</span>
-                            <span class="project-title">Project Archive</span>
-                        </li>
-                        <li class="project-item" data-project="coming-soon-3">
-                            <span class="project-date">Jun 8</span>
-                            <span class="project-title">Design System</span>
-                        </li>
-                    </ul>
-                </div>
+            <div class="about-section">
+                <p class="about-text">Designer and technologist <span class="underline">About</span></p>
             </div>
-        </nav>
+        </div>
 
-        <!-- Main Project Display -->
-        <main class="project-display">
-            <div class="project-header">
-                <div class="project-info">
-                    <h2 class="current-project-title">Party Invitation</h2>
-                    <p class="current-project-date">October 4, 2024</p>
+        <!-- Center - Project Display -->
+        <div class="center-section">
+            <!-- Controls -->
+            <div class="controls">
+                <button class="control-btn" id="fullscreen-btn">Fullscreen</button>
+                <button class="control-btn" id="share-btn">Share</button>
+            </div>
+
+            <!-- Project Display Area -->
+            <div class="project-display">
+                <div class="project-frame" id="project-frame">
+                    <iframe src="posters/invitation.html" class="project-iframe" frameborder="0"></iframe>
                 </div>
-                <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button>
             </div>
-            
-            <div class="project-content" id="project-content">
-                <!-- Invitation will be loaded here -->
-                <iframe src="posters/invitation.html" class="project-iframe" frameborder="0"></iframe>
+
+            <!-- Project Info -->
+            <div class="project-info" id="project-info">
+                <h2 class="project-title" id="project-title">Party Invitation</h2>
+                <p class="project-date" id="project-date">October 4, 2024</p>
             </div>
-        </main>
+        </div>
+
+        <!-- Right Side - Timeline -->
+        <div class="right-side">
+            <!-- Years -->
+            <div class="years-section">
+                <div class="year-item active" data-year="2025">
+                    <h3 class="year-title">2025</h3>
+                </div>
+                <div class="year-item" data-year="2024">
+                    <h3 class="year-title">2024</h3>
+                </div>
+                <div class="year-item" data-year="2023">
+                    <h3 class="year-title">2023</h3>
+                </div>
+            </div>
+
+            <!-- Timeline Content -->
+            <div class="timeline-section">
+                <!-- 2025 Timeline -->
+                <div class="timeline-year active" data-year="2025">
+                    <!-- October -->
+                    <div class="month-section">
+                        <h4 class="month-title">October</h4>
+                        <div class="projects-list">
+                            <div class="project-item active" data-project="invitation">
+                                <p class="project-name">Party Invitation, 10.01</p>
+                            </div>
+                            <div class="project-item" data-project="lorem-1">
+                                <p class="project-name">Lorem, 10.02</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- September -->
+                    <div class="month-section">
+                        <h4 class="month-title">September</h4>
+                        <div class="projects-list">
+                            <div class="project-item" data-project="lorem-2">
+                                <p class="project-name">Lorem, 9.02</p>
+                            </div>
+                            <div class="project-item" data-project="lorem-3">
+                                <p class="project-name">Lorem, 9.02</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collapsed Months -->
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">August</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">July</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">June</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">May</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">April</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">March</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">February</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">January</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="month-section collapsed">
+                        <div class="month-header">
+                            <h4 class="month-title">December</h4>
+                            <div class="chevron">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36 18L24 30L12 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2024 Timeline -->
+                <div class="timeline-year" data-year="2024">
+                    <!-- Similar structure for 2024 -->
+                </div>
+
+                <!-- 2023 Timeline -->
+                <div class="timeline-year" data-year="2023">
+                    <!-- Similar structure for 2023 -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Fullscreen Overlay -->
     <div class="fullscreen-overlay" id="fullscreen-overlay">
-        <button class="exit-fullscreen" id="exit-fullscreen">×</button>
+        <button class="exit-fullscreen" id="exit-fullscreen">ESC</button>
         <div class="fullscreen-content" id="fullscreen-content">
             <!-- Fullscreen content will be loaded here -->
         </div>
     </div>
 
-    <script src="js/archive.js"></script>
+    <script src="js/archive-v2.js"></script>
 </body>
 </html>
