@@ -51,19 +51,19 @@ class ArchiveV2 {
             });
         });
 
-        // Year navigation
-        document.querySelectorAll('.year-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const year = item.dataset.year;
-                this.switchYear(year);
+        // Year dropdown navigation
+        document.querySelectorAll('.year-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                const yearDropdown = header.closest('.year-dropdown');
+                this.toggleYear(yearDropdown);
             });
         });
 
-        // Month collapse/expand
+        // Month dropdown collapse/expand
         document.querySelectorAll('.month-header').forEach(header => {
             header.addEventListener('click', (e) => {
-                const monthSection = header.closest('.month-section');
-                this.toggleMonth(monthSection);
+                const monthDropdown = header.closest('.month-dropdown');
+                this.toggleMonth(monthDropdown);
             });
         });
 
@@ -107,38 +107,46 @@ class ArchiveV2 {
         this.loadProject(projectId);
     }
 
-    switchYear(year) {
-        // Update active year
-        document.querySelectorAll('.year-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        document.querySelector(`[data-year="${year}"]`).classList.add('active');
-
-        // Update timeline view
-        document.querySelectorAll('.timeline-year').forEach(timeline => {
-            timeline.classList.remove('active');
-        });
-        document.querySelector(`[data-year="${year}"].timeline-year`).classList.add('active');
+    toggleYear(yearDropdown) {
+        const isActive = yearDropdown.classList.contains('active');
         
-        this.currentYear = year;
-    }
-
-    toggleMonth(monthSection) {
-        const isCollapsed = monthSection.classList.contains('collapsed');
-        
-        if (isCollapsed) {
-            // Expand month
-            monthSection.classList.remove('collapsed');
-            const chevron = monthSection.querySelector('.chevron svg');
-            if (chevron) {
-                chevron.style.transform = 'rotate(180deg)';
+        if (isActive) {
+            // Collapse year
+            yearDropdown.classList.remove('active');
+            const yearContent = yearDropdown.querySelector('.year-content');
+            if (yearContent) {
+                yearContent.classList.remove('expanded');
             }
         } else {
+            // Expand year
+            yearDropdown.classList.add('active');
+            const yearContent = yearDropdown.querySelector('.year-content');
+            if (yearContent) {
+                yearContent.classList.add('expanded');
+            }
+            
+            // Update current year
+            const year = yearDropdown.dataset.year;
+            this.currentYear = year;
+        }
+    }
+
+    toggleMonth(monthDropdown) {
+        const isExpanded = monthDropdown.classList.contains('expanded');
+        
+        if (isExpanded) {
             // Collapse month
-            monthSection.classList.add('collapsed');
-            const chevron = monthSection.querySelector('.chevron svg');
-            if (chevron) {
-                chevron.style.transform = 'rotate(0deg)';
+            monthDropdown.classList.remove('expanded');
+            const monthContent = monthDropdown.querySelector('.month-content');
+            if (monthContent) {
+                monthContent.classList.remove('expanded');
+            }
+        } else {
+            // Expand month
+            monthDropdown.classList.add('expanded');
+            const monthContent = monthDropdown.querySelector('.month-content');
+            if (monthContent) {
+                monthContent.classList.add('expanded');
             }
         }
     }
