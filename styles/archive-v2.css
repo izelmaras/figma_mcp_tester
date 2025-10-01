@@ -16,18 +16,26 @@ body {
 /* Main Container */
 .main-container {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
     position: relative;
 }
 
-/* Left Side */
-.left-side {
-    width: 280px;
+/* Top Header Section */
+.top-header {
     padding: 40px 30px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Left Side - Name */
+.left-side {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border-right: 1px solid #e0e0e0;
 }
 
 .name-section {
@@ -43,7 +51,10 @@ body {
 }
 
 .about-section {
-    margin-top: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .about-text {
@@ -60,6 +71,13 @@ body {
     text-underline-position: from-font;
 }
 
+/* Main Body - 2 Column Layout */
+.main-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
 /* Center Section */
 .center-section {
     flex: 1;
@@ -68,7 +86,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: calc(100vw - 560px);
+    border-right: 1px solid #e0e0e0;
 }
 
 .controls {
@@ -141,9 +159,8 @@ body {
 
 /* Right Side */
 .right-side {
-    width: 280px;
+    width: 350px;
     padding: 40px 30px;
-    border-left: 1px solid #e0e0e0;
     overflow-y: auto;
 }
 
@@ -313,18 +330,19 @@ body {
 
 /* Mobile Responsive */
 @media (max-width: 1200px) {
-    .main-container {
+    .main-body {
         flex-direction: column;
     }
     
-    .left-side,
     .right-side {
         width: 100%;
-        border: none;
-        border-bottom: 1px solid #e0e0e0;
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
     }
     
     .center-section {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
         max-width: 100%;
         padding: 40px 20px;
     }
@@ -347,9 +365,12 @@ body {
 }
 
 @media (max-width: 768px) {
-    .left-side,
+    .top-header {
+        padding: 20px;
+    }
+    
     .right-side {
-        padding: 40px 20px;
+        padding: 20px;
     }
     
     .center-section {
@@ -388,9 +409,12 @@ body {
 }
 
 @media (max-width: 480px) {
-    .left-side,
+    .top-header {
+        padding: 15px;
+    }
+    
     .right-side {
-        padding: 20px 15px;
+        padding: 15px;
     }
     
     .center-section {
