@@ -22,7 +22,7 @@ body {
 
 /* Left Side */
 .left-side {
-    width: 300px;
+    width: 280px;
     padding: 40px 30px;
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@ body {
 }
 
 .name-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .name {
@@ -47,7 +47,7 @@ body {
 }
 
 .about-text {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
     color: #000000;
@@ -68,7 +68,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: calc(100vw - 900px);
+    max-width: calc(100vw - 560px);
 }
 
 .controls {
@@ -82,7 +82,7 @@ body {
     background: none;
     border: none;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     color: #000000;
     cursor: pointer;
@@ -103,7 +103,6 @@ body {
 
 .project-frame {
     width: 100%;
-    max-width: 600px;
     aspect-ratio: 4/3;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -142,18 +141,18 @@ body {
 
 /* Right Side */
 .right-side {
-    width: 300px;
+    width: 280px;
     padding: 40px 30px;
     border-left: 1px solid #e0e0e0;
     overflow-y: auto;
 }
 
 .years-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .year-item {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -175,7 +174,7 @@ body {
 }
 
 .timeline-section {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .timeline-year {
@@ -338,7 +337,7 @@ body {
     .control-btn,
     .project-title,
     .project-date {
-        font-size: 20px;
+        font-size: 40px;
     }
     
     .project-frame {
@@ -365,7 +364,7 @@ body {
     .control-btn,
     .project-title,
     .project-date {
-        font-size: 18px;
+        font-size: 32px;
     }
     
     .controls {
@@ -384,7 +383,7 @@ body {
     .exit-fullscreen {
         top: 20px;
         right: 20px;
-        font-size: 18px;
+        font-size: 32px;
     }
 }
 
@@ -406,7 +405,7 @@ body {
     .control-btn,
     .project-title,
     .project-date {
-        font-size: 16px;
+        font-size: 24px;
     }
     
     .controls {
