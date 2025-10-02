@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Izel Maras - Archive</title>
-    <link rel="stylesheet" href="styles/archive-v2.css?v=1759343726">
+    <link rel="stylesheet" href="styles/archive-v2.css?v=1759344000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400&display=swap" rel="stylesheet">
@@ -28,183 +28,179 @@
         <div class="main-body">
             <!-- Center - Project Display -->
             <div class="center-section">
-            <!-- Controls -->
-            <div class="controls">
-                <button class="control-btn" id="fullscreen-btn">Fullscreen</button>
-                <button class="control-btn" id="share-btn">Share</button>
-            </div>
-
             <!-- Project Display Area -->
             <div class="project-display">
                 <div class="project-frame" id="project-frame">
                     <iframe src="posters/invitation.html" class="project-iframe" frameborder="0"></iframe>
                 </div>
+                
+                <!-- Bottom Bar -->
+                <div class="bottom-bar">
+                    <!-- Project Info - Bottom Left -->
+                    <div class="project-info" id="project-info">
+                        <h2 class="project-title" id="project-title">Party Invitation</h2>
+                        <p class="project-date" id="project-date">October 4, 2024</p>
+                    </div>
+                    
+                    <!-- Controls - Bottom Right -->
+                    <div class="controls">
+                        <span class="control-link" id="fullscreen-btn">Fullscreen</span>
+                        <span class="control-link" id="share-btn">Share</span>
+                    </div>
+                </div>
+            </div>
             </div>
 
-            <!-- Project Info -->
-            <div class="project-info" id="project-info">
-                <h2 class="project-title" id="project-title">Party Invitation</h2>
-                <p class="project-date" id="project-date">October 4, 2024</p>
-            </div>
-            </div>
-
-            <!-- Right Side - Timeline -->
+            <!-- Right Side - Archive -->
             <div class="right-side">
-            <!-- Years -->
-            <div class="years-section">
-                <div class="year-item active" data-year="2025">
-                    <h3 class="year-title">2025</h3>
-                </div>
-                <div class="year-item" data-year="2024">
-                    <h3 class="year-title">2024</h3>
-                </div>
-                <div class="year-item" data-year="2023">
-                    <h3 class="year-title">2023</h3>
+                <div class="archive-dropdown">
+                    <!-- 2025 Dropdown -->
+                    <div class="year-dropdown active" data-year="2025">
+                        <div class="year-header">
+                            <h3 class="year-title">2025</h3>
+                            <div class="chevron">
+                                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="year-content expanded">
+                            <!-- October - Expanded -->
+                            <div class="month-dropdown expanded">
+                                <div class="month-header">
+                                    <h4 class="month-title">October</h4>
+                                    <div class="chevron">
+                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="month-content expanded">
+                                    <div class="project-item active" data-project="invitation">
+                                        <p class="project-name">Party Invitation, 10.01</p>
+                                    </div>
+                                    <div class="project-item" data-project="lorem-1">
+                                        <p class="project-name">Lorem, 10.02</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- September - Collapsed -->
+                            <div class="month-dropdown collapsed">
+                                <div class="month-header">
+                                    <h4 class="month-title">September</h4>
+                                    <div class="chevron">
+                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="month-content">
+                                    <div class="project-item" data-project="lorem-2">
+                                        <p class="project-name">Lorem, 9.02</p>
+                                    </div>
+                                    <div class="project-item" data-project="lorem-3">
+                                        <p class="project-name">Lorem, 9.15</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- August - Collapsed -->
+                            <div class="month-dropdown collapsed">
+                                <div class="month-header">
+                                    <h4 class="month-title">August</h4>
+                                    <div class="chevron">
+                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="month-content">
+                                    <div class="project-item" data-project="aug-1">
+                                        <p class="project-name">August Project, 8.10</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- More months collapsed -->
+                            <div class="month-dropdown collapsed">
+                                <div class="month-header">
+                                    <h4 class="month-title">July</h4>
+                                    <div class="chevron">
+                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="month-content">
+                                    <div class="project-item" data-project="jul-1">
+                                        <p class="project-name">July Project, 7.20</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2024 Dropdown - Collapsed -->
+                    <div class="year-dropdown collapsed" data-year="2024">
+                        <div class="year-header">
+                            <h3 class="year-title">2024</h3>
+                            <div class="chevron">
+                                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="year-content">
+                            <div class="month-dropdown collapsed">
+                                <div class="month-header">
+                                    <h4 class="month-title">December</h4>
+                                    <div class="chevron">
+                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="month-content">
+                                    <div class="project-item" data-project="2024-dec-1">
+                                        <p class="project-name">2024 Project, 12.15</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2023 Dropdown - Collapsed -->
+                    <div class="year-dropdown collapsed" data-year="2023">
+                        <div class="year-header">
+                            <h3 class="year-title">2023</h3>
+                            <div class="chevron">
+                                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="year-content">
+                            <div class="month-dropdown collapsed">
+                                <div class="month-header">
+                                    <h4 class="month-title">December</h4>
+                                    <div class="chevron">
+                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="month-content">
+                                    <div class="project-item" data-project="2023-dec-1">
+                                        <p class="project-name">2023 Project, 12.20</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Timeline Content -->
-            <div class="timeline-section">
-                <!-- 2025 Timeline -->
-                <div class="timeline-year active" data-year="2025">
-                    <!-- October -->
-                    <div class="month-section">
-                        <h4 class="month-title">October</h4>
-                        <div class="projects-list">
-                            <div class="project-item active" data-project="invitation">
-                                <p class="project-name">Party Invitation, 10.01</p>
-                            </div>
-                            <div class="project-item" data-project="lorem-1">
-                                <p class="project-name">Lorem, 10.02</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- September -->
-                    <div class="month-section">
-                        <h4 class="month-title">September</h4>
-                        <div class="projects-list">
-                            <div class="project-item" data-project="lorem-2">
-                                <p class="project-name">Lorem, 9.02</p>
-                            </div>
-                            <div class="project-item" data-project="lorem-3">
-                                <p class="project-name">Lorem, 9.02</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Collapsed Months -->
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">August</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">July</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">June</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">May</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">April</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">March</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">February</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">January</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-
-                    <div class="month-section collapsed">
-                        <div class="month-header">
-                            <h4 class="month-title">December</h4>
-                             <div class="chevron">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                     <path d="M15 7.5L10 12.5L5 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2024 Timeline -->
-                <div class="timeline-year" data-year="2024">
-                    <!-- Similar structure for 2024 -->
-                </div>
-
-                <!-- 2023 Timeline -->
-                <div class="timeline-year" data-year="2023">
-                    <!-- Similar structure for 2023 -->
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 
