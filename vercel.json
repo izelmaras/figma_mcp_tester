@@ -1,13 +1,4 @@
 {
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/halloween-disco",
-      "destination": "/halloween-disco.html"
-    },
-    {
-      "source": "/rooftop_party",
-      "destination": "/rooftop_party.html"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
