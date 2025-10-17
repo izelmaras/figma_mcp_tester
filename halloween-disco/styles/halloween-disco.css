@@ -206,15 +206,14 @@ body {
 /* RSVP Link */
 .rsvp-link {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: -10px;
+    top: 560px;
+    left: calc(50% + 145.645px);
+    transform: translateX(-50%);
     font-family: 'TAY Birdie', Arial, sans-serif;
     font-size: 19px;
     line-height: 1;
     letter-spacing: 0.19px;
-    color: navy;
+    color: white;
     text-align: center;
     white-space: nowrap;
     z-index: 7;
@@ -230,14 +229,14 @@ body {
 .footer-text {
     position: absolute;
     top: 560px;
-    left: 50%;
+    left: calc(50% - 79.743px);
     transform: translateX(-50%);
     font-family: 'TAY Birdie', Arial, sans-serif;
     font-size: 19px;
     line-height: 1;
     letter-spacing: 0.19px;
     color: white;
-    text-align: center;
+    text-align: left;
     white-space: nowrap;
     z-index: 7;
 }
