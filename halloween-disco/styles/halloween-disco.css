@@ -165,7 +165,7 @@ body {
 /* Main Title */
 .title-halloween {
     position: absolute;
-    top: 480px;
+    top: 590px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Mamoth', Georgia, serif;
@@ -185,7 +185,7 @@ body {
 
 .title-disco {
     position: absolute;
-    top: 540px;
+    top: 650px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Mamoth', Georgia, serif;
@@ -203,10 +203,32 @@ body {
     white-space: nowrap;
 }
 
+/* RSVP Link */
+.rsvp-link {
+    position: absolute;
+    top: 720px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'TAY Birdie', Arial, sans-serif;
+    font-size: 19px;
+    line-height: 1;
+    letter-spacing: 0.19px;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 7;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.rsvp-link:hover {
+    opacity: 0.8;
+}
+
 /* Footer */
 .footer-text {
     position: absolute;
-    top: 450px;
+    top: 560px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'TAY Birdie', Arial, sans-serif;
