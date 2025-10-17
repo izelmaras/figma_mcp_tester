@@ -1,19 +1,19 @@
 /* Invitation Design - Built from Figma */
 
+@font-face {
+    font-family: 'Circular Pro';
+    src: url('../../fonts/CircularPro-Book.woff2') format('woff2'),
+         url('../../fonts/CircularPro-Book.woff') format('woff'),
+         url('../../fonts/CircularPro-Book.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-@font-face {
-    font-family: 'Circular Pro';
-    src: url('../fonts/CircularPro-Book.woff2') format('woff2'),
-         url('../fonts/CircularPro-Book.woff') format('woff'),
-         url('../fonts/CircularPro-Book.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
 }
 
 body {
@@ -279,7 +279,6 @@ body::after {
     height: 72px;
     animation-delay: 4s;
 }
-
 
 /* Small Vector Icon */
 .small-vector {

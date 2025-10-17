@@ -3,215 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Izel Maras - Archive</title>
-    <link rel="stylesheet" href="styles/archive-v2.css?v=1759344000">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400&display=swap" rel="stylesheet">
+    <title>Izel Maras - Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Circular Pro';
+            src: url('fonts/CircularPro-Book.otf') format('opentype');
+            font-weight: 450;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Circular Pro', sans-serif;
+            background: #8dc6ff;
+            color: black;
+            line-height: normal;
+            font-style: normal;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .page-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 200px;
+            padding-bottom: 200px;
+        }
+
+        /* Fixed Top Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            font-size: 84px;
+            background: #8dc6ff;
+            z-index: 1000;
+        }
+
+        .top-left {
+            white-space: pre;
+        }
+
+        .top-right {
+            text-align: right;
+            white-space: pre;
+        }
+
+        /* Fixed Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            font-size: 84px;
+            text-align: right;
+            background: #8dc6ff;
+            z-index: 1000;
+        }
+
+        /* Grid Container */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            opacity: 0.7;
+        }
+
+        .project-title {
+            font-size: 50.4px; /* 60% of 84px */
+            width: 100%;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .project-date {
+            font-size: 23.4px; /* 60% of 39px */
+            width: 100%;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .top-nav, .bottom-nav {
+                font-size: 60px;
+                padding: 30px;
+            }
+
+            .project-title {
+                font-size: 60px;
+            }
+
+            .project-date {
+                font-size: 30px;
+            }
+
+            .page-container {
+                padding-top: 150px;
+                padding-bottom: 150px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav, .bottom-nav {
+                font-size: 24px;
+                padding: 20px;
+            }
+
+            .top-nav {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .top-right {
+                text-align: right;
+            }
+
+            .project-title {
+                font-size: 30.24px; /* 60% of 50.4px */
+            }
+
+            .project-date {
+                font-size: 14.04px; /* 60% of 23.4px */
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
+            }
+
+            .page-container {
+                padding-top: 100px;
+                padding-bottom: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-nav, .bottom-nav {
+                font-size: 20px;
+                padding: 15px;
+            }
+
+            .top-nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .project-title {
+                font-size: 24px;
+            }
+
+            .project-date {
+                font-size: 12px;
+            }
+
+            .page-container {
+                padding-top: 80px;
+                padding-bottom: 70px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Top Header -->
-        <div class="top-header">
-            <div class="left-side">
-                <div class="name-section">
-                    <h1 class="name">Izel Maras</h1>
-                </div>
-            </div>
-            <div class="about-section">
-                <p class="about-text">Designer and technologist <span class="underline">About</span></p>
-            </div>
-        </div>
+    <!-- Fixed Top Navigation -->
+    <nav class="top-nav">
+        <p class="top-left" data-node-id="5:206">Izel Maras</p>
+        <p class="top-right" data-node-id="5:195">Designer</p>
+    </nav>
 
-        <!-- Main Body - 2 Column Layout -->
-        <div class="main-body">
-            <!-- Center - Project Display -->
-            <div class="center-section">
-            <!-- Project Display Area -->
-            <div class="project-display">
-                <div class="project-frame" id="project-frame">
-                    <iframe src="posters/invitation.html" class="project-iframe" frameborder="0"></iframe>
-                </div>
-                
-                <!-- Bottom Bar -->
-                <div class="bottom-bar">
-                    <!-- Project Info - Bottom Left -->
-                    <div class="project-info" id="project-info">
-                        <h2 class="project-title" id="project-title">Party Invitation</h2>
-                        <p class="project-date" id="project-date">October 4, 2024</p>
-                    </div>
-                    
-                    <!-- Controls - Bottom Right -->
-                    <div class="controls">
-                        <span class="control-link" id="fullscreen-btn">Fullscreen</span>
-                        <span class="control-link" id="share-btn">Share</span>
-                    </div>
-                </div>
-            </div>
-            </div>
+    <!-- Main Content -->
+    <div class="page-container" data-name="page" data-node-id="5:194">
+        <div class="projects-grid">
+            <a href="./halloween-disco.html" class="project-card" data-node-id="5:340">
+                <p class="project-title" data-node-id="5:341">Halloween disco</p>
+                <p class="project-date" data-node-id="5:342">17 October 2025</p>
+            </a>
 
-            <!-- Right Side - Archive -->
-            <div class="right-side">
-                <div class="archive-dropdown">
-                    <!-- 2025 Dropdown -->
-                    <div class="year-dropdown active" data-year="2025">
-                        <div class="year-header">
-                            <h3 class="year-title">2025</h3>
-                            <div class="chevron">
-                                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                    <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        
-                        <div class="year-content expanded">
-                            <!-- October - Expanded -->
-                            <div class="month-dropdown expanded">
-                                <div class="month-header">
-                                    <h4 class="month-title">October</h4>
-                                    <div class="chevron">
-                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="month-content expanded">
-                                    <div class="project-item active" data-project="invitation">
-                                        <p class="project-name">Party Invitation, 10.01</p>
-                                    </div>
-                                    <div class="project-item" data-project="lorem-1">
-                                        <p class="project-name">Lorem, 10.02</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- September - Collapsed -->
-                            <div class="month-dropdown collapsed">
-                                <div class="month-header">
-                                    <h4 class="month-title">September</h4>
-                                    <div class="chevron">
-                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="month-content">
-                                    <div class="project-item" data-project="lorem-2">
-                                        <p class="project-name">Lorem, 9.02</p>
-                                    </div>
-                                    <div class="project-item" data-project="lorem-3">
-                                        <p class="project-name">Lorem, 9.15</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- August - Collapsed -->
-                            <div class="month-dropdown collapsed">
-                                <div class="month-header">
-                                    <h4 class="month-title">August</h4>
-                                    <div class="chevron">
-                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="month-content">
-                                    <div class="project-item" data-project="aug-1">
-                                        <p class="project-name">August Project, 8.10</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- More months collapsed -->
-                            <div class="month-dropdown collapsed">
-                                <div class="month-header">
-                                    <h4 class="month-title">July</h4>
-                                    <div class="chevron">
-                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="month-content">
-                                    <div class="project-item" data-project="jul-1">
-                                        <p class="project-name">July Project, 7.20</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2024 Dropdown - Collapsed -->
-                    <div class="year-dropdown collapsed" data-year="2024">
-                        <div class="year-header">
-                            <h3 class="year-title">2024</h3>
-                            <div class="chevron">
-                                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                    <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="year-content">
-                            <div class="month-dropdown collapsed">
-                                <div class="month-header">
-                                    <h4 class="month-title">December</h4>
-                                    <div class="chevron">
-                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="month-content">
-                                    <div class="project-item" data-project="2024-dec-1">
-                                        <p class="project-name">2024 Project, 12.15</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2023 Dropdown - Collapsed -->
-                    <div class="year-dropdown collapsed" data-year="2023">
-                        <div class="year-header">
-                            <h3 class="year-title">2023</h3>
-                            <div class="chevron">
-                                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                    <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="year-content">
-                            <div class="month-dropdown collapsed">
-                                <div class="month-header">
-                                    <h4 class="month-title">December</h4>
-                                    <div class="chevron">
-                                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                                            <path d="M15 7.5L10 12.5L5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="month-content">
-                                    <div class="project-item" data-project="2023-dec-1">
-                                        <p class="project-name">2023 Project, 12.20</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="./rooftop_party.html" class="project-card" data-node-id="5:200">
+                <p class="project-title" data-node-id="5:201">Rooftop party</p>
+                <p class="project-date" data-node-id="5:202">17 October 2025</p>
+            </a>
         </div>
     </div>
 
-    <!-- Fullscreen Overlay -->
-    <div class="fullscreen-overlay" id="fullscreen-overlay">
-        <button class="exit-fullscreen" id="exit-fullscreen">ESC</button>
-        <div class="fullscreen-content" id="fullscreen-content">
-            <!-- Fullscreen content will be loaded here -->
-        </div>
-    </div>
-
-    <script src="js/archive-v2.js"></script>
+    <!-- Fixed Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="https://www.izelmaras.com" target="_blank" style="color: inherit; text-decoration: none;" data-node-id="5:196">izel.website</a>
+    </nav>
 </body>
 </html>
