@@ -259,13 +259,13 @@ body {
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
     .invitation-card {
-        transform: translate(-50%, -50%) scale(1.54);
+        transform: translate(-50%, -50%) scale(1.386);
     }
 }
 
 @media (max-width: 480px) {
     .invitation-card {
-        transform: translate(-50%, -50%) scale(1.4);
+        transform: translate(-50%, -50%) scale(1.26);
     }
 }
 
