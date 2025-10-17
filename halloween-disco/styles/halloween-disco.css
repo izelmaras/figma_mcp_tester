@@ -209,11 +209,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin-top: -10px;
     font-family: 'TAY Birdie', Arial, sans-serif;
     font-size: 19px;
     line-height: 1;
     letter-spacing: 0.19px;
-    color: white;
+    color: navy;
     text-align: center;
     white-space: nowrap;
     z-index: 7;
