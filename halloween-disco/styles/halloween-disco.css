@@ -217,7 +217,7 @@ body {
     text-align: center;
     white-space: nowrap;
     z-index: 7;
-    text-decoration: underline;
+    text-decoration: none;
     transition: opacity 0.3s ease;
 }
 
