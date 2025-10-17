@@ -68,7 +68,7 @@ body {
 }
 
 .figure-eye-left {
-    z-index: 3;
+    z-index: 10;
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
     opacity: 1;
     width: 7.5%;
@@ -77,10 +77,11 @@ body {
     top: 25%;
     transform: translate(-50%, -50%);
     animation: eyes-pulse 2s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 .figure-eye-right {
-    z-index: 3;
+    z-index: 10;
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
     opacity: 1;
     width: 7.5%;
@@ -89,6 +90,7 @@ body {
     top: 25%;
     transform: translate(-50%, -50%);
     animation: eyes-pulse 2s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 .figure-mouth {
@@ -344,11 +346,11 @@ body {
 /* Eyes Animation - Blink and glow */
 @keyframes eyes-pulse {
     0% {
-        transform: translate(-50%, -50%) scale(0.24);
+        transform: translate(-50%, -50%) scale(0.5);
         filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
     }
     100% {
-        transform: translate(-50%, -50%) scale(0.2);
+        transform: translate(-50%, -50%) scale(0.7);
         filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
     }
 }
