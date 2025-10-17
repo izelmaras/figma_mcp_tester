@@ -12,8 +12,8 @@
 @font-face {
     font-family: 'Mamoth';
     src: url('../../../fonts/Mamoth.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
+    font-weight: normal;
+    font-style: normal;
     font-display: swap;
 }
 
@@ -165,7 +165,7 @@ body {
 /* Main Title */
 .title-halloween {
     position: absolute;
-    top: 700px;
+    top: 480px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Mamoth', Georgia, serif;
@@ -185,7 +185,7 @@ body {
 
 .title-disco {
     position: absolute;
-    top: 760px;
+    top: 540px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Mamoth', Georgia, serif;
@@ -206,7 +206,7 @@ body {
 /* Footer */
 .footer-text {
     position: absolute;
-    top: 670px;
+    top: 450px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'TAY Birdie', Arial, sans-serif;
