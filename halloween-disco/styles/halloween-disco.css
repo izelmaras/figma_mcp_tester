@@ -76,7 +76,7 @@ body {
     left: 35%;
     top: 25%;
     transform: translate(-50%, -50%);
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+    animation: eyes-pulse 2s ease-in-out infinite alternate;
 }
 
 .figure-eye-right {
@@ -88,7 +88,7 @@ body {
     left: 65%;
     top: 25%;
     transform: translate(-50%, -50%);
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+    animation: eyes-pulse 2s ease-in-out infinite alternate;
 }
 
 .figure-mouth {
@@ -100,7 +100,7 @@ body {
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
-    animation: pulse-glow 2.5s ease-in-out infinite alternate;
+    animation: mouth-pulse 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes dance {
@@ -341,7 +341,8 @@ body {
 }
 
 /* Pulse Animation for Eyes and Mouth */
-@keyframes pulse-glow {
+/* Eyes Animation - Blink and glow */
+@keyframes eyes-pulse {
     0% {
         transform: translate(-50%, -50%) scale(0.2);
         filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
@@ -349,5 +350,17 @@ body {
     100% {
         transform: translate(-50%, -50%) scale(0.6);
         filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+    }
+}
+
+/* Mouth Animation - Different timing and scale */
+@keyframes mouth-pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.5);
+        filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.95));
     }
 }
