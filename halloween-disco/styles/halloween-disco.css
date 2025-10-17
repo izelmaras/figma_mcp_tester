@@ -206,7 +206,7 @@ body {
 /* RSVP Link */
 .rsvp-link {
     position: absolute;
-    top: 760px;
+    top: 770px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'TAY Birdie', Arial, sans-serif;
@@ -217,7 +217,7 @@ body {
     text-align: center;
     white-space: nowrap;
     z-index: 7;
-    text-decoration: none;
+    text-decoration: underline;
     transition: opacity 0.3s ease;
 }
 
