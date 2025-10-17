@@ -18,68 +18,31 @@
 
 body {
     font-family: 'Circular Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #B3D9FF 0%, #C7E9FF 30%, #E6F3FF 70%, #F0F8FF 100%);
+    background: #ffd633;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle cloud layer 1 */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(ellipse 200px 80px at 20% 30%, rgba(240, 248, 255, 0.7) 0%, transparent 70%),
-        radial-gradient(ellipse 150px 60px at 60% 20%, rgba(230, 243, 255, 0.5) 0%, transparent 70%),
-        radial-gradient(ellipse 180px 70px at 80% 60%, rgba(199, 233, 255, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 120px 50px at 40% 80%, rgba(240, 248, 255, 0.4) 0%, transparent 70%);
-    filter: blur(2px);
-    animation: subtleMove1 60s ease-in-out infinite;
-    z-index: -1;
-}
-
-/* Subtle cloud layer 2 */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(ellipse 160px 65px at 70% 40%, rgba(199, 233, 255, 0.5) 0%, transparent 70%),
-        radial-gradient(ellipse 140px 55px at 30% 70%, rgba(230, 243, 255, 0.4) 0%, transparent 70%),
-        radial-gradient(ellipse 190px 75px at 90% 30%, rgba(179, 217, 255, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 110px 45px at 10% 50%, rgba(240, 248, 255, 0.5) 0%, transparent 70%);
-    filter: blur(1px);
-    animation: subtleMove2 80s ease-in-out infinite;
-    z-index: -1;
-}
 
 .invitation-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    max-width: 500px;
+    height: 100vh;
+    position: relative;
 }
 
 .invitation-card {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 420px;
     height: 420px;
     background: #ffd633;
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    transform: translate(-50%, -50%) scale(1.75);
+    transform-origin: center;
 }
 
 /* Event Details */
@@ -297,294 +260,17 @@ body::after {
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
-    .invitation-container {
-        padding: 10px;
-    }
-    
     .invitation-card {
-        width: 320px;
-        height: 320px;
-        transform: scale(0.76);
-    }
-    
-    /* Scale all positions proportionally */
-    .event-details {
-        left: 54px;
-        top: 240px;
-        width: 71px;
-        height: 33px;
-    }
-    
-    .square {
-        width: 38px;
-        height: 38px;
-    }
-    
-    .bottom-square-1 {
-        left: 138px;
-        top: 237px;
-    }
-    
-    .bottom-square-2 {
-        left: 138px;
-        top: 45px;
-    }
-    
-    .letter-o {
-        width: 42px;
-        height: 42px;
-    }
-    
-    .first-o {
-        left: 135px;
-        top: 102px;
-    }
-    
-    .second-o {
-        left: 188px;
-        top: 100px;
-    }
-    
-    .letter-r {
-        left: 80px;
-        top: 94px;
-        width: 39px;
-        height: 55px;
-    }
-    
-    .letter-f {
-        left: 247px;
-        top: 94px;
-        width: 34px;
-        height: 55px;
-    }
-    
-    .invitation-text {
-        left: 188px;
-        top: 53px;
-        width: 94px;
-        height: 21px;
-        font-size: 8px;
-        line-height: 11px;
-    }
-    
-    .vector-icon {
-        /* SVG images will scale naturally */
-    }
-    
-    .vector-1 {
-        left: 240px;
-        top: 163px;
-        width: 49px;
-        height: 55px;
-    }
-    
-    .vector-2 {
-        left: 186px;
-        top: 163px;
-        width: 45px;
-        height: 55px;
-    }
-    
-    .vector-3 {
-        left: 138px;
-        top: 163px;
-        width: 39px;
-        height: 55px;
-    }
-    
-    .vector-4 {
-        left: 71px;
-        top: 163px;
-        width: 54px;
-        height: 55px;
-    }
-    
-    .vector-5 {
-        left: 30px;
-        top: 163px;
-        width: 38px;
-        height: 55px;
-    }
-    
-    .small-vector {
-        left: 37px;
-        top: 113px;
-        width: 16px;
-        height: 17px;
+        transform: translate(-50%, -50%) scale(1.54);
     }
 }
 
 @media (max-width: 480px) {
     .invitation-card {
-        width: 280px;
-        height: 280px;
-        transform: scale(0.67);
-    }
-    
-    /* Further scale adjustments for very small screens */
-    .event-details {
-        left: 47px;
-        top: 210px;
-        width: 62px;
-        height: 29px;
-    }
-    
-    .square {
-        width: 33px;
-        height: 33px;
-    }
-    
-    .bottom-square-1 {
-        left: 121px;
-        top: 207px;
-    }
-    
-    .bottom-square-2 {
-        left: 121px;
-        top: 39px;
-    }
-    
-    .letter-o {
-        width: 37px;
-        height: 37px;
-    }
-    
-    .first-o {
-        left: 118px;
-        top: 89px;
-    }
-    
-    .second-o {
-        left: 164px;
-        top: 88px;
-    }
-    
-    .letter-r {
-        left: 70px;
-        top: 82px;
-        width: 34px;
-        height: 48px;
-    }
-    
-    .letter-f {
-        left: 216px;
-        top: 82px;
-        width: 30px;
-        height: 48px;
-    }
-    
-    .invitation-text {
-        left: 164px;
-        top: 47px;
-        width: 82px;
-        height: 18px;
-        font-size: 7px;
-        line-height: 10px;
-    }
-    
-    .vector-1 {
-        left: 210px;
-        top: 143px;
-        width: 43px;
-        height: 48px;
-    }
-    
-    .vector-2 {
-        left: 163px;
-        top: 143px;
-        width: 39px;
-        height: 48px;
-    }
-    
-    .vector-3 {
-        left: 121px;
-        top: 143px;
-        width: 34px;
-        height: 48px;
-    }
-    
-    .vector-4 {
-        left: 62px;
-        top: 143px;
-        width: 47px;
-        height: 48px;
-    }
-    
-    .vector-5 {
-        left: 26px;
-        top: 143px;
-        width: 33px;
-        height: 48px;
-    }
-    
-    .small-vector {
-        left: 32px;
-        top: 99px;
-        width: 14px;
-        height: 15px;
+        transform: translate(-50%, -50%) scale(1.4);
     }
 }
 
-/* Animation Keyframes */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-}
-
-@keyframes gentleMove {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-2px) rotate(1deg);
-    }
-    50% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    75% {
-        transform: translateY(2px) rotate(-1deg);
-    }
-}
-
-@keyframes subtleMove1 {
-    0% {
-        transform: translateX(0px) translateY(0px);
-    }
-    25% {
-        transform: translateX(20px) translateY(-10px);
-    }
-    50% {
-        transform: translateX(10px) translateY(-20px);
-    }
-    75% {
-        transform: translateX(-15px) translateY(-10px);
-    }
-    100% {
-        transform: translateX(0px) translateY(0px);
-    }
-}
-
-@keyframes subtleMove2 {
-    0% {
-        transform: translateX(0px) translateY(0px);
-    }
-    33% {
-        transform: translateX(-20px) translateY(8px);
-    }
-    66% {
-        transform: translateX(15px) translateY(15px);
-    }
-    100% {
-        transform: translateX(0px) translateY(0px);
-    }
-}
-
-/* Print Styles */
 @media print {
     body {
         background: white;
