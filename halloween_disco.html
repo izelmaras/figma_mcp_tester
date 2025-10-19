@@ -59,5 +59,74 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Spooky Halloween melody using Web Audio API
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Spooky melody notes (frequencies in Hz) - inspired by classic horror themes
+        const melody = [
+            { freq: 207.65, duration: 0.3 }, // G#3
+            { freq: 233.08, duration: 0.3 }, // A#3
+            { freq: 207.65, duration: 0.3 }, // G#3
+            { freq: 196.00, duration: 0.6 }, // G3
+            { freq: 0, duration: 0.2 },       // rest
+            { freq: 207.65, duration: 0.3 }, // G#3
+            { freq: 233.08, duration: 0.3 }, // A#3
+            { freq: 207.65, duration: 0.3 }, // G#3
+            { freq: 174.61, duration: 0.6 }, // F3
+            { freq: 0, duration: 0.2 },       // rest
+            { freq: 164.81, duration: 0.4 }, // E3
+            { freq: 155.56, duration: 0.4 }, // D#3
+            { freq: 146.83, duration: 0.8 }, // D3
+        ];
+
+        function playSpookyMelody() {
+            let currentTime = audioContext.currentTime;
+            
+            melody.forEach(note => {
+                if (note.freq > 0) {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(note.freq, currentTime);
+                    
+                    // Fade in and out for smoother sound
+                    gainNode.gain.setValueAtTime(0, currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.15, currentTime + 0.05);
+                    gainNode.gain.linearRampToValueAtTime(0, currentTime + note.duration);
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.start(currentTime);
+                    oscillator.stop(currentTime + note.duration);
+                }
+                currentTime += note.duration;
+            });
+        }
+
+        // Play on first user interaction (browsers require user gesture)
+        let hasPlayed = false;
+        function playOnInteraction() {
+            if (!hasPlayed) {
+                playSpookyMelody();
+                hasPlayed = true;
+            }
+        }
+
+        // Try to play on various user interactions
+        document.addEventListener('click', playOnInteraction, { once: true });
+        document.addEventListener('touchstart', playOnInteraction, { once: true });
+        document.addEventListener('keydown', playOnInteraction, { once: true });
+        
+        // Auto-play attempt (will work if autoplay is allowed)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                playOnInteraction();
+            }, 500);
+        });
+    </script>
 </body>
 </html>
