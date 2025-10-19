@@ -50,7 +50,8 @@ body {
     position: fixed;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1.5);
+    transform-origin: center bottom;
     width: 80vw;
     max-width: calc(80vh * 0.67);
     height: 80vh;
