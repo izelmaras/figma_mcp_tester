@@ -181,11 +181,12 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    padding: 0 20px;
 }
 
 .title-halloween {
     font-family: 'Mamoth', Georgia, serif;
-    font-size: clamp(48px, 12vw, 120px);
+    font-size: clamp(60px, 15vw, 120px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
@@ -201,7 +202,7 @@ body {
 
 .title-disco {
     font-family: 'Mamoth', Georgia, serif;
-    font-size: clamp(72px, 20vw, 200px);
+    font-size: clamp(100px, 25vw, 200px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
