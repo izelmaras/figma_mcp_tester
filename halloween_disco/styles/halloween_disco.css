@@ -82,7 +82,7 @@ body {
 /* Face Features Container */
 .face-features {
     position: absolute;
-    top: 22%;
+    top: calc(22% + 10px);
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
