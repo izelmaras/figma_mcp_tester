@@ -185,7 +185,7 @@ body {
 
 .title-halloween {
     font-family: 'Mamoth', Georgia, serif;
-    font-size: 72px;
+    font-size: clamp(48px, 12vw, 120px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
@@ -196,11 +196,12 @@ body {
     line-height: 1;
     margin: 0;
     white-space: nowrap;
+    width: 100%;
 }
 
 .title-disco {
     font-family: 'Mamoth', Georgia, serif;
-    font-size: 124px;
+    font-size: clamp(72px, 20vw, 200px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
@@ -211,6 +212,7 @@ body {
     line-height: 1;
     margin: 0;
     white-space: nowrap;
+    width: 100%;
 }
 
 /* Bottom Text Group */
@@ -285,16 +287,17 @@ body {
     .event-info,
     .host-info {
         max-width: 100%;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
+        gap: auto;
     }
     
     .event-details,
-    .event-location,
+    .event-location {
+        gap: 3px;
+    }
+    
     .host-names,
     .rsvp-section {
-        align-items: center;
+        gap: 3px;
     }
     
     .info-date,
@@ -303,15 +306,7 @@ body {
     .info-dj,
     .footer-text,
     .rsvp-link {
-        font-size: 16px;
-    }
-    
-    .title-halloween {
-        font-size: 48px;
-    }
-    
-    .title-disco {
-        font-size: 72px;
+        font-size: 14px;
     }
 }
 
