@@ -38,11 +38,21 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-image: url('../assets/bg.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: radial-gradient(circle at center, white 0%, #00C3FF 70%);
     overflow: hidden;
+    animation: background-flip 40s ease-in-out infinite;
+}
+
+@keyframes background-flip {
+    0%, 45% {
+        background: radial-gradient(circle at center, white 0%, #00C3FF 70%);
+    }
+    50%, 95% {
+        background: radial-gradient(circle at center, white 0%, #FFD700 70%);
+    }
+    100% {
+        background: radial-gradient(circle at center, white 0%, #00C3FF 70%);
+    }
 }
 
 /* Character Group - Responsive Container */
