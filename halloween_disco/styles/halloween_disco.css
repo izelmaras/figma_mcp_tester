@@ -44,13 +44,13 @@ body {
 }
 
 @keyframes background-flip {
-    0%, 45% {
+    0%, 40% {
         background: radial-gradient(circle at center, white 0%, #00C3FF 70%);
     }
-    50%, 95% {
+    50% {
         background: radial-gradient(circle at center, white 0%, #FFD700 70%);
     }
-    100% {
+    90%, 100% {
         background: radial-gradient(circle at center, white 0%, #00C3FF 70%);
     }
 }
