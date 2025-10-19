@@ -311,6 +311,17 @@ body {
     }
 }
 
+/* Extra Small Mobile (iPhone SE, etc) */
+@media (max-width: 414px) {
+    .title-halloween {
+        font-size: clamp(62px, 13.1vw, 125px);
+    }
+    
+    .title-disco {
+        font-size: clamp(104px, 26vw, 208px);
+    }
+}
+
 /* Tablet & Larger Mobile (min-width: 480px) */
 @media (min-width: 480px) {
     .dancing-figure {
