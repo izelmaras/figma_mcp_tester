@@ -186,7 +186,7 @@ body {
 
 .title-halloween {
     font-family: 'Mamoth', Georgia, serif;
-    font-size: clamp(60px, 15vw, 120px);
+    font-size: clamp(78px, 19.5vw, 156px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
@@ -202,7 +202,7 @@ body {
 
 .title-disco {
     font-family: 'Mamoth', Georgia, serif;
-    font-size: clamp(100px, 25vw, 200px);
+    font-size: clamp(130px, 32.5vw, 260px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
@@ -307,7 +307,7 @@ body {
     .info-dj,
     .footer-text,
     .rsvp-link {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
