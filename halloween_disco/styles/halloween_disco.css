@@ -351,6 +351,15 @@ body {
     .title-disco {
         font-size: clamp(104px, 26vw, 208px);
     }
+    
+    .info-date,
+    .info-time,
+    .info-location,
+    .info-dj,
+    .footer-text,
+    .rsvp-link {
+        font-size: 16.64px;
+    }
 }
 
 /* Tablet & Larger Mobile (min-width: 480px) */
