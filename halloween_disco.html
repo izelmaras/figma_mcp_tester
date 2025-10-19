@@ -55,28 +55,9 @@
                 <p class="footer-text" data-node-id="2:43">MICKEY AND IZEL</p>
             </div>
             <div class="rsvp-section">
-                <a href="#" class="rsvp-link" data-node-id="2:55" onclick="handleRSVP(event)">RSVP →</a>
+                <a href="https://www.icloud.com/invites/032dvLvF4VLoQGfY6oxVmLO5g" class="rsvp-link" data-node-id="2:55" target="_blank" rel="noopener noreferrer">RSVP →</a>
             </div>
         </div>
     </div>
-
-    <script>
-        function handleRSVP(event) {
-            event.preventDefault();
-            
-            const email = 'im@izel.website';
-            const subject = "Yes, I'll be there!";
-            const body = "Hi Izel,\n\nI'd love to attend the Halloween Disco on October 31st!\n\nName: ";
-            
-            // Try to open mailto link
-            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
-            
-            // Show dialog after a short delay (if email client doesn't open)
-            setTimeout(function() {
-                alert('Please email your RSVP to:\n\n' + email);
-            }, 500);
-        }
-    </script>
 </body>
 </html>
