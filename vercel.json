@@ -1,14 +1,4 @@
 {
   "cleanUrls": false,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/halloween_disco",
-      "destination": "/halloween_disco/"
-    },
-    {
-      "source": "/rooftop_party",
-      "destination": "/rooftop_party/"
-    }
-  ]
+  "trailingSlash": false
 }
