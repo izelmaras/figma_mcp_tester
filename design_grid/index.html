@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Grid</title>
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="Design Grid">
+    <meta property="og:description" content="A modern grid showcase">
+    <meta property="og:url" content="https://projects.izel.website/design_grid">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Design Grid">
+    <meta name="twitter:description" content="A modern grid showcase">
+    
+    <link rel="stylesheet" href="/design_grid/styles/design_grid.css">
+</head>
+<body>
+    <!-- Fixed Top Navigation -->
+    <nav class="top-nav">
+        <p class="top-left">Izel Maras</p>
+        <p class="top-right">Designer</p>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div class="grid-container">
+            <div class="grid">
+                <div class="grid-item item-1" onclick="openModal('work1.png')">
+                    <img src="/design_grid/assets/work1.png" alt="Work 1" class="grid-image">
+                </div>
+                <div class="grid-item item-2" onclick="openModal('work2.png')">
+                    <img src="/design_grid/assets/work2.png" alt="Work 2" class="grid-image">
+                </div>
+                <div class="grid-item item-3" onclick="openModal('work3.png')">
+                    <img src="/design_grid/assets/work3.png" alt="Work 3" class="grid-image">
+                </div>
+                <div class="grid-item item-4" onclick="openModal('work4.png')">
+                    <img src="/design_grid/assets/work4.png" alt="Work 4" class="grid-image">
+                </div>
+                <div class="grid-item item-5" onclick="openModal('work5.png')">
+                    <img src="/design_grid/assets/work5.png" alt="Work 5" class="grid-image">
+                </div>
+                <div class="grid-item item-6" onclick="openModal('work6.png')">
+                    <img src="/design_grid/assets/work6.png" alt="Work 6" class="grid-image">
+                </div>
+                <div class="grid-item item-7" onclick="openModal('work7.png')">
+                    <img src="/design_grid/assets/work7.png" alt="Work 7" class="grid-image">
+                </div>
+                <div class="grid-item item-8" onclick="openModal('work8.png')">
+                    <img src="/design_grid/assets/work8.png" alt="Work 8" class="grid-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="https://www.izelmaras.com" target="_blank">izel.website</a>
+    </nav>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let modal = document.getElementById('modal');
+        let modalContent = document.querySelector('.modal-content');
+        let closeBtn = document.querySelector('.close');
+        let isDragging = false;
+        let isResizing = false;
+        let startX, startY, startWidth, startHeight, startLeft, startTop;
+
+        function openModal(imageName) {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking X
+        closeBtn.onclick = closeModal;
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Drag functionality - Mouse
+        modalContent.addEventListener('mousedown', function(e) {
+            if (window.innerWidth > 768 && (e.target.classList.contains('modal-header') || e.target.classList.contains('close'))) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startLeft = modalContent.offsetLeft;
+                startTop = modalContent.offsetTop;
+            }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                modalContent.style.left = (startLeft + e.clientX - startX) + 'px';
+                modalContent.style.top = (startTop + e.clientY - startY) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+
+        // Drag functionality - Touch (disabled on mobile for better scrolling)
+        modalContent.addEventListener('touchstart', function(e) {
+            if (window.innerWidth > 768 && (e.target.classList.contains('modal-header') || e.target.classList.contains('close'))) {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startLeft = modalContent.offsetLeft;
+                startTop = modalContent.offsetTop;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging && window.innerWidth > 768) {
+                e.preventDefault();
+                modalContent.style.left = (startLeft + e.touches[0].clientX - startX) + 'px';
+                modalContent.style.top = (startTop + e.touches[0].clientY - startY) + 'px';
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', function() {
+            isDragging = false;
+        });
+
+        // Resize functionality
+        modalContent.addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('resize-handle')) {
+                isResizing = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startWidth = modalContent.offsetWidth;
+                startHeight = modalContent.offsetHeight;
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isResizing) {
+                e.preventDefault();
+                const newWidth = startWidth + (e.clientX - startX);
+                const newHeight = startHeight + (e.clientY - startY);
+                modalContent.style.width = Math.max(300, newWidth) + 'px';
+                modalContent.style.height = Math.max(200, newHeight) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isResizing = false;
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
