@@ -2,19 +2,19 @@
 
 A personal portfolio and project showcase site featuring creative web experiments and event invitations.
 
-## Projects
+## Project Index
 
-### 🎃 Halloween Disco
-An interactive Halloween party invitation with animations and background music.
-- **Event**: Halloween Disco Party
-- **Features**: Animated character, audio playback, responsive design
-- **Path**: `/halloween_disco`
+```
+halloween_disco/          October 17, 2025    Interactive Halloween party invitation 
+                                               with animated character and background music.
+                                               Design task: Create engaging disco-themed 
+                                               poster with eye-tracking animation.
 
-### 🏙️ Rooftop Party
-An elegant rooftop party invitation with creative typography.
-- **Event**: Rooftop Party
-- **Features**: Custom letter animations, modern design
-- **Path**: `/rooftop_party`
+rooftop_party/            October 4, 2025     Elegant rooftop party invitation with 
+                                               creative typography and floating letters.
+                                               Design task: Design modern event invitation
+                                               with custom lettering and layout.
+```
 
 ## Project Structure
 
@@ -32,54 +32,6 @@ izel_space/
 ├── fonts/                  # Shared font assets
 └── README.md
 ```
-
-## Getting Started
-
-### Local Development
-
-Run a local server to view the site:
-
-```bash
-# Using Python
-python3 -m http.server 8000
-
-# Using Node.js
-npx serve .
-
-# Using PHP
-php -S localhost:8000
-```
-
-Then navigate to `http://localhost:8000` in your browser.
-
-## Features
-
-- 🎨 **Modern Design**: Clean, contemporary aesthetic
-- 📱 **Mobile Responsive**: Optimized for all device sizes
-- 🎭 **Interactive Elements**: Animations and audio integration
-- 🎯 **Self-Contained Projects**: Each project is independently organized
-
-## Design System
-
-Each project maintains its own:
-- Custom typography
-- Color schemes
-- Asset libraries
-- Responsive breakpoints
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## Deployment
-
-This site is optimized for static hosting on platforms like:
-- Vercel
-- Netlify
-- GitHub Pages
 
 ---
 
