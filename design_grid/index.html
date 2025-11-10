@@ -27,30 +27,30 @@
 
     <!-- Main Content -->
     <div class="page-container">
-        <div class="grid-container">
-            <div class="grid">
-                <div class="grid-item item-1" onclick="openModal('work1.png')">
+            <div class="grid-container">
+                <div class="grid">
+                    <div class="grid-item item-1" data-page="work1">
                     <img src="/design_grid/assets/work1.png" alt="Work 1" class="grid-image">
                 </div>
-                <div class="grid-item item-2" onclick="openModal('work2.png')">
+                    <div class="grid-item item-2" data-page="work2">
                     <img src="/design_grid/assets/work2.png" alt="Work 2" class="grid-image">
                 </div>
-                <div class="grid-item item-3" onclick="openModal('work3.png')">
+                    <div class="grid-item item-3" data-page="work3">
                     <img src="/design_grid/assets/work3.png" alt="Work 3" class="grid-image">
                 </div>
-                <div class="grid-item item-4" onclick="openModal('work4.png')">
+                    <div class="grid-item item-4" data-page="work4">
                     <img src="/design_grid/assets/work4.png" alt="Work 4" class="grid-image">
                 </div>
-                <div class="grid-item item-5" onclick="openModal('work5.png')">
+                    <div class="grid-item item-5" data-page="work5">
                     <img src="/design_grid/assets/work5.png" alt="Work 5" class="grid-image">
                 </div>
-                <div class="grid-item item-6" onclick="openModal('work6.png')">
+                    <div class="grid-item item-6" data-page="work6">
                     <img src="/design_grid/assets/work6.png" alt="Work 6" class="grid-image">
                 </div>
-                <div class="grid-item item-7" onclick="openModal('work7.png')">
+                    <div class="grid-item item-7" data-page="work7">
                     <img src="/design_grid/assets/work7.png" alt="Work 7" class="grid-image">
                 </div>
-                <div class="grid-item item-8" onclick="openModal('work8.png')">
+                    <div class="grid-item item-8" data-page="work8">
                     <img src="/design_grid/assets/work8.png" alt="Work 8" class="grid-image">
                 </div>
             </div>
@@ -75,32 +75,138 @@
     </div>
 
     <script>
-        let modal = document.getElementById('modal');
-        let modalContent = document.querySelector('.modal-content');
-        let closeBtn = document.querySelector('.close');
+        const modal = document.getElementById('modal');
+        const modalContent = document.querySelector('.modal-content');
+        const modalBody = document.querySelector('.modal-body');
+        const closeBtn = document.querySelector('.close');
+        const gridItems = document.querySelectorAll('.grid-item[data-page]');
+        const validPages = Array.from(gridItems).map(item => item.dataset.page);
+        const basePagePath = '/design_grid/pages/';
+
+        let currentPage = null;
         let isDragging = false;
         let isResizing = false;
+        let isLoading = false;
         let startX, startY, startWidth, startHeight, startLeft, startTop;
 
-        function openModal(imageName) {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+        const resetModalPosition = () => {
+            modalContent.style.left = '';
+            modalContent.style.top = '';
+            modalContent.style.width = '';
+            modalContent.style.height = '';
+        };
 
-        function closeModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        const setModalVisibility = (show) => {
+            modal.style.display = show ? 'block' : 'none';
+            document.body.style.overflow = show ? 'hidden' : 'auto';
+            resetModalPosition();
+        };
 
-        // Close modal when clicking X
-        closeBtn.onclick = closeModal;
+        const setHistoryState = (pageId, { replace = false } = {}) => {
+            const url = new URL(window.location.href);
+            if (pageId) {
+                url.searchParams.set('view', pageId);
+            } else {
+                url.searchParams.delete('view');
+            }
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            if (replace) {
+                history.replaceState(pageId ? { view: pageId } : {}, '', url);
+            } else {
+                history.pushState(pageId ? { view: pageId } : {}, '', url);
+            }
+        };
+
+        const clearModalContent = () => {
+            modalBody.innerHTML = '';
+            currentPage = null;
+        };
+
+        const showLoading = () => {
+            modalBody.innerHTML = '<div class="modal-loading">Loading...</div>';
+        };
+
+        const showError = () => {
+            modalBody.innerHTML = `
+                <div class="modal-error">
+                    <h3>Something went wrong</h3>
+                    <p>We couldn\'t load that project. Please try again.</p>
+                </div>
+            `;
+        };
+
+        const openModal = async (pageId, { skipHistory = false, replaceState = false } = {}) => {
+            if (!validPages.includes(pageId) || isLoading) {
+                return;
+            }
+
+            isLoading = true;
+            setModalVisibility(true);
+            showLoading();
+
+            try {
+                const response = await fetch(`${basePagePath}${pageId}.html`, { cache: 'no-cache' });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch page');
+                }
+                const html = await response.text();
+                modalBody.innerHTML = html;
+                modalBody.scrollTop = 0;
+                currentPage = pageId;
+
+                if (!skipHistory) {
+                    setHistoryState(pageId, { replace: replaceState });
+                }
+                if (replaceState && skipHistory) {
+                    setHistoryState(pageId, { replace: true });
+                }
+            } catch (error) {
+                console.error(error);
+                showError();
+            } finally {
+                isLoading = false;
+            }
+        };
+
+        const closeModal = ({ skipHistory = false, replaceState = false } = {}) => {
+            if (modal.style.display !== 'block') {
+                return;
+            }
+
+            setModalVisibility(false);
+            clearModalContent();
+
+            if (!skipHistory) {
+                setHistoryState(null, { replace: replaceState });
+            }
+            if (replaceState && skipHistory) {
+                setHistoryState(null, { replace: true });
+            }
+        };
+
+        gridItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const pageId = item.dataset.page;
+                openModal(pageId);
+            });
+        });
+
+        closeBtn.addEventListener('click', () => closeModal());
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
                 closeModal();
             }
-        }
+        });
+
+        window.addEventListener('popstate', (event) => {
+            const view = event.state && event.state.view ? event.state.view : new URL(window.location.href).searchParams.get('view');
+            if (view && validPages.includes(view)) {
+                openModal(view, { skipHistory: true, replaceState: true });
+            } else {
+                closeModal({ skipHistory: true, replaceState: true });
+            }
+        });
 
         // Drag functionality - Mouse
         modalContent.addEventListener('mousedown', function(e) {
@@ -180,6 +286,15 @@
                 closeModal();
             }
         });
+
+        // Initial load: open modal if URL includes view param
+        const initialView = new URL(window.location.href).searchParams.get('view');
+        if (initialView && validPages.includes(initialView)) {
+            openModal(initialView, { skipHistory: true, replaceState: true });
+        } else {
+            // ensure base state registered if no view
+            history.replaceState({}, '', window.location.href);
+        }
     </script>
 </body>
 </html>
