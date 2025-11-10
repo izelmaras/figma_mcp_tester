@@ -85,15 +85,12 @@
 
         let currentPage = null;
         let isDragging = false;
-        let isResizing = false;
         let isLoading = false;
-        let startX, startY, startWidth, startHeight, startLeft, startTop;
+        let startX, startY, startLeft, startTop;
 
         const resetModalPosition = () => {
             modalContent.style.left = '';
             modalContent.style.top = '';
-            modalContent.style.width = '';
-            modalContent.style.height = '';
         };
 
         const setModalVisibility = (show) => {
@@ -255,6 +252,12 @@
             }
         });
 
+        window.addEventListener('resize', () => {
+            if (modal.style.display === 'block' && !isDragging) {
+                resetModalPosition();
+            }
+        });
+
         window.addEventListener('popstate', (event) => {
             const view = event.state && event.state.view ? event.state.view : new URL(window.location.href).searchParams.get('view');
             if (view && validPages.includes(view)) {
@@ -311,31 +314,6 @@
         });
 
         // Resize functionality
-        modalContent.addEventListener('mousedown', function(e) {
-            if (e.target.classList.contains('resize-handle')) {
-                isResizing = true;
-                startX = e.clientX;
-                startY = e.clientY;
-                startWidth = modalContent.offsetWidth;
-                startHeight = modalContent.offsetHeight;
-                e.preventDefault();
-            }
-        });
-
-        document.addEventListener('mousemove', function(e) {
-            if (isResizing) {
-                e.preventDefault();
-                const newWidth = startWidth + (e.clientX - startX);
-                const newHeight = startHeight + (e.clientY - startY);
-                modalContent.style.width = Math.max(300, newWidth) + 'px';
-                modalContent.style.height = Math.max(200, newHeight) + 'px';
-            }
-        });
-
-        document.addEventListener('mouseup', function() {
-            isResizing = false;
-        });
-
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
