@@ -1,29 +1,47 @@
-<article class="modal-page">
+<article class="modal-page" data-modal-page="work6">
     <header class="modal-page__hero">
         <h2>Education Portal</h2>
         <p>A self-serve onboarding path for new design hires.</p>
-        <img src="/design_grid/assets/work6.png" alt="Education portal preview">
     </header>
-    <section class="modal-page__section">
-        <h3>Insights</h3>
-        <p>
-            New teammates struggled to locate artifacts scattered across Notion, GDrive, and Slack. We
-            synthesized the essentials into one guided experience.
-        </p>
+
+    <div class="modal-toggle" role="tablist" aria-label="Education portal view selector">
+        <button type="button" class="modal-toggle__option is-active" data-pane-target="prototype" aria-controls="work6-pane-prototype" aria-selected="true">Prototype</button>
+        <button type="button" class="modal-toggle__option" data-pane-target="process" aria-controls="work6-pane-process" aria-selected="false" tabindex="-1">Process</button>
+    </div>
+
+    <section class="modal-page__pane is-active" data-pane="prototype" role="tabpanel" id="work6-pane-prototype" aria-hidden="false">
+        <img src="/design_grid/assets/work6.png" alt="Education portal preview">
+        <div class="modal-page__section">
+            <h3>Prototype Highlights</h3>
+            <ul>
+                <li>Personalized dashboard tracks chapter progress and saves context.</li>
+                <li>Interactive quizzes provide immediate guidance with component references.</li>
+                <li>Embedded video primers paired with usage demos from live products.</li>
+            </ul>
+        </div>
     </section>
-    <section class="modal-page__section">
-        <h3>Experience</h3>
-        <p>
-            Created modular chapters with video primers, interactive quizzes, and embedded component
-            usage examples. Personalized pacing with progress saves per cohort.
-        </p>
-    </section>
-    <section class="modal-page__section">
-        <h3>Results</h3>
-        <p>
-            Average onboarding ramp shortened by 1.5 sprints, with higher confidence scores in our
-            design system application assessment.
-        </p>
+
+    <section class="modal-page__pane" data-pane="process" role="tabpanel" id="work6-pane-process" aria-hidden="true">
+        <div class="modal-page__section">
+            <h3>Insights</h3>
+            <p>
+                New teammates struggled to locate artifacts scattered across Notion, GDrive, and Slack. We
+                synthesized the essentials into one guided experience.
+            </p>
+        </div>
+        <div class="modal-page__section">
+            <h3>Experience</h3>
+            <p>
+                Created modular chapters with video primers, interactive quizzes, and embedded component
+                usage examples. Personalized pacing with progress saves per cohort.
+            </p>
+        </div>
+        <div class="modal-page__section">
+            <h3>Results</h3>
+            <p>
+                Average onboarding ramp shortened by 1.5 sprints, with higher confidence scores in our
+                design system application assessment.
+            </p>
+        </div>
     </section>
 </article>
-

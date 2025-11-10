@@ -135,6 +135,61 @@
             `;
         };
 
+        const initializeModalPage = (root) => {
+            const pages = root.querySelectorAll('[data-modal-page]');
+            pages.forEach((page) => {
+                const toggleGroup = page.querySelector('.modal-toggle');
+                if (!toggleGroup) {
+                    return;
+                }
+                const options = toggleGroup.querySelectorAll('.modal-toggle__option');
+                const panes = page.querySelectorAll('.modal-page__pane');
+
+                const activatePane = (targetId) => {
+                    options.forEach((option) => {
+                        const isActive = option.dataset.paneTarget === targetId;
+                        option.classList.toggle('is-active', isActive);
+                        option.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        option.setAttribute('tabindex', isActive ? '0' : '-1');
+                    });
+
+                    panes.forEach((pane) => {
+                        const isMatch = pane.dataset.pane === targetId;
+                        pane.classList.toggle('is-active', isMatch);
+                        pane.setAttribute('aria-hidden', isMatch ? 'false' : 'true');
+                    });
+                };
+
+                options.forEach((option) => {
+                    option.addEventListener('click', () => {
+                        if (!option.classList.contains('is-active')) {
+                            activatePane(option.dataset.paneTarget);
+                        }
+                    });
+
+                    option.addEventListener('keydown', (event) => {
+                        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                            event.preventDefault();
+                            const currentIndex = Array.from(options).indexOf(option);
+                            const direction = event.key === 'ArrowRight' ? 1 : -1;
+                            const nextIndex = (currentIndex + direction + options.length) % options.length;
+                            const nextOption = options[nextIndex];
+                            nextOption.focus();
+                            if (!nextOption.classList.contains('is-active')) {
+                                activatePane(nextOption.dataset.paneTarget);
+                            }
+                        }
+                    });
+                });
+
+                // ensure default state alignment
+                const activeOption = toggleGroup.querySelector('.modal-toggle__option.is-active') || options[0];
+                if (activeOption) {
+                    activatePane(activeOption.dataset.paneTarget);
+                }
+            });
+        };
+
         const openModal = async (pageId, { skipHistory = false, replaceState = false } = {}) => {
             if (!validPages.includes(pageId) || isLoading) {
                 return;
@@ -151,6 +206,7 @@
                 }
                 const html = await response.text();
                 modalBody.innerHTML = html;
+                initializeModalPage(modalBody);
                 modalBody.scrollTop = 0;
                 currentPage = pageId;
 

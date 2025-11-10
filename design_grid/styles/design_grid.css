@@ -360,6 +360,48 @@ body {
     list-style: disc;
 }
 
+.modal-toggle {
+    display: inline-flex;
+    align-self: flex-start;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 999px;
+    padding: 6px;
+    gap: 8px;
+}
+
+.modal-toggle__option {
+    border: none;
+    background: transparent;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-toggle__option:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+    outline-offset: 2px;
+}
+
+.modal-toggle__option.is-active {
+    background: white;
+    color: black;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.modal-page__pane {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.modal-page__pane.is-active {
+    display: flex;
+}
+
 /* Resize handle */
 .modal-content::after {
     content: '';
@@ -440,6 +482,17 @@ body {
 
     .modal-page__section h3 {
         font-size: 18px;
+    }
+
+    .modal-toggle {
+        width: 100%;
+        justify-content: space-between;
+        gap: 4px;
+    }
+
+    .modal-toggle__option {
+        flex: 1;
+        padding: 10px 12px;
     }
 }
 
