@@ -424,12 +424,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.close-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}
+
+.close:hover .close-icon,
+.close:focus-visible .close-icon {
+    opacity: 1;
 }
 
 .close:hover,
 .close:focus-visible {
-    color: black;
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -705,12 +716,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}
+
+.description-nav-btn:hover:not(:disabled) .nav-icon,
+.description-nav-btn:focus-visible:not(:disabled) .nav-icon {
+    opacity: 1;
 }
 
 .description-nav-btn:hover:not(:disabled),
 .description-nav-btn:focus-visible:not(:disabled) {
-    color: black;
     background: rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.2);
 }
@@ -718,6 +740,10 @@ body {
 .description-nav-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+}
+
+.description-nav-btn:disabled .nav-icon {
+    opacity: 0.3;
 }
 
 .modal-project-gallery {
