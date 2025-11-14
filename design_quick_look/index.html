@@ -287,10 +287,11 @@
 
         const formatProjectDescription = (text, projectName) => {
             const lines = text.split('\n').filter(line => line.trim());
+            let summary = '';
             let sectionsHTML = '';
             let currentSection = null;
             let currentContent = [];
-            let skipFirstLine = true;
+            let isFirstLine = true;
 
             const sectionMap = {
                 'Challenge': 'challenge',
@@ -320,9 +321,10 @@
                 const trimmed = line.trim();
                 if (!trimmed) continue;
 
-                // Skip the first line (title) - we'll use projectName instead
-                if (skipFirstLine) {
-                    skipFirstLine = false;
+                // First line is the summary
+                if (isFirstLine) {
+                    summary = trimmed;
+                    isFirstLine = false;
                     continue;
                 }
 
@@ -343,7 +345,10 @@
             }
 
             closeSection();
-            return `<div class="modal-project-description-wrapper"><div class="modal-project-description">${sectionsHTML}</div></div>`;
+            return {
+                summary: summary ? `<div class="modal-project-summary">${summary}</div>` : '',
+                sections: sectionsHTML ? `<div class="modal-project-description-wrapper"><div class="modal-project-description">${sectionsHTML}</div></div>` : ''
+            };
         };
 
         const openModal = async (projectId, { skipHistory = false, replaceState = false } = {}) => {
@@ -384,11 +389,23 @@
 
                 let contentHTML = '';
                 if (projectText) {
-                    contentHTML += formatProjectDescription(projectText, projectName);
+                    const description = formatProjectDescription(projectText, projectName);
+                    contentHTML += description.summary;
                 }
                 contentHTML += `<div class="modal-project-gallery">${imagesHTML}</div>`;
+                if (projectText) {
+                    const description = formatProjectDescription(projectText, projectName);
+                    contentHTML += description.sections;
+                }
+                contentHTML += `<div class="description-navigation">
+                    <button class="description-nav-btn description-nav-prev" id="desc-prev" aria-label="Previous section">←</button>
+                    <button class="description-nav-btn description-nav-next" id="desc-next" aria-label="Next section">→</button>
+                </div>`;
 
                 modalContentArea.innerHTML = contentHTML;
+                
+                // Setup description navigation
+                setupDescriptionNavigation();
                 modalBody.scrollTop = 0;
                 
                 if (progressTrack) {
@@ -441,6 +458,34 @@
         });
 
         modalBody.addEventListener('scroll', updateProgress);
+
+        const setupDescriptionNavigation = () => {
+            const scrollContainer = document.querySelector('.modal-project-description');
+            const prevBtn = document.getElementById('desc-prev');
+            const nextBtn = document.getElementById('desc-next');
+            
+            if (!scrollContainer || !prevBtn || !nextBtn) return;
+            
+            const updateButtons = () => {
+                const scrollLeft = scrollContainer.scrollLeft;
+                const scrollWidth = scrollContainer.scrollWidth;
+                const clientWidth = scrollContainer.clientWidth;
+                
+                prevBtn.disabled = scrollLeft <= 0;
+                nextBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 1;
+            };
+            
+            prevBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+            
+            scrollContainer.addEventListener('scroll', updateButtons);
+            updateButtons();
+        };
 
         closeBtn.addEventListener('click', () => closeModal());
 
