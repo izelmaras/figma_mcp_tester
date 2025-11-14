@@ -693,12 +693,12 @@ body {
 
 .description-nav-btn {
     color: rgba(0, 0, 0, 0.55);
-    font-size: 28px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
     line-height: 1;
     background: rgba(255, 255, 255, 0.85);
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 4px;
     border-radius: 50%;
     width: 38px;
@@ -706,13 +706,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .description-nav-btn:hover:not(:disabled),
 .description-nav-btn:focus-visible:not(:disabled) {
     color: black;
     background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 .description-nav-btn:disabled {
@@ -788,7 +789,7 @@ body {
     .description-nav-btn {
         width: 36px;
         height: 36px;
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .modal-project-description {
