@@ -59,17 +59,30 @@
 
     <!-- Fixed Bottom Navigation -->
     <nav class="bottom-nav">
-        <a href="https://www.izelmaras.com" target="_blank">izel.website</a>
+        <button type="button" class="bottom-nav__about" data-page="about">About</button>
+        <a class="bottom-nav__link" href="https://www.izelmaras.com" target="_blank" rel="noopener noreferrer">izel.website</a>
     </nav>
 
     <!-- Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-            </div>
+            <header class="modal-header">
+                <div class="modal-header__center">
+                    <div class="modal-floating-toggle"></div>
+                </div>
+                <button type="button" class="close" aria-label="Close modal">&times;</button>
+            </header>
             <div class="modal-body">
-                <!-- Content will be added here -->
+                <div class="modal-body__header">
+                    <div class="modal-header__meta">
+                        <span class="modal-header__title">Project</span>
+                        <p class="modal-header__description"></p>
+                    </div>
+                </div>
+                <div class="modal-body__content"></div>
+            </div>
+            <div class="modal-progress">
+                <div class="modal-progress__bar"></div>
             </div>
         </div>
     </div>
@@ -79,8 +92,14 @@
         const modalContent = document.querySelector('.modal-content');
         const modalBody = document.querySelector('.modal-body');
         const closeBtn = document.querySelector('.close');
-        const gridItems = document.querySelectorAll('.grid-item[data-page]');
-        const validPages = Array.from(gridItems).map(item => item.dataset.page);
+        const modalContentArea = document.querySelector('.modal-body__content');
+        const headerTitle = document.querySelector('.modal-header__title');
+        const headerDescription = document.querySelector('.modal-header__description');
+        const floatingToggle = document.querySelector('.modal-floating-toggle');
+        const progressTrack = document.querySelector('.modal-progress');
+        const progressBar = document.querySelector('.modal-progress__bar');
+        const pageTriggers = document.querySelectorAll('[data-page]');
+        const validPages = Array.from(pageTriggers).map(item => item.dataset.page);
         const basePagePath = '/design_grid/pages/';
 
         let currentPage = null;
@@ -115,30 +134,105 @@
         };
 
         const clearModalContent = () => {
-            modalBody.innerHTML = '';
+            modalContentArea.innerHTML = '';
             currentPage = null;
+            if (headerTitle) {
+                headerTitle.textContent = 'Project';
+            }
+            if (headerDescription) {
+                headerDescription.textContent = '';
+            }
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+            }
+            if (progressBar) {
+                progressBar.style.transform = 'scaleX(0)';
+            }
+            if (progressTrack) {
+                progressTrack.classList.remove('is-active');
+            }
         };
 
         const showLoading = () => {
-            modalBody.innerHTML = '<div class="modal-loading">Loading...</div>';
+            modalContentArea.innerHTML = '<div class="modal-loading">Loading...</div>';
+            if (headerTitle) {
+                headerTitle.textContent = 'Loading';
+            }
+            if (headerDescription) {
+                headerDescription.textContent = '';
+            }
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+            }
+            if (progressBar) {
+                progressBar.style.transform = 'scaleX(0)';
+            }
+            if (progressTrack) {
+                progressTrack.classList.remove('is-active');
+            }
         };
 
         const showError = () => {
-            modalBody.innerHTML = `
+            modalContentArea.innerHTML = `
                 <div class="modal-error">
                     <h3>Something went wrong</h3>
                     <p>We couldn\'t load that project. Please try again.</p>
                 </div>
             `;
+            if (headerTitle) {
+                headerTitle.textContent = 'Load error';
+            }
+            if (headerDescription) {
+                headerDescription.textContent = '';
+            }
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+            }
+            if (progressBar) {
+                progressBar.style.transform = 'scaleX(0)';
+            }
+            if (progressTrack) {
+                progressTrack.classList.remove('is-active');
+            }
         };
 
-        const initializeModalPage = (root) => {
-            const pages = root.querySelectorAll('[data-modal-page]');
-            pages.forEach((page) => {
-                const toggleGroup = page.querySelector('.modal-toggle');
-                if (!toggleGroup) {
-                    return;
+        function updateProgress() {
+            if (!progressBar) {
+                return;
+            }
+            const scrollableHeight = modalBody.scrollHeight - modalBody.clientHeight;
+            const ratio = scrollableHeight > 0 ? modalBody.scrollTop / scrollableHeight : 0;
+            progressBar.style.transform = `scaleX(${ratio})`;
+        }
+
+        const initializeModalPage = (root, pageId) => {
+            const page = root.querySelector(`[data-modal-page="${pageId}"]`);
+            if (!page) {
+                return;
+            }
+            const name = page.getAttribute('data-page-name') || pageId;
+            const description = page.getAttribute('data-page-description') || '';
+            if (headerTitle) {
+                headerTitle.textContent = name;
+            }
+            if (headerDescription) {
+                headerDescription.textContent = description;
+            }
+
+            const toggleGroup = page.querySelector('.modal-toggle');
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+                if (toggleGroup) {
+                    floatingToggle.appendChild(toggleGroup);
+                    floatingToggle.classList.add('is-active');
                 }
+            }
+
+            if (toggleGroup) {
                 const options = toggleGroup.querySelectorAll('.modal-toggle__option');
                 const panes = page.querySelectorAll('.modal-page__pane');
 
@@ -155,6 +249,7 @@
                         pane.classList.toggle('is-active', isMatch);
                         pane.setAttribute('aria-hidden', isMatch ? 'false' : 'true');
                     });
+                    updateProgress();
                 };
 
                 options.forEach((option) => {
@@ -179,12 +274,11 @@
                     });
                 });
 
-                // ensure default state alignment
                 const activeOption = toggleGroup.querySelector('.modal-toggle__option.is-active') || options[0];
                 if (activeOption) {
                     activatePane(activeOption.dataset.paneTarget);
                 }
-            });
+            }
         };
 
         const openModal = async (pageId, { skipHistory = false, replaceState = false } = {}) => {
@@ -202,9 +296,16 @@
                     throw new Error('Failed to fetch page');
                 }
                 const html = await response.text();
-                modalBody.innerHTML = html;
-                initializeModalPage(modalBody);
+                modalContentArea.innerHTML = html;
+                initializeModalPage(modalContentArea, pageId);
                 modalBody.scrollTop = 0;
+                if (progressTrack) {
+                    progressTrack.classList.add('is-active');
+                }
+                if (progressBar) {
+                    progressBar.style.transform = 'scaleX(0)';
+                }
+                updateProgress();
                 currentPage = pageId;
 
                 if (!skipHistory) {
@@ -237,12 +338,14 @@
             }
         };
 
-        gridItems.forEach(item => {
+        pageTriggers.forEach(item => {
             item.addEventListener('click', () => {
                 const pageId = item.dataset.page;
                 openModal(pageId);
             });
         });
+
+        modalBody.addEventListener('scroll', updateProgress);
 
         closeBtn.addEventListener('click', () => closeModal());
 
