@@ -1,0 +1,38 @@
+Roon Doctor Creator Tool
+
+What
+Help doctors effortlessly share their expertise in the quickest way possible.
+
+Challenge
+Roon is a two-sided platform where doctors create content and patients/caregivers consume it. We wanted to create a tool to scale our doctor creation process. The challenge was to develop a user-friendly tool that would fit seamlessly into the busy schedules of doctors, who often have limited tech knowledge and little time to learn new tools.
+
+Problems to Solve
+Product Issues
+• Experts struggle to find time for answering questions.
+• Need an efficient way to share knowledge without viewing others' responses.
+• Want well-informed patient questions and a reliable referral resource.
+• Aim to reach a broader audience and gain recognition without heavy social media use.
+• Enjoy interaction with interviewers and addressing knowledge gaps.
+• Need a user-friendly solution for recording answers.
+• Roon's Q&A process is too time-consuming, limiting content scalability.
+
+Usability Issues
+• Riverside's interface is cumbersome and inefficient, leading to multiple re-recordings for satisfactory results.
+
+Goals
+• Double the number of questions recorded
+• Conduct 80% of existing interviews on the app
+• Increase the number of experts onboarded by 40%
+• Increase unique profile shares from doctors by 20%
+
+Solution
+I designed a tool that allows for three modes of content creation: text, audio, and video. Additionally, I conceptualized a way to view all three content forms in the same view. The tool includes:
+• A flow that allows experts to schedule a session
+• When it's time for the session, experts get a notification
+• Tapping notification opens the app, with curated questions that are assigned specifically to expert's background are shown in a stack
+• Experts can skip or hit answer to record a video or audio answer
+• Once session is complete, experts can leave the app or schedule a next session
+
+Results
+The feature is still in the process of being built, but early user research on the prototype has validated some key assumptions. Doctors expressed a preference for having a tool that is as easy to use as possible, offering the ability to create content in text, audio, and video formats, depending on the context and their location.
+

@@ -1,0 +1,17 @@
+Verizon Assistant
+
+Challenge
+Verizon aimed to improve customer service and reduce the volume of calls to their call centers by developing a smart assistant capable of handling key user flows through a chatbot.
+
+Context
+Verizon's customer service had a poor reputation, with many customers preferring to avoid store visits or phone calls. This significantly impacted the Net Promoter Score (NPS). We focused on transitioning key user flows, such as updating plans to overseas options, to the chatbot to enhance user experience and reduce call center costs.
+
+Solution
+We developed a chatbot, known as Verizon Assistant, and collaborated with journey teams to integrate essential user flows. My role included overseeing the handoff and componentization of the chatbot, translating it into the design system, and assisting with visual concepts and creative direction alongside the agency.
+
+Results
+The Verizon Assistant has been well-received and widely used by Verizon customers. This highly functional interface has significantly reduced the number of calls to call centers, improving customer satisfaction and operational efficiency.
+
+Year: 2017 - 2019
+Collaborators: Verizon Assistant Team, RG/A
+

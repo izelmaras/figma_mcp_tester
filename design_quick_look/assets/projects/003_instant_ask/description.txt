@@ -1,0 +1,43 @@
+Roon AI-Driven Health Search & Ask
+
+Challenge
+• Users found it challenging to locate answers using the current search function
+• Search underperformed significantly
+• Many users preferred quick answers rather than full video content
+• Distinction between AI-powered Instant Answers and Search was unclear
+• Process of asking doctors questions was confusing and slow
+
+Audience
+• Primary focus on users and caregivers, particularly those aged 60 and above
+• Users with limited tech knowledge
+• Patients and caregivers seeking reliable health information
+
+Context
+• On a weekly basis, only 11% of active users performed a search
+• Search exit rate declined by 20% each month
+• Active users dropped 44% in the past 4 weeks
+• Users confused about where to ask and where to search
+• Medically vetted content was hard to find through current navigation
+• No way to search for experts, topics, or subtopics
+
+Solution
+• Revamped search function by categorizing results into questions, topics, subtopics, and experts
+• Fine-tuned Chat GPT with question and answer library transcripts
+• Created interface allowing users to ask questions and get answers with sources
+• Added entry points from home and search pages
+• Merged topics tab and search tab into "Explore" with search icon
+• Made search accessible from tab bar
+• Redesigned tabbed search landing page
+
+Results
+• 24% increase in users clicking through a question instead of closing Search page
+• 9% increase in search page visits by active users
+• 85% decrease in users asking doctors questions
+• 80% of AI answers are voted up
+• Users ask 2-3 questions a day to AI-powered ask
+• Instant Answer feature received 80% upvotes from users
+
+Year
+• 2024
+Collaborators
+• Ben Powell

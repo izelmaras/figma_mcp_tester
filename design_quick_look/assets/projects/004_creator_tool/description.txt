@@ -1,0 +1,42 @@
+Roon Doctor Creator Tool
+
+Challenge
+• Scale doctor creation process on a two-sided platform
+• Develop user-friendly tool for doctors with limited tech knowledge and busy schedules
+• Roon's Q&A process was too time-consuming, limiting content scalability
+• Riverside's interface was cumbersome and inefficient
+
+Audience
+• Doctors and medical experts creating content for Roon
+• Experts who struggle to find time for answering questions
+• Medical professionals seeking to share knowledge efficiently
+
+Context
+• Roon is a two-sided platform where doctors create content and patients/caregivers consume it
+• Experts need efficient way to share knowledge without viewing others' responses
+• Need for well-informed patient questions and reliable referral resource
+• Experts want to reach broader audience without heavy social media use
+
+Solution
+• Designed tool with three modes of content creation: text, audio, and video
+• Conceptualized way to view all three content forms in the same view
+• Flow allows experts to schedule sessions
+• Notification system alerts experts when it's time for session
+• Curated questions assigned specifically to expert's background shown in a stack
+• Experts can skip or record video/audio answers
+• Ability to schedule next session after completion
+
+Results
+• Early user research validated key assumptions
+• Doctors expressed preference for easy-to-use tool
+• Tool offers flexibility with text, audio, and video formats
+• Feature still in development process
+
+Goals
+• Double the number of questions recorded
+• Conduct 80% of existing interviews on the app
+• Increase number of experts onboarded by 40%
+• Increase unique profile shares from doctors by 20%
+
+Year
+• 2024

@@ -1,0 +1,32 @@
+Roon Design System
+
+What
+As the Head of Design at Roon, I developed our comprehensive brand system. I created illustrations, animations, motion graphics, marketing assets, and our product design system.
+
+Design System
+• Created and maintained two distinct design systems over the past two years, inspired by Brad Frost's Atomic Design Framework.
+• Transformed brand guidelines into practical and user-friendly product color schemes and readable typography systems.
+• Developed a bespoke set of custom icons.
+• Implemented the latest Figma features, particularly Auto-Layout and Variants
+• Established an extensive repository of symbols, templates, and pages.
+• Introduced a light mode for enhanced user experience.
+• Crafted a scalable navigation system.
+• Crafted a scalable illustration system.
+• Ensured compatibility across mobile web, tablet web, desktop web, and iOS
+
+Solution
+I developed Roon's design system using Brad Frost's Atomic Design Framework, creating a user-friendly and responsive system that meets diverse audience needs, including accessibility requirements. The design system supports continuous expansion of health conditions, allowing us to launch new conditions every other month. Key highlights include:
+• Custom icons
+• Accessible color and type systems
+• Figma's auto-layout and variant compatibility
+• A comprehensive collection of symbols, templates, and pages
+• Light mode for better visibility and usability
+• Custom illustrations and animations
+
+This scalable system works across iOS, mobile, and desktop web, leveraging Figma's auto-layout capability. By implementing this design system, we efficiently created and iterated on various features, ensuring a consistent and coherent user experience.
+
+Results
+Thanks to the robust design system, I was able to design and implement numerous features as a single designer with only occasional freelance help. This efficiency enabled us to rapidly iterate and enhance the platform. The design system and new features have significantly improved the user experience, providing quick access to medically vetted information and catering to users' diverse needs and preferences.
+
+Year: 2022 - 2024
+

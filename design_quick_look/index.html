@@ -29,41 +29,58 @@
     <div class="page-container">
             <div class="grid-container">
                 <div class="grid">
-                    <div class="grid-item item-1">
-                        <img src="/design_quick_look/assets/01.png" alt="Image 1" class="grid-image">
+                    <div class="grid-item item-1" data-project="001_mypay_dial">
+                        <img src="/design_quick_look/assets/thubnails/001_mypay_dial.png" alt="Mypay Dial" class="grid-image">
                     </div>
-                    <div class="grid-item item-2">
-                        <img src="/design_quick_look/assets/02.png" alt="Image 2" class="grid-image">
+                    <div class="grid-item item-2" data-project="002_seismic_alarm">
+                        <img src="/design_quick_look/assets/thubnails/002_seismic_alarm.png" alt="Seismic Alarm" class="grid-image">
                     </div>
-                    <div class="grid-item item-3">
-                        <img src="/design_quick_look/assets/03.png" alt="Image 3" class="grid-image">
+                    <div class="grid-item item-3" data-project="003_instant_ask">
+                        <img src="/design_quick_look/assets/thubnails/003_instant_ask.png" alt="Instant Ask" class="grid-image">
                     </div>
-                    <div class="grid-item item-4">
-                        <img src="/design_quick_look/assets/04.png" alt="Image 4" class="grid-image">
+                    <div class="grid-item item-4" data-project="004_creator_tool">
+                        <img src="/design_quick_look/assets/thubnails/004_creator_tool.png" alt="Creator Tool" class="grid-image">
                     </div>
-                    <div class="grid-item item-5">
-                        <img src="/design_quick_look/assets/05.png" alt="Image 5" class="grid-image">
+                    <div class="grid-item item-5 span-2" data-project="005_roon_design_system">
+                        <img src="/design_quick_look/assets/thubnails/005_roon_design_system.png" alt="Roon Design System" class="grid-image">
                     </div>
-                    <div class="grid-item item-6">
-                        <img src="/design_quick_look/assets/06.png" alt="Image 6" class="grid-image">
+                    <div class="grid-item item-6" data-project="006_verizon_assistant">
+                        <img src="/design_quick_look/assets/thubnails/006_verizon_assistant.png" alt="Verizon Assistant" class="grid-image">
                     </div>
-                    <div class="grid-item item-7">
-                        <img src="/design_quick_look/assets/07.png" alt="Image 7" class="grid-image">
+                    <div class="grid-item item-7 span-2" data-project="007_moments">
+                        <img src="/design_quick_look/assets/thubnails/007_moments.png" alt="Moments" class="grid-image">
                     </div>
-                    <div class="grid-item item-8">
-                        <img src="/design_quick_look/assets/08.png" alt="Image 8" class="grid-image">
+                    <div class="grid-item item-8" data-project="008_multi_condition">
+                        <img src="/design_quick_look/assets/thubnails/008_multi_condition.png" alt="Multi Condition" class="grid-image">
                     </div>
-                    <div class="grid-item item-19">
-                        <img src="/design_quick_look/assets/19.png" alt="Image 19" class="grid-image">
+                    <div class="grid-item item-9" data-project="009_roon_illustrations">
+                        <img src="/design_quick_look/assets/thubnails/009_roon_illustrations.png" alt="Roon Illustrations" class="grid-image">
+                    </div>
+                    <div class="grid-item item-10 span-2" data-project="010_verizon_data_visualization">
+                        <img src="/design_quick_look/assets/thubnails/010_verizon_data_visualization.png" alt="Verizon Data Visualization" class="grid-image">
+                    </div>
+                    <div class="grid-item item-11" data-project="011_verizon_design_system">
+                        <img src="/design_quick_look/assets/thubnails/011_verizon_design_system.png" alt="Verizon Design System" class="grid-image">
+                    </div>
+                    <div class="grid-item item-12" data-project="012_watchface">
+                        <img src="/design_quick_look/assets/thubnails/011_interactive_work.png" alt="Watchface" class="grid-image">
+                    </div>
+                    <div class="grid-item item-13 span-2" data-project="013_desen">
+                        <img src="/design_quick_look/assets/thubnails/013_desen.png" alt="Desen" class="grid-image">
+                    </div>
+                    <div class="grid-item item-14" data-project="014_interactive_work">
+                        <img src="/design_quick_look/assets/thubnails/011_interactive_work.png" alt="Interactive Work" class="grid-image">
+                    </div>
+                    <div class="grid-item item-15" data-project="015_sketches">
+                        <img src="/design_quick_look/assets/thubnails/014_sketches.png" alt="Sketches" class="grid-image">
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Fixed Bottom Navigation -->
     <nav class="bottom-nav">
-        <a class="bottom-nav__about" href="/design_quick_look/assets/about.pdf" target="_blank" rel="noopener noreferrer">About</a>
+        <a class="bottom-nav__about" href="/design_quick_look/assets/resume_11142025.pdf" target="_blank" rel="noopener noreferrer">About</a>
         <a class="bottom-nav__link" href="https://www.izelmaras.com" target="_blank" rel="noopener noreferrer">izel.website</a>
     </nav>
 
@@ -71,18 +88,13 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <header class="modal-header">
+                <span class="modal-header__title">Project</span>
                 <div class="modal-header__center">
                     <div class="modal-floating-toggle"></div>
                 </div>
                 <button type="button" class="close" aria-label="Close modal">&times;</button>
             </header>
             <div class="modal-body">
-                <div class="modal-body__header">
-                    <div class="modal-header__meta">
-                        <span class="modal-header__title">Project</span>
-                        <p class="modal-header__description"></p>
-                    </div>
-                </div>
                 <div class="modal-body__content"></div>
             </div>
             <div class="modal-progress">
@@ -98,21 +110,31 @@
         const closeBtn = document.querySelector('.close');
         const modalContentArea = document.querySelector('.modal-body__content');
         const headerTitle = document.querySelector('.modal-header__title');
-        const headerDescription = document.querySelector('.modal-header__description');
         const floatingToggle = document.querySelector('.modal-floating-toggle');
         const progressTrack = document.querySelector('.modal-progress');
         const progressBar = document.querySelector('.modal-progress__bar');
-        const pageTriggers = document.querySelectorAll('[data-page]');
-        const validPages = Array.from(pageTriggers).map(item => item.dataset.page);
-        const basePagePath = '/design_grid/pages/';
-        
-        // Remove click handlers since we're just showing images
-        const gridItems = document.querySelectorAll('.grid-item');
-        gridItems.forEach(item => {
-            item.style.cursor = 'default';
-        });
+        const gridItems = document.querySelectorAll('.grid-item[data-project]');
+        const baseProjectPath = '/design_quick_look/assets/projects/';
 
-        let currentPage = null;
+                        const projectNames = {
+            '001_mypay_dial': 'Mypay Dial',
+            '002_seismic_alarm': 'Seismic Alarm',
+            '003_instant_ask': 'Instant Ask',
+            '004_creator_tool': 'Creator Tool',
+            '005_roon_design_system': 'Roon Design System',
+            '006_verizon_assistant': 'Verizon Assistant',
+            '007_moments': 'Moments',
+            '008_multi_condition': 'Multi Condition',
+            '009_roon_illustrations': 'Roon Illustrations',
+            '010_verizon_data_visualization': 'Verizon Data Visualization',
+            '011_verizon_design_system': 'Verizon Design System',
+            '012_watchface': 'Watchface',
+            '013_desen': 'Desen',
+            '014_interactive_work': 'Interactive Work',
+            '015_sketches': 'Sketches'
+        };
+
+        let currentProject = null;
         let isDragging = false;
         let isLoading = false;
         let startX, startY, startLeft, startTop;
@@ -128,29 +150,26 @@
             resetModalPosition();
         };
 
-        const setHistoryState = (pageId, { replace = false } = {}) => {
+        const setHistoryState = (projectId, { replace = false } = {}) => {
             const url = new URL(window.location.href);
-            if (pageId) {
-                url.searchParams.set('view', pageId);
+            if (projectId) {
+                url.searchParams.set('project', projectId);
             } else {
-                url.searchParams.delete('view');
+                url.searchParams.delete('project');
             }
 
             if (replace) {
-                history.replaceState(pageId ? { view: pageId } : {}, '', url);
+                history.replaceState(projectId ? { project: projectId } : {}, '', url);
             } else {
-                history.pushState(pageId ? { view: pageId } : {}, '', url);
+                history.pushState(projectId ? { project: projectId } : {}, '', url);
             }
         };
 
         const clearModalContent = () => {
             modalContentArea.innerHTML = '';
-            currentPage = null;
+            currentProject = null;
             if (headerTitle) {
                 headerTitle.textContent = 'Project';
-            }
-            if (headerDescription) {
-                headerDescription.textContent = '';
             }
             if (floatingToggle) {
                 floatingToggle.innerHTML = '';
@@ -168,9 +187,6 @@
             modalContentArea.innerHTML = '<div class="modal-loading">Loading...</div>';
             if (headerTitle) {
                 headerTitle.textContent = 'Loading';
-            }
-            if (headerDescription) {
-                headerDescription.textContent = '';
             }
             if (floatingToggle) {
                 floatingToggle.innerHTML = '';
@@ -194,9 +210,6 @@
             if (headerTitle) {
                 headerTitle.textContent = 'Load error';
             }
-            if (headerDescription) {
-                headerDescription.textContent = '';
-            }
             if (floatingToggle) {
                 floatingToggle.innerHTML = '';
                 floatingToggle.classList.remove('is-active');
@@ -218,81 +231,123 @@
             progressBar.style.transform = `scaleX(${ratio})`;
         }
 
-        const initializeModalPage = (root, pageId) => {
-            const page = root.querySelector(`[data-modal-page="${pageId}"]`);
-            if (!page) {
-                return;
-            }
-            const name = page.getAttribute('data-page-name') || pageId;
-            const description = page.getAttribute('data-page-description') || '';
-            if (headerTitle) {
-                headerTitle.textContent = name;
-            }
-            if (headerDescription) {
-                headerDescription.textContent = description;
-            }
+        let projectsManifest = null;
 
-            const toggleGroup = page.querySelector('.modal-toggle');
-            if (floatingToggle) {
-                floatingToggle.innerHTML = '';
-                floatingToggle.classList.remove('is-active');
-                if (toggleGroup) {
-                    floatingToggle.appendChild(toggleGroup);
-                    floatingToggle.classList.add('is-active');
+        const loadManifest = async () => {
+            if (projectsManifest) {
+                return projectsManifest;
+            }
+            try {
+                const response = await fetch(`${baseProjectPath}manifest.json`);
+                if (response.ok) {
+                    projectsManifest = await response.json();
+                    return projectsManifest;
                 }
+            } catch (e) {
+                console.error('Failed to load manifest:', e);
             }
-
-            if (toggleGroup) {
-                const options = toggleGroup.querySelectorAll('.modal-toggle__option');
-                const panes = page.querySelectorAll('.modal-page__pane');
-
-                const activatePane = (targetId) => {
-                    options.forEach((option) => {
-                        const isActive = option.dataset.paneTarget === targetId;
-                        option.classList.toggle('is-active', isActive);
-                        option.setAttribute('aria-selected', isActive ? 'true' : 'false');
-                        option.setAttribute('tabindex', isActive ? '0' : '-1');
-                    });
-
-                    panes.forEach((pane) => {
-                        const isMatch = pane.dataset.pane === targetId;
-                        pane.classList.toggle('is-active', isMatch);
-                        pane.setAttribute('aria-hidden', isMatch ? 'false' : 'true');
-                    });
-                    updateProgress();
-                };
-
-                options.forEach((option) => {
-                    option.addEventListener('click', () => {
-                        if (!option.classList.contains('is-active')) {
-                            activatePane(option.dataset.paneTarget);
-                        }
-                    });
-
-                    option.addEventListener('keydown', (event) => {
-                        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-                            event.preventDefault();
-                            const currentIndex = Array.from(options).indexOf(option);
-                            const direction = event.key === 'ArrowRight' ? 1 : -1;
-                            const nextIndex = (currentIndex + direction + options.length) % options.length;
-                            const nextOption = options[nextIndex];
-                            nextOption.focus();
-                            if (!nextOption.classList.contains('is-active')) {
-                                activatePane(nextOption.dataset.paneTarget);
-                            }
-                        }
-                    });
-                });
-
-                const activeOption = toggleGroup.querySelector('.modal-toggle__option.is-active') || options[0];
-                if (activeOption) {
-                    activatePane(activeOption.dataset.paneTarget);
-                }
-            }
+            return {};
         };
 
-        const openModal = async (pageId, { skipHistory = false, replaceState = false } = {}) => {
-            if (!validPages.includes(pageId) || isLoading) {
+        const loadProjectImages = async (projectId) => {
+            const manifest = await loadManifest();
+            const projectPath = `${baseProjectPath}${projectId}/`;
+            const imageFiles = manifest[projectId] || [];
+            
+            return imageFiles
+                .filter(filename => {
+                    const ext = filename.toLowerCase().split('.').pop();
+                    const isImage = ['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext);
+                    const isThumbnail = filename.toLowerCase().includes('thumbnail');
+                    return isImage && !isThumbnail;
+                })
+                .map(filename => `${projectPath}${filename}`)
+                .sort();
+        };
+
+        const loadProjectText = async (projectId) => {
+            const projectPath = `${baseProjectPath}${projectId}/`;
+            const textExtensions = ['txt', 'md', 'text'];
+            const textFiles = ['description.txt', 'info.txt', 'readme.txt', 'description.md', 'info.md', 'readme.md'];
+            
+            for (const filename of textFiles) {
+                try {
+                    const response = await fetch(`${projectPath}${filename}`);
+                    if (response.ok) {
+                        const text = await response.text();
+                        return text.trim();
+                    }
+                } catch (e) {
+                    // File doesn't exist, continue
+                }
+            }
+            
+            return null;
+        };
+
+        const formatProjectDescription = (text, projectName) => {
+            const lines = text.split('\n').filter(line => line.trim());
+            let sectionsHTML = '';
+            let currentSection = null;
+            let currentContent = [];
+            let skipFirstLine = true;
+
+            const sectionMap = {
+                'Challenge': 'challenge',
+                'Audience': 'audience',
+                'Context': 'context',
+                'Solution': 'solution',
+                'Results': 'results',
+                'Year': 'year',
+                'Collaborators': 'collaborators',
+                'Goals': 'goals'
+            };
+
+            const closeSection = () => {
+                if (currentSection && currentContent.length > 0) {
+                    const content = currentContent.join('').trim();
+                    if (content) {
+                        sectionsHTML += `<div class="description-section description-${currentSection}">`;
+                        sectionsHTML += `<h3 class="description-section-title">${Object.keys(sectionMap).find(k => sectionMap[k] === currentSection)}</h3>`;
+                        sectionsHTML += `<div class="description-section-content">${content}</div>`;
+                        sectionsHTML += `</div>`;
+                    }
+                    currentContent = [];
+                }
+            };
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+
+                // Skip the first line (title) - we'll use projectName instead
+                if (skipFirstLine) {
+                    skipFirstLine = false;
+                    continue;
+                }
+
+                // Check if this is a section header
+                const isSectionHeader = Object.keys(sectionMap).some(key => trimmed === key);
+                
+                if (isSectionHeader) {
+                    closeSection();
+                    currentSection = sectionMap[trimmed];
+                } else if (currentSection) {
+                    // Check if it's a bullet point
+                    if (trimmed.startsWith('•')) {
+                        currentContent.push(`<p class="description-bullet">${trimmed.substring(1).trim()}</p>`);
+                    } else {
+                        currentContent.push(`<p class="description-paragraph">${trimmed}</p>`);
+                    }
+                }
+            }
+
+            closeSection();
+            return `<div class="modal-project-description-wrapper"><div class="modal-project-description">${sectionsHTML}</div></div>`;
+        };
+
+        const openModal = async (projectId, { skipHistory = false, replaceState = false } = {}) => {
+            if (isLoading) {
                 return;
             }
 
@@ -301,14 +356,41 @@
             showLoading();
 
             try {
-                const response = await fetch(`${basePagePath}${pageId}.html`, { cache: 'no-cache' });
-                if (!response.ok) {
-                    throw new Error('Failed to fetch page');
+                const images = await loadProjectImages(projectId);
+                
+                if (images.length === 0) {
+                    modalContentArea.innerHTML = `
+                        <div class="modal-error">
+                            <h3>No images available</h3>
+                            <p>This project doesn't have any images yet.</p>
+                        </div>
+                    `;
+                    if (headerTitle) {
+                        headerTitle.textContent = projectNames[projectId] || projectId;
+                    }
+                    isLoading = false;
+                    return;
                 }
-                const html = await response.text();
-                modalContentArea.innerHTML = html;
-                initializeModalPage(modalContentArea, pageId);
+
+                const projectName = projectNames[projectId] || projectId;
+                if (headerTitle) {
+                    headerTitle.textContent = projectName;
+                }
+
+                const projectText = await loadProjectText(projectId);
+                const imagesHTML = images.map(img => 
+                    `<img src="${img}" alt="${projectName}" class="modal-project-image" loading="lazy">`
+                ).join('');
+
+                let contentHTML = '';
+                if (projectText) {
+                    contentHTML += formatProjectDescription(projectText, projectName);
+                }
+                contentHTML += `<div class="modal-project-gallery">${imagesHTML}</div>`;
+
+                modalContentArea.innerHTML = contentHTML;
                 modalBody.scrollTop = 0;
+                
                 if (progressTrack) {
                     progressTrack.classList.add('is-active');
                 }
@@ -316,13 +398,13 @@
                     progressBar.style.transform = 'scaleX(0)';
                 }
                 updateProgress();
-                currentPage = pageId;
+                currentProject = projectId;
 
                 if (!skipHistory) {
-                    setHistoryState(pageId, { replace: replaceState });
+                    setHistoryState(projectId, { replace: replaceState });
                 }
                 if (replaceState && skipHistory) {
-                    setHistoryState(pageId, { replace: true });
+                    setHistoryState(projectId, { replace: true });
                 }
             } catch (error) {
                 console.error(error);
@@ -348,14 +430,14 @@
             }
         };
 
-        // Only add click handlers to items with data-page attribute (not the About link)
-        pageTriggers.forEach(item => {
-            if (item.dataset.page && item.dataset.page !== 'about') {
-                item.addEventListener('click', () => {
-                    const pageId = item.dataset.page;
-                    openModal(pageId);
-                });
-            }
+        gridItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', () => {
+                const projectId = item.dataset.project;
+                if (projectId) {
+                    openModal(projectId);
+                }
+            });
         });
 
         modalBody.addEventListener('scroll', updateProgress);
@@ -375,9 +457,9 @@
         });
 
         window.addEventListener('popstate', (event) => {
-            const view = event.state && event.state.view ? event.state.view : new URL(window.location.href).searchParams.get('view');
-            if (view && validPages.includes(view)) {
-                openModal(view, { skipHistory: true, replaceState: true });
+            const project = event.state && event.state.project ? event.state.project : new URL(window.location.href).searchParams.get('project');
+            if (project && projectNames[project]) {
+                openModal(project, { skipHistory: true, replaceState: true });
             } else {
                 closeModal({ skipHistory: true, replaceState: true });
             }
@@ -437,12 +519,11 @@
             }
         });
 
-        // Initial load: open modal if URL includes view param
-        const initialView = new URL(window.location.href).searchParams.get('view');
-        if (initialView && validPages.includes(initialView)) {
-            openModal(initialView, { skipHistory: true, replaceState: true });
+        // Initial load: open modal if URL includes project param
+        const initialProject = new URL(window.location.href).searchParams.get('project');
+        if (initialProject && projectNames[initialProject]) {
+            openModal(initialProject, { skipHistory: true, replaceState: true });
         } else {
-            // ensure base state registered if no view
             history.replaceState({}, '', window.location.href);
         }
     </script>

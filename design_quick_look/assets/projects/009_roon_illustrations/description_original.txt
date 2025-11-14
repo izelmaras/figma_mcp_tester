@@ -1,0 +1,24 @@
+Roon Illustration & Animation System
+
+Challenge
+Roon aimed to create an illustration and animation system that embodied its empathic design philosophy. The visuals needed to communicate friendliness, understanding, and gentleness while handling sensitive content appropriately. This system was essential in providing a comforting experience for users navigating challenging health conditions.
+
+Audience
+Roon's primary users are patients and caregivers, particularly those dealing with complex and sensitive health conditions. The visual elements needed to be accessible and non-triggering to cater to this audience.
+
+Context
+Guided by principles such as "playful," "empathetic," "soft," and "non-triggering," the illustration and animation system was designed to reflect Roon's empathic design philosophy. These visuals were intended to create a serene and reassuring environment for users, helping them feel supported and understood.
+
+Solution
+I developed an illustration and animation system that included:
+• Medically non-triggering animations
+• Soothing and straightforward visuals
+• Playful and empathetic illustrations
+
+These elements were carefully crafted to ensure a visually engaging and emotionally resonant experience for users, providing comfort and support throughout their healthcare journeys.
+
+Results
+The illustration and animation system has successfully contributed empathy and support to Roon's platform, enhancing the overall user experience. Users have provided endless positive feedback on the illustrations, expressing gratitude for the welcoming environment Roon has created. The visually engaging and emotionally resonant designs have helped create a serene and reassuring atmosphere. Additionally, leveraging these illustrations significantly aided in our efforts to raise a seed round.
+
+Year: 2022
+

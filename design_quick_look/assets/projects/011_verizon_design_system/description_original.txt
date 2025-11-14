@@ -1,0 +1,23 @@
+Verizon Design System
+
+Challenge
+When I joined Verizon, designers were distributed across engineering teams throughout the organization with no central design organization or unified design system. My team's task was to build the Verizon design system from the ground up.
+
+Audience
+Verizon's journey teams, who work on feature projects. The end users are Verizon's diverse customer base, given that Verizon is one of the top utility communications companies in the US. Ensuring AAA accessibility was crucial to serve all users effectively.
+
+Context
+Conducting an audit on the scale of Verizon required months of work and collaboration with two design agencies. These agencies developed conceptual designs that were not easily translatable to code and lacked componentization. To overcome this, I collaborated with Nathan Curtis from 8th Shapes to implement Brad Frost's Atomic Design Framework.
+
+Solution
+We created a design system that translated Pentagram's Swiss design-inspired branding into a cohesive interface. All components were designed to be buildable and code-based, with Storybook implementations to ensure consistency and ease of use. The design system included:
+• Comprehensive guidelines and templates
+• Code-based components for seamless integration
+• A scalable system that could be extended as needed
+
+Results
+Over the course of several months, I worked closely with engineering teams to implement these templates and components. I also collaborated with journey teams to provide examples and guidance on how to effectively use the design system. This effort resulted in a unified design approach that improved consistency, efficiency, and accessibility across Verizon's digital products.
+
+Year: 2017 - 2019
+Collaborators: Brandy Bora, Nathan Curtis (EightShapes), Chunhung Wang, Ori Statlender
+

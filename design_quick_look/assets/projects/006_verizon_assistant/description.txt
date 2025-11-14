@@ -1,0 +1,35 @@
+Verizon Assistant
+
+Challenge
+• Improve customer service and reduce volume of calls to call centers
+• Develop smart assistant capable of handling key user flows through chatbot
+• Address poor customer service reputation impacting Net Promoter Score (NPS)
+
+Audience
+• Verizon customers seeking customer service
+• Customers who prefer to avoid store visits or phone calls
+• Journey teams working on feature projects
+
+Context
+• Verizon's customer service had poor reputation
+• Many customers preferred to avoid store visits or phone calls
+• Significantly impacted Net Promoter Score (NPS)
+• Focus on transitioning key user flows (e.g., updating plans to overseas options) to chatbot
+
+Solution
+• Developed chatbot known as Verizon Assistant
+• Collaborated with journey teams to integrate essential user flows
+• Oversaw handoff and componentization of chatbot
+• Translated chatbot into design system
+• Assisted with visual concepts and creative direction alongside agency
+
+Results
+• Well-received and widely used by Verizon customers
+• Significantly reduced number of calls to call centers
+• Improved customer satisfaction and operational efficiency
+• Highly functional interface
+
+Year
+• 2017 - 2019
+Collaborators
+• Verizon Assistant Team, RG/A

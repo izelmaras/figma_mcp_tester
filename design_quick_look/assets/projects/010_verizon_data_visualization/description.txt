@@ -1,0 +1,38 @@
+Verizon Data Visualization Language
+
+Challenge
+• Data visualization system not updated when Verizon underwent makeover from Pentagram to Swiss design aesthetic
+• Create modern data visualization language aligned with new branding
+• Translate brand colors into data visualization colors while ensuring accessibility
+
+Audience
+• Verizon's journey teams working on feature projects requiring data visualizations
+• End users: Verizon's diverse customer base
+• One of top utility communications companies in US
+• Ensuring AAA accessibility crucial to serve all users effectively
+
+Context
+• Verizon's primary color palette: black, white, and grays
+• Secondary palette: bright primary, secondary, and tertiary colors
+• Task to create fundamental color set for data visualization
+• Need for secondary color set
+• Essential to ensure enough steps for each color to meet data visualization requirements
+• All color steps and pairings must be accessible
+• Used Edward Tufte's color teachings to expand system
+
+Solution
+• Extended data visualization color language
+• Rigorously color-tested to ensure accessibility and alignment with Verizon's new branding
+• Final delivery included:
+  - Primary color set
+  - Secondary color set
+  - Use case examples utilizing Verizon's current design language
+  - Expanded direction for data visualizations
+
+Results
+• Enabled journey teams to design data visualizations more in line with Verizon's recent branding
+• Aligned with Swiss aesthetic
+• Improved consistency and modernity of data visualizations across company
+
+Year
+• 2022

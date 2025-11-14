@@ -1,0 +1,31 @@
+Seismic Alarm
+
+Challenge
+• Help users monitor shakes in their environment while they sleep
+• Address the gap in earthquake preparedness, especially during sleep when reaction time is slowest
+
+Audience
+• Residents in earthquake-prone areas, particularly Istanbul
+• Heavy sleepers who need instant alerts
+• Travelers staying in unfamiliar places
+• People living in older, potentially unsafe buildings
+
+Context
+• 70% of buildings in Istanbul are not earthquake-resistant
+• Many residents live in structures that fail to meet modern seismic standards
+• Studies show that while people are aware of earthquake risks, preparedness remains low
+• Need for instant motion alerts to help users stay aware of tremors
+
+Solution
+• Designed and built an iOS app to monitor environmental shakes
+• Real-time motion visualization to help users understand movement
+• Instant alerts that wake users if something happens
+• Works whether users are asleep, traveling, or living in high-risk zones
+
+Results
+• Provides peace of mind for users in earthquake-prone areas
+• Helps users understand exactly how much movement is happening around them
+• Addresses critical safety gap in earthquake preparedness
+
+Year
+• 2024

@@ -1,0 +1,35 @@
+Roon Multi-Condition
+
+Challenge
+• Many questions overlap across conditions, but Roon serves each condition individually
+• Users want to access information for multiple conditions
+• No easy way to access multiple conditions without logging in with different accounts
+• Tedious log-out and log-in process
+
+Audience
+• Users who want to use Roon for more than one condition
+• Patients and caregivers managing multiple health conditions
+
+Context
+• Roon currently serves four conditions: Glioblastoma, ALS, Dementia, Fertility
+• Each user signed up for specific condition
+• Some questions are shared across conditions (e.g., "How to be a good caregiver?" applies to both Cancer and Dementia)
+• "What is Chemo?" relevant to various cancer types
+• Overlap presents opportunity to merge knowledge base
+
+Solution
+• Explored solution consolidating all conditions into one platform
+• Advanced and emotional filtering system allowing users to select:
+  - Their condition
+  - Journey stage
+  - Content preference
+  - Emotional needs related to information they seek
+• For scope of project, decided to keep conditions separate in near term while making it easier to access multiple conditions
+
+Results
+• Eliminated tedious log-out and log-in process
+• Made it easier for users to access multiple conditions
+• Foundation for future knowledge base merging
+
+Year
+• 2022 - Ongoing

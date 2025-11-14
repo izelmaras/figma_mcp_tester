@@ -1,0 +1,19 @@
+Seismic Alarm
+
+What
+Designed and built an iOS app to help users monitor shakes in their environment while they sleep.
+
+Sample User Needs
+• "I couldn't sleep at night because I was paranoid. Now I can finally relax knowing my phone will wake me if something happens."
+• "Morning earthquakes are one thing, but what happens when I'm asleep? I'm a heavy sleeper—I need something to alert me instantly."
+• "I travel a lot, and staying in unfamiliar places makes me anxious. This gives me peace of mind knowing I'll be alerted to any sudden movement."
+• "I wish I had this when I lived in an old apartment where I always felt tremors but never knew if they were real."
+• "I love the real-time motion visualization—it helps me understand exactly how much movement is happening around me."
+
+Why it matters?
+• 70% of buildings in Istanbul are not earthquake-resistant. Many residents live in structures that fail to meet modern seismic standards, increasing their risk in a major quake.
+
+• Studies show that while people are aware of earthquake risks, preparedness remains low—especially during sleep, when reaction time is slowest.
+
+• Seismic Alarm bridges this gap, offering instant motion alerts that help users stay aware of tremors, whether they're asleep, traveling, or simply living in high-risk zones.
+

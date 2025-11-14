@@ -1,0 +1,27 @@
+MyPay Hub Redesign
+
+Challenge
+• Rethink MyPay hub: a screen that helps members understand and access their earnings with more clarity
+• Explore how pay could feel more temporal and intuitive through motion and form
+
+Audience
+• Chime members seeking clarity on their earnings and financial progress
+
+Context
+• Project's mission was to rethink the MyPay hub experience
+• Needed to make financial progress feel visible and understandable
+
+Solution
+• Created the MyPay Dial: a circular visualization that lets members see time as money
+• Shows how earnings build day by day
+• Built and thoroughly tested early interaction models in v0 prototypes
+• Explored how time, value, and control could coexist in a single gesture
+• Final design is now part of a pending patent application
+
+Results
+• Work reached GA (General Availability)
+• Designed to make financial progress feel visible
+• Successfully transformed how members understand and interact with their earnings
+
+Year
+• 2024

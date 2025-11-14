@@ -1,0 +1,40 @@
+Roon Design System
+
+Challenge
+• Build comprehensive brand system from the ground up
+• Create design system that supports continuous expansion of health conditions
+• Need for scalable system across multiple platforms
+• Ensure accessibility requirements are met
+
+Audience
+• Roon's diverse user base including patients and caregivers
+• Design and engineering teams building features
+• Users with varying tech knowledge, particularly those aged 60 and above
+
+Context
+• As Head of Design at Roon, needed to develop comprehensive brand system
+• System needed to support launching new conditions every other month
+• Required compatibility across mobile web, tablet web, desktop web, and iOS
+• Needed to transform brand guidelines into practical product systems
+
+Solution
+• Developed design system using Brad Frost's Atomic Design Framework
+• Created and maintained two distinct design systems over two years
+• Transformed brand guidelines into practical color schemes and typography systems
+• Developed bespoke set of custom icons
+• Implemented latest Figma features: Auto-Layout and Variants
+• Established extensive repository of symbols, templates, and pages
+• Introduced light mode for enhanced user experience
+• Crafted scalable navigation and illustration systems
+• Ensured accessibility requirements met
+
+Results
+• Enabled design and implementation of numerous features as single designer
+• Rapid iteration and enhancement of platform
+• Significantly improved user experience
+• Provided quick access to medically vetted information
+• Catered to users' diverse needs and preferences
+• System works efficiently across all platforms
+
+Year
+• 2022 - 2024

@@ -1,0 +1,19 @@
+Roon Moments
+
+Challenge
+Roon is a comprehensive library of questions with answers, but the challenge was to organize these questions and present them to users in the most accessible way when they need it.
+
+Audience
+Our primary focus was on users and caregivers, particularly being mindful of those aged 60 and above, who often have limited tech knowledge.
+
+Context
+Through numerous user interviews, we discovered that users were overwhelmed by the sheer volume of questions in the system. Although they valued the topical organization, they desired guidance on what comes next and how to prepare with the right information. The main challenge to design for was that not all condition journeys are linear; for instance, pregnancy follows a linear path, but cancer treatment can be non-linear, involving multiple rounds of chemotherapy or various operations.
+
+Solution
+I explored both linear and non-linear layouts to map out the journey of a condition, similar to the journey of life. We named each step in this journey "moments." I also developed a delivery method for these moments, providing users with answers to their questions, checklists for what to do, and information on how to prepare for the next steps. The design incorporated an illustrative style with wiggly lines to enhance the interface.
+
+Results
+The concept of the moment feature has successfully passed user tests. The Roon medical content and design team is now working diligently to create content structures that support this feature design.
+
+Year: 2024 - Ongoing
+

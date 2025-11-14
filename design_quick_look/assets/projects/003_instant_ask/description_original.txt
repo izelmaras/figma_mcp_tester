@@ -1,0 +1,40 @@
+Roon AI-Driven Health Search & Ask
+
+What
+Help users found medically vetted answers to their questions
+
+Problems to Solve
+Product Issues
+• On a weekly basis, 11% of active users perform a search.
+• The search exit rate shows how users use search to find videos. Search exit rate has been on decline by 20% each month, indicating users can't find videos with search.
+• Number of active users dropped 44% in the past 4 weeks, indicating, people can't find the content they need, and exit the app.
+• When we asked users what they needed the most, they explained they need in 30 character or less.
+• Users are confused around where to ask and where to search. "I thought that was ask" "I'd go to here to search [showing ask bar]"
+
+Usability Issues
+• Medically vetted content on Roon is hard to find through the current navigation.
+• Users can't locate the search bar.
+• Users confuse the ask and search functions.
+• Users can't find the Search Landing Page (SLP).
+• Many users are unaware of the different types of content available.
+• There's no way to search for experts, topics, or subtopics.
+• Many users can't find the 'Ask an Expert' feature.
+
+Goals
+• Reduce search drop off rates by 20%
+• Increase search engagement by 20%
+• Reduce 'Doctor Ask'
+• Integrate AI to aid users find content
+
+Solution
+We revamped the search function by categorizing results into questions, topics, subtopics, and experts. The new design allowed users to ask Roon for instant answers directly while retaining the "ask a doctor" feature. To enhance accessibility, we placed prominent entry points for the Instant AI Ask experience at the top of the page.
+
+Results
+The Instant Answer feature has been a success, receiving 80% upvotes from users. This indicates that our content library and AI effectively answer most questions, reducing the need for users to turn to external sources such as Google, Facebook groups, or Reddit.
+
+• We observed a 24% increase in users clicking through a question instead of closing the Search page
+• We observed a 9% increase in search page visits by active users
+• We observed an 85% decrease in users asking doctors questions, as AI now answers most questions accurately
+• 80% of AI answers are voted up
+• Users ask 2-3 questions a day to AI-powered ask
+

@@ -1,0 +1,34 @@
+Roon Moments
+
+Challenge
+• Organize comprehensive library of questions and present them in most accessible way
+• Users overwhelmed by sheer volume of questions in system
+• Not all condition journeys are linear (e.g., pregnancy is linear, cancer treatment is non-linear)
+
+Audience
+• Primary focus on users and caregivers, particularly those aged 60 and above
+• Users with limited tech knowledge
+• Patients and caregivers navigating health condition journeys
+
+Context
+• Through user interviews, discovered users were overwhelmed by question volume
+• Users valued topical organization but desired guidance on what comes next
+• Need to prepare with right information
+• Some journeys are linear (pregnancy), others non-linear (cancer with multiple rounds of treatment)
+
+Solution
+• Explored both linear and non-linear layouts to map journey of condition
+• Named each step in journey "moments"
+• Developed delivery method providing:
+  - Answers to questions
+  - Checklists for what to do
+  - Information on how to prepare for next steps
+• Incorporated illustrative style with wiggly lines to enhance interface
+
+Results
+• Concept of moment feature successfully passed user tests
+• Roon medical content and design team working to create content structures supporting feature design
+• Provides guidance and structure for users navigating health journeys
+
+Year
+• 2024 - Ongoing
