@@ -22,58 +22,30 @@
     <!-- Fixed Top Navigation -->
     <nav class="top-nav">
         <p class="top-left">Izel Maras</p>
-        <p class="top-right">Designer</p>
+        <div class="top-right">
+            <span class="discipline-title" id="discipline-title">Product Designer</span>
+            <button class="discipline-toggle" id="discipline-toggle" aria-label="Change discipline">
+                <img src="/design_quick_look/assets/icons/Material icons/ic_arrow_drop_down_48px.svg" alt="" class="discipline-caret">
+            </button>
+        </div>
     </nav>
+
+    <!-- Discipline Selector Dialog -->
+    <div id="discipline-dialog" class="discipline-dialog">
+        <div class="discipline-dialog-content">
+            <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
+            <button class="discipline-option" data-discipline="Illustrator">Illustrator</button>
+            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
+            <button class="discipline-option" data-discipline="Painter">Painter</button>
+            <button class="discipline-option" data-discipline="Immersion Designer">Immersion Designer</button>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="page-container">
             <div class="grid-container">
-                <div class="grid">
-                    <div class="grid-item item-1" data-project="001_mypay_dial">
-                        <img src="/design_quick_look/assets/thubnails/001_mypay_dial.png" alt="Mypay Dial" class="grid-image">
-                    </div>
-                    <div class="grid-item item-2" data-project="002_seismic_alarm">
-                        <img src="/design_quick_look/assets/thubnails/002_seismic_alarm.png" alt="Seismic Alarm" class="grid-image">
-                    </div>
-                    <div class="grid-item item-3" data-project="003_instant_ask">
-                        <img src="/design_quick_look/assets/thubnails/003_instant_ask.png" alt="Instant Ask" class="grid-image">
-                    </div>
-                    <div class="grid-item item-4" data-project="004_creator_tool">
-                        <img src="/design_quick_look/assets/thubnails/004_creator_tool.png" alt="Creator Tool" class="grid-image">
-                    </div>
-                    <div class="grid-item item-5 span-2" data-project="005_roon_design_system">
-                        <img src="/design_quick_look/assets/thubnails/005_roon_design_system.png" alt="Roon Design System" class="grid-image">
-                    </div>
-                    <div class="grid-item item-6" data-project="006_verizon_assistant">
-                        <img src="/design_quick_look/assets/thubnails/006_verizon_assistant.png" alt="Verizon Assistant" class="grid-image">
-                    </div>
-                    <div class="grid-item item-7 span-2" data-project="007_moments">
-                        <img src="/design_quick_look/assets/thubnails/007_moments.png" alt="Moments" class="grid-image">
-                    </div>
-                    <div class="grid-item item-8" data-project="008_multi_condition">
-                        <img src="/design_quick_look/assets/thubnails/008_multi_condition.png" alt="Multi Condition" class="grid-image">
-                    </div>
-                    <div class="grid-item item-9" data-project="009_roon_illustrations">
-                        <img src="/design_quick_look/assets/thubnails/009_roon_illustrations.png" alt="Roon Illustrations" class="grid-image">
-                    </div>
-                    <div class="grid-item item-10 span-2" data-project="010_verizon_data_visualization">
-                        <img src="/design_quick_look/assets/thubnails/010_verizon_data_visualization.png" alt="Verizon Data Visualization" class="grid-image">
-                    </div>
-                    <div class="grid-item item-11" data-project="011_verizon_design_system">
-                        <img src="/design_quick_look/assets/thubnails/011_verizon_design_system.png" alt="Verizon Design System" class="grid-image">
-                    </div>
-                    <div class="grid-item item-12" data-project="012_watchface">
-                        <img src="/design_quick_look/assets/thubnails/011_interactive_work.png" alt="Watchface" class="grid-image">
-                    </div>
-                    <div class="grid-item item-13 span-2" data-project="013_desen">
-                        <img src="/design_quick_look/assets/thubnails/013_desen.png" alt="Desen" class="grid-image">
-                    </div>
-                    <div class="grid-item item-14" data-project="014_interactive_work">
-                        <img src="/design_quick_look/assets/thubnails/011_interactive_work.png" alt="Interactive Work" class="grid-image">
-                    </div>
-                    <div class="grid-item item-15" data-project="015_sketches">
-                        <img src="/design_quick_look/assets/thubnails/014_sketches.png" alt="Sketches" class="grid-image">
-                    </div>
+                <div class="grid" id="projects-grid">
+                    <!-- Projects will be loaded dynamically -->
                 </div>
             </div>
     </div>
@@ -115,26 +87,34 @@
         const floatingToggle = document.querySelector('.modal-floating-toggle');
         const progressTrack = document.querySelector('.modal-progress');
         const progressBar = document.querySelector('.modal-progress__bar');
-        const gridItems = document.querySelectorAll('.grid-item[data-project]');
-        const baseProjectPath = '/design_quick_look/assets/projects/';
+        const projectsGrid = document.getElementById('projects-grid');
+        const disciplineTitle = document.getElementById('discipline-title');
+        const disciplineToggle = document.getElementById('discipline-toggle');
+        const disciplineDialog = document.getElementById('discipline-dialog');
+        const disciplineOptions = document.querySelectorAll('.discipline-option');
+        const baseProjectsPath = '/design_quick_look/assets/projects/';
+        const thumbnailsPath = '/design_quick_look/assets/thubnails/';
 
-                        const projectNames = {
-            '001_mypay_dial': 'Mypay Dial',
-            '002_seismic_alarm': 'Seismic Alarm',
-            '003_instant_ask': 'Instant Ask',
-            '004_creator_tool': 'Creator Tool',
-            '005_roon_design_system': 'Roon Design System',
-            '006_verizon_assistant': 'Verizon Assistant',
-            '007_moments': 'Moments',
-            '008_multi_condition': 'Multi Condition',
-            '009_roon_illustrations': 'Roon Illustrations',
-            '010_verizon_data_visualization': 'Verizon Data Visualization',
-            '011_verizon_design_system': 'Verizon Design System',
-            '012_watchface': 'Watchface',
-            '013_desen': 'Desen',
-            '014_interactive_work': 'Interactive Work',
-            '015_sketches': 'Sketches'
+        // Get discipline from URL or default to "Product Designer"
+        const getCurrentDiscipline = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('discipline') || 'Product Designer';
         };
+
+        // Set discipline in URL
+        const setDisciplineInURL = (discipline) => {
+            const url = new URL(window.location.href);
+            if (discipline === 'Product Designer') {
+                url.searchParams.delete('discipline');
+            } else {
+                url.searchParams.set('discipline', discipline);
+            }
+            window.history.replaceState({ discipline }, '', url);
+        };
+
+        let currentDiscipline = getCurrentDiscipline();
+        let currentDisciplineManifest = null;
+        let projectNames = {};
 
         let currentProject = null;
         let isDragging = false;
@@ -159,11 +139,16 @@
             } else {
                 url.searchParams.delete('project');
             }
+            
+            // Ensure discipline is in URL
+            if (currentDiscipline !== 'Product Designer') {
+                url.searchParams.set('discipline', currentDiscipline);
+            }
 
             if (replace) {
-                history.replaceState(projectId ? { project: projectId } : {}, '', url);
+                history.replaceState(projectId ? { project: projectId, discipline: currentDiscipline } : { discipline: currentDiscipline }, '', url);
             } else {
-                history.pushState(projectId ? { project: projectId } : {}, '', url);
+                history.pushState(projectId ? { project: projectId, discipline: currentDiscipline } : { discipline: currentDiscipline }, '', url);
             }
         };
 
@@ -233,17 +218,21 @@
             progressBar.style.transform = `scaleX(${ratio})`;
         }
 
-        let projectsManifest = null;
+        const getBaseProjectPath = (discipline) => {
+            return `${baseProjectsPath}${encodeURIComponent(discipline)}/`;
+        };
 
-        const loadManifest = async () => {
-            if (projectsManifest) {
-                return projectsManifest;
+        const loadManifest = async (discipline) => {
+            if (currentDisciplineManifest && currentDiscipline === discipline) {
+                return currentDisciplineManifest;
             }
             try {
-                const response = await fetch(`${baseProjectPath}manifest.json`);
+                const disciplinePath = getBaseProjectPath(discipline);
+                const response = await fetch(`${disciplinePath}manifest.json`);
                 if (response.ok) {
-                    projectsManifest = await response.json();
-                    return projectsManifest;
+                    currentDisciplineManifest = await response.json();
+                    currentDiscipline = discipline;
+                    return currentDisciplineManifest;
                 }
             } catch (e) {
                 console.error('Failed to load manifest:', e);
@@ -251,9 +240,9 @@
             return {};
         };
 
-        const loadProjectImages = async (projectId) => {
-            const manifest = await loadManifest();
-            const projectPath = `${baseProjectPath}${projectId}/`;
+        const loadProjectImages = async (projectId, discipline) => {
+            const manifest = await loadManifest(discipline);
+            const projectPath = `${getBaseProjectPath(discipline)}${projectId}/`;
             const imageFiles = manifest[projectId] || [];
             
             return imageFiles
@@ -267,8 +256,8 @@
                 .sort();
         };
 
-        const loadProjectText = async (projectId) => {
-            const projectPath = `${baseProjectPath}${projectId}/`;
+        const loadProjectText = async (projectId, discipline) => {
+            const projectPath = `${getBaseProjectPath(discipline)}${projectId}/`;
             const textExtensions = ['txt', 'md', 'text'];
             const textFiles = ['description.txt', 'info.txt', 'readme.txt', 'description.md', 'info.md', 'readme.md'];
             
@@ -285,6 +274,21 @@
             }
             
             return null;
+        };
+
+        const getProjectName = (projectId, descriptionText) => {
+            if (projectNames[projectId]) {
+                return projectNames[projectId];
+            }
+            // Try to extract from description
+            if (descriptionText) {
+                const firstLine = descriptionText.split('\n')[0].trim();
+                if (firstLine && firstLine.length < 100) {
+                    return firstLine;
+                }
+            }
+            // Fallback to formatted folder name
+            return projectId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
         };
 
         const formatProjectDescription = (text, projectName) => {
@@ -353,7 +357,7 @@
             };
         };
 
-        const openModal = async (projectId, { skipHistory = false, replaceState = false } = {}) => {
+        const openModal = async (projectId, discipline, { skipHistory = false, replaceState = false } = {}) => {
             if (isLoading) {
                 return;
             }
@@ -363,7 +367,7 @@
             showLoading();
 
             try {
-                const images = await loadProjectImages(projectId);
+                const images = await loadProjectImages(projectId, discipline);
                 
                 if (images.length === 0) {
                     modalContentArea.innerHTML = `
@@ -372,19 +376,20 @@
                             <p>This project doesn't have any images yet.</p>
                         </div>
                     `;
+                    const projectText = await loadProjectText(projectId, discipline);
+                    const projectName = getProjectName(projectId, projectText);
                     if (headerTitle) {
-                        headerTitle.textContent = projectNames[projectId] || projectId;
+                        headerTitle.textContent = projectName;
                     }
                     isLoading = false;
                     return;
                 }
 
-                const projectName = projectNames[projectId] || projectId;
+                const projectText = await loadProjectText(projectId, discipline);
+                const projectName = getProjectName(projectId, projectText);
                 if (headerTitle) {
                     headerTitle.textContent = projectName;
                 }
-
-                const projectText = await loadProjectText(projectId);
                 const imagesHTML = images.map(img => 
                     `<img src="${img}" alt="${projectName}" class="modal-project-image" loading="lazy">`
                 ).join('');
@@ -453,12 +458,120 @@
             }
         };
 
-        gridItems.forEach(item => {
-            item.style.cursor = 'pointer';
-            item.addEventListener('click', () => {
-                const projectId = item.dataset.project;
-                if (projectId) {
-                    openModal(projectId);
+        const findThumbnail = (projectId) => {
+            // Try multiple thumbnail path patterns
+            const patterns = [
+                `${projectId}.png`,
+                `${projectId}_thumbnail.png`,
+                `thumbnail_${projectId}.png`
+            ];
+            
+            // Try project number variations
+            const numberMatch = projectId.match(/^(\d+)/);
+            if (numberMatch) {
+                const num = numberMatch[1];
+                patterns.push(`${num.padStart(3, '0')}_*.png`);
+            }
+            
+            // Return the first pattern (will try to load, onerror will handle fallback)
+            return `${thumbnailsPath}${projectId}.png`;
+        };
+
+        const loadProjectsGrid = async (discipline) => {
+            const manifest = await loadManifest(discipline);
+            const projects = Object.keys(manifest).sort();
+            
+            if (!projectsGrid) return;
+            
+            projectsGrid.innerHTML = '';
+            
+            projects.forEach((projectId, index) => {
+                const thumbnailPath = findThumbnail(projectId);
+                const itemNumber = index + 1;
+                const spanClasses = getSpanClasses(projectId, itemNumber);
+                
+                const gridItem = document.createElement('div');
+                gridItem.className = `grid-item item-${itemNumber} ${spanClasses}`;
+                gridItem.setAttribute('data-project', projectId);
+                gridItem.style.cursor = 'pointer';
+                
+                const img = document.createElement('img');
+                img.src = thumbnailPath;
+                img.alt = projectId.replace(/_/g, ' ');
+                img.className = 'grid-image';
+                img.onerror = function() {
+                    // Try alternative thumbnail paths
+                    const altPaths = [
+                        `${thumbnailsPath}${projectId}_thumbnail.png`,
+                        `${getBaseProjectPath(discipline)}${projectId}/thumbnail.png`,
+                        `${getBaseProjectPath(discipline)}${projectId}/*thumbnail*.png`
+                    ];
+                    // For now, just hide if not found
+                    this.style.display = 'none';
+                };
+                
+                gridItem.appendChild(img);
+                
+                gridItem.addEventListener('click', () => {
+                    openModal(projectId, discipline);
+                });
+                
+                projectsGrid.appendChild(gridItem);
+            });
+        };
+
+        const getSpanClasses = (projectId, index) => {
+            // Preserve existing span classes for known projects
+            const spanMap = {
+                '005_roon_design_system': 'span-2',
+                '007_moments': 'span-2',
+                '010_verizon_data_visualization': 'span-2',
+                '013_desen': 'span-2'
+            };
+            return spanMap[projectId] || '';
+        };
+
+        const switchDiscipline = async (newDiscipline) => {
+            currentDiscipline = newDiscipline;
+            currentDisciplineManifest = null; // Reset manifest cache
+            projectNames = {}; // Reset project names
+            
+            if (disciplineTitle) {
+                disciplineTitle.textContent = newDiscipline;
+            }
+            
+            setDisciplineInURL(newDiscipline);
+            closeModal({ skipHistory: true, replaceState: true });
+            
+            await loadProjectsGrid(newDiscipline);
+        };
+
+        // Discipline dialog toggle
+        if (disciplineToggle) {
+            disciplineToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (disciplineDialog) {
+                    disciplineDialog.classList.toggle('is-open');
+                }
+            });
+        }
+
+        // Close dialog when clicking outside
+        document.addEventListener('click', (e) => {
+            if (disciplineDialog && !disciplineDialog.contains(e.target) && !disciplineToggle.contains(e.target)) {
+                disciplineDialog.classList.remove('is-open');
+            }
+        });
+
+        // Discipline option selection
+        disciplineOptions.forEach(option => {
+            option.addEventListener('click', async () => {
+                const selectedDiscipline = option.dataset.discipline;
+                if (selectedDiscipline !== currentDiscipline) {
+                    await switchDiscipline(selectedDiscipline);
+                }
+                if (disciplineDialog) {
+                    disciplineDialog.classList.remove('is-open');
                 }
             });
         });
@@ -507,10 +620,17 @@
             }
         });
 
-        window.addEventListener('popstate', (event) => {
-            const project = event.state && event.state.project ? event.state.project : new URL(window.location.href).searchParams.get('project');
-            if (project && projectNames[project]) {
-                openModal(project, { skipHistory: true, replaceState: true });
+        window.addEventListener('popstate', async (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const project = urlParams.get('project');
+            const discipline = urlParams.get('discipline') || 'Product Designer';
+            
+            if (discipline !== currentDiscipline) {
+                await switchDiscipline(discipline);
+            }
+            
+            if (project) {
+                openModal(project, discipline, { skipHistory: true, replaceState: true });
             } else {
                 closeModal({ skipHistory: true, replaceState: true });
             }
@@ -570,13 +690,25 @@
             }
         });
 
-        // Initial load: open modal if URL includes project param
-        const initialProject = new URL(window.location.href).searchParams.get('project');
-        if (initialProject && projectNames[initialProject]) {
-            openModal(initialProject, { skipHistory: true, replaceState: true });
-        } else {
-            history.replaceState({}, '', window.location.href);
-        }
+        // Initial load
+        (async () => {
+            // Set discipline title
+            if (disciplineTitle) {
+                disciplineTitle.textContent = currentDiscipline;
+            }
+            
+            // Load projects grid for current discipline
+            await loadProjectsGrid(currentDiscipline);
+            
+            // Open modal if URL includes project param
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialProject = urlParams.get('project');
+            if (initialProject) {
+                openModal(initialProject, currentDiscipline, { skipHistory: true, replaceState: true });
+            } else {
+                setDisciplineInURL(currentDiscipline);
+            }
+        })();
     </script>
 </body>
 </html>
