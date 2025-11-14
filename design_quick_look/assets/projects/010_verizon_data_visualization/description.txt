@@ -1,4 +1,4 @@
-Verizon Data Visualization Language
+Modern data visualization color system aligned with Verizon's new Swiss design branding, rigorously tested for accessibility and enabling journey teams to create consistent, accessible data visualizations.
 
 Challenge
 • Data visualization system not updated when Verizon underwent makeover from Pentagram to Swiss design aesthetic

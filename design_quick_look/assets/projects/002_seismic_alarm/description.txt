@@ -1,4 +1,4 @@
-Seismic Alarm
+An iOS app that monitors environmental shakes and provides instant alerts to help users in earthquake-prone areas stay safe, especially during sleep when reaction time is slowest.
 
 Challenge
 • Help users monitor shakes in their environment while they sleep

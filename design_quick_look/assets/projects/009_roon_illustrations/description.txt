@@ -1,4 +1,4 @@
-Roon Illustration & Animation System
+Empathic illustration and animation system that creates comforting, non-triggering visuals for sensitive health content, embodying friendliness, understanding, and gentleness throughout healthcare journeys.
 
 Challenge
 • Create illustration and animation system embodying empathic design philosophy

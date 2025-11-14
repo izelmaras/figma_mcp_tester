@@ -1,4 +1,4 @@
-Roon Design System
+Comprehensive design system built from the ground up using Atomic Design Framework to support scalable health platform across mobile web, tablet web, desktop web, and iOS.
 
 Challenge
 • Build comprehensive brand system from the ground up

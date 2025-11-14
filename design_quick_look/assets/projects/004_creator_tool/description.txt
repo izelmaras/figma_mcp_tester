@@ -1,4 +1,4 @@
-Roon Doctor Creator Tool
+A multi-format content creation tool that helps doctors efficiently share medical knowledge through text, audio, and video, scaling the doctor creation process on Roon's two-sided platform.
 
 Challenge
 • Scale doctor creation process on a two-sided platform

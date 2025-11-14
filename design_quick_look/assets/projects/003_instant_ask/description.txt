@@ -1,4 +1,4 @@
-Roon AI-Driven Health Search & Ask
+Revamped search and AI-powered Q&A system that helps users find reliable health information quickly, with 24% increase in question engagement and 80% upvote rate on AI answers.
 
 Challenge
 • Users found it challenging to locate answers using the current search function

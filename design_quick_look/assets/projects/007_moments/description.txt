@@ -1,4 +1,4 @@
-Roon Moments
+Feature that organizes health information into "moments" to guide users through linear and non-linear health condition journeys, providing answers, checklists, and preparation guidance.
 
 Challenge
 • Organize comprehensive library of questions and present them in most accessible way

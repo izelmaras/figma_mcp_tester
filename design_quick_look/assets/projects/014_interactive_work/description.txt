@@ -1,4 +1,4 @@
-Interactive Coded & 3D Work
+Collection of interactive experiences combining creative coding and 3D modeling, including Instagram filters, immersive installations, and digital art projects that engage users across multiple platforms.
 
 Challenge
 • Create engaging and interactive experiences combining technical skills with artistic creativity

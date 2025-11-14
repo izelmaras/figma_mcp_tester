@@ -1,4 +1,4 @@
-Roon Multi-Condition
+Solution that allows users to access multiple health conditions without tedious log-out/log-in process, making it easier to manage multiple conditions while laying foundation for future knowledge base merging.
 
 Challenge
 • Many questions overlap across conditions, but Roon serves each condition individually

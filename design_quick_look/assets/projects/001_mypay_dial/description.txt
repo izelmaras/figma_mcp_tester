@@ -1,4 +1,4 @@
-MyPay Hub Redesign
+A circular visualization (MyPay Dial) that transforms how Chime members understand and interact with their earnings by showing time as money, making financial progress feel visible and intuitive.
 
 Challenge
 • Rethink MyPay hub: a screen that helps members understand and access their earnings with more clarity

@@ -1,4 +1,4 @@
-Verizon Design System
+Comprehensive design system translating Pentagram's Swiss design-inspired branding into cohesive, code-based interface components, improving consistency, efficiency, and accessibility across Verizon's digital products.
 
 Challenge
 • Build Verizon design system from ground up
