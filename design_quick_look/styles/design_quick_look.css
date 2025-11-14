@@ -91,10 +91,11 @@ body {
 }
 
 .discipline-caret {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     opacity: 0.6;
     transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: rotate(90deg);
 }
 
 .discipline-toggle:hover .discipline-caret {
@@ -290,6 +291,23 @@ body {
 
     .top-right {
         text-align: right;
+        gap: 8px;
+    }
+
+    .discipline-caret {
+        width: 36px;
+        height: 36px;
+    }
+
+    .discipline-dialog {
+        top: 80px;
+        right: 30px;
+        min-width: 200px;
+    }
+
+    .discipline-option {
+        padding: 16px 24px;
+        font-size: 18px;
     }
 
     .page-container {
