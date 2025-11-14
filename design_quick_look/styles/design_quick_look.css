@@ -431,8 +431,8 @@ body {
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
-    width: min(96vw, 1200px);
-    height: min(92vh, 860px);
+    width: min(96vw, 1500px);
+    height: min(92vh, 1075px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
