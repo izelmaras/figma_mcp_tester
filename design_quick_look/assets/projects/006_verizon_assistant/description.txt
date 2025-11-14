@@ -1,4 +1,4 @@
-Verizon Assistant
+Chatbot that improves customer service and reduces call center volume by handling key user flows, significantly improving customer satisfaction and operational efficiency.
 
 Challenge
 • Improve customer service and reduce volume of calls to call centers
