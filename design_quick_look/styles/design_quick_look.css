@@ -13,6 +13,14 @@
     font-style: normal;
 }
 
+/* Color Variables */
+:root {
+    --color-background: #ffffff;
+    --color-text: #000000;
+    --color-about-bg: #D3FF8D;
+    --color-painter-bg: #E1E1E1;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -22,14 +30,19 @@
 
 body {
     font-family: 'Circular Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #ffffff;
-    color: black;
+    background: var(--color-background);
+    color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
     line-height: normal;
     font-style: normal;
     width: 100%;
     position: relative;
+}
+
+/* About page background */
+body.about-page {
+    background: var(--color-about-bg);
 }
 
 
