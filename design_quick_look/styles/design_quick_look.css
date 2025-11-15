@@ -149,6 +149,9 @@ body.discipline-painter .grid-image {
     line-height: 1;
     margin: 0;
     padding: 0;
+    height: 76px;
+    display: flex;
+    align-items: center;
 }
 
 .resume-link {
