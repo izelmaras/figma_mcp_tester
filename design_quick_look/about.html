@@ -42,8 +42,19 @@
 
     <!-- Fixed Bottom Navigation -->
     <nav class="bottom-nav">
-        <a href="/design_quick_look/nda.html" class="bottom-nav-link">NDA Work</a>
+        <a href="#" id="case-studies-link" class="bottom-nav-link">Case Studies</a>
     </nav>
+    <script>
+        document.getElementById('case-studies-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const passcode = prompt('Enter passcode:');
+            if (passcode === 'everest') {
+                window.location.href = '/design_quick_look/nda.html';
+            } else if (passcode !== null) {
+                alert('Incorrect passcode');
+            }
+        });
+    </script>
 </body>
 </html>
 
