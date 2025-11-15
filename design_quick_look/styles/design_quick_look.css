@@ -42,6 +42,16 @@ body.discipline-painter {
 }
 
 /* Painter mode: single column stacked layout */
+body.discipline-painter {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+body.discipline-painter .page-container {
+    scroll-snap-type: y mandatory;
+}
+
 body.discipline-painter .grid {
     display: flex;
     flex-direction: column;
@@ -55,6 +65,12 @@ body.discipline-painter .grid-item {
     width: 100%;
     max-width: 100%;
     grid-column: unset;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 body.discipline-painter .grid-item.span-2,
