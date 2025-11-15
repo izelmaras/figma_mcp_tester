@@ -694,6 +694,29 @@
         // Resize functionality
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
+            // Spacebar scrolling for modal (desktop only)
+            if (e.key === ' ' || e.key === 'Spacebar') {
+                if (modal.style.display === 'block' && modalBody) {
+                    // Check if we're not in an input/textarea
+                    const activeElement = document.activeElement;
+                    const isInput = activeElement && (
+                        activeElement.tagName === 'INPUT' ||
+                        activeElement.tagName === 'TEXTAREA' ||
+                        activeElement.isContentEditable
+                    );
+                    
+                    if (!isInput) {
+                        e.preventDefault();
+                        const scrollAmount = window.innerHeight * 0.8; // Scroll 80% of viewport height
+                        const direction = e.shiftKey ? -1 : 1; // Shift+Space scrolls up
+                        modalBody.scrollBy({
+                            top: scrollAmount * direction,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+            
             if (e.key === 'Escape') {
                 closeModal();
             }
