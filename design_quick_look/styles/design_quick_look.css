@@ -124,9 +124,8 @@ body.discipline-painter .grid-image {
     font-size: 84px;
     background: none;
     z-index: 2000;
-    height: auto;
+    height: 136px;
     line-height: 1;
-    min-height: 76px;
     margin: 0;
 }
 
