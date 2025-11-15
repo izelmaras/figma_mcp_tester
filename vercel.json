@@ -5,6 +5,14 @@
     {
       "source": "/generative_design/:path*",
       "destination": "/assets/projects/Generative%20Designer/:path*"
+    },
+    {
+      "source": "/generative_design/:project/styles/:file",
+      "destination": "/assets/projects/Generative%20Designer/:project/styles/:file"
+    },
+    {
+      "source": "/generative_design/:project/assets/:file",
+      "destination": "/assets/projects/Generative%20Designer/:project/assets/:file"
     }
   ]
 }
