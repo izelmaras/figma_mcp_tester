@@ -54,7 +54,7 @@ body.nda-page {
 
 /* Painter discipline background */
 body.discipline-painter {
-    background-image: url('/design_quick_look/assets/projects/Painter/painter_background.svg');
+    background-image: url('/assets/projects/Painter/painter_background.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

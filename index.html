@@ -3,13 +3,788 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Izel Maras - Designer</title>
-    <meta http-equiv="refresh" content="0; url=/design_quick_look/">
-    <script>
-        window.location.href = '/design_quick_look/';
-    </script>
+    <title>Design Quick Look</title>
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="Design Quick Look">
+    <meta property="og:description" content="A modern grid showcase">
+    <meta property="og:url" content="https://projects.izel.website/design_quick_look">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Design Quick Look">
+    <meta name="twitter:description" content="A modern grid showcase">
+    
+    <link rel="stylesheet" href="/styles/design_quick_look.css">
 </head>
 <body>
-    <p>Redirecting to <a href="/design_quick_look/">portfolio</a>...</p>
+    <!-- Fixed Top Navigation -->
+    <nav class="top-nav">
+                <div class="top-left">
+                    <p>Izel Maras</p>
+                    <a href="/about.html" class="resume-link" aria-label="Go to about page">
+                        <img src="/assets/icons/Material icons/ic_arrow_forward_48px.svg" alt="" class="resume-arrow">
+                    </a>
+                </div>
+        <div class="top-right">
+            <span class="discipline-title" id="discipline-title">Product Designer</span>
+            <button class="discipline-toggle" id="discipline-toggle" aria-label="Change discipline">
+                <img src="/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="discipline-caret">
+            </button>
+        </div>
+    </nav>
+
+    <!-- Discipline Selector Dialog -->
+    <div id="discipline-dialog" class="discipline-dialog">
+        <div class="discipline-dialog-content">
+            <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
+            <button class="discipline-option" data-discipline="Brand Designer">Brand Designer</button>
+            <button class="discipline-option" data-discipline="Illustrator">Illustrator</button>
+            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
+            <button class="discipline-option" data-discipline="Painter">Painter</button>
+            <button class="discipline-option" data-discipline="Immersion Designer">Immersion Designer</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+            <div class="grid-container">
+                <div class="grid" id="projects-grid">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+            </div>
+    </div>
+
+    <!-- Fixed Bottom Navigation -->
+    <nav class="bottom-nav">
+    </nav>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <span class="modal-header__title">Project</span>
+                <div class="modal-header__center">
+                    <div class="modal-floating-toggle"></div>
+                </div>
+                <button type="button" class="close" aria-label="Close modal">
+                    <img src="/assets/icons/Material icons/ic_close_48px.svg" alt="" class="close-icon">
+                </button>
+            </header>
+            <div class="modal-body">
+                <div class="modal-body__content"></div>
+            </div>
+            <div class="modal-progress">
+                <div class="modal-progress__bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const modalContent = document.querySelector('.modal-content');
+        const modalBody = document.querySelector('.modal-body');
+        const closeBtn = document.querySelector('.close');
+        const modalContentArea = document.querySelector('.modal-body__content');
+        const headerTitle = document.querySelector('.modal-header__title');
+        const floatingToggle = document.querySelector('.modal-floating-toggle');
+        const progressTrack = document.querySelector('.modal-progress');
+        const progressBar = document.querySelector('.modal-progress__bar');
+        const projectsGrid = document.getElementById('projects-grid');
+        const disciplineTitle = document.getElementById('discipline-title');
+        const disciplineToggle = document.getElementById('discipline-toggle');
+        const disciplineDialog = document.getElementById('discipline-dialog');
+        const disciplineOptions = document.querySelectorAll('.discipline-option');
+        const baseProjectsPath = '/assets/projects/';
+        const thumbnailsPath = '/assets/thubnails/';
+
+        // Get discipline from URL or default to "Product Designer"
+        const getCurrentDiscipline = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('discipline') || 'Product Designer';
+        };
+
+        // Set discipline in URL
+        const setDisciplineInURL = (discipline) => {
+            const url = new URL(window.location.href);
+            if (discipline === 'Product Designer') {
+                url.searchParams.delete('discipline');
+            } else {
+                url.searchParams.set('discipline', discipline);
+            }
+            window.history.replaceState({ discipline }, '', url);
+        };
+
+        let currentDiscipline = getCurrentDiscipline();
+        let currentDisciplineManifest = null;
+        let projectNames = {};
+
+        let currentProject = null;
+        let isDragging = false;
+        let isLoading = false;
+        let startX, startY, startLeft, startTop;
+
+        const resetModalPosition = () => {
+            modalContent.style.left = '';
+            modalContent.style.top = '';
+        };
+
+        const setModalVisibility = (show) => {
+            modal.style.display = show ? 'block' : 'none';
+            document.body.style.overflow = show ? 'hidden' : 'auto';
+            resetModalPosition();
+        };
+
+        const setHistoryState = (projectId, { replace = false } = {}) => {
+            const url = new URL(window.location.href);
+            if (projectId) {
+                url.searchParams.set('project', projectId);
+            } else {
+                url.searchParams.delete('project');
+            }
+            
+            // Ensure discipline is in URL
+            if (currentDiscipline !== 'Product Designer') {
+                url.searchParams.set('discipline', currentDiscipline);
+            }
+
+            if (replace) {
+                history.replaceState(projectId ? { project: projectId, discipline: currentDiscipline } : { discipline: currentDiscipline }, '', url);
+            } else {
+                history.pushState(projectId ? { project: projectId, discipline: currentDiscipline } : { discipline: currentDiscipline }, '', url);
+            }
+        };
+
+        const clearModalContent = () => {
+            modalContentArea.innerHTML = '';
+            currentProject = null;
+            if (headerTitle) {
+                headerTitle.textContent = 'Project';
+            }
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+            }
+            if (progressBar) {
+                progressBar.style.transform = 'scaleX(0)';
+            }
+            if (progressTrack) {
+                progressTrack.classList.remove('is-active');
+            }
+        };
+
+        const showLoading = () => {
+            modalContentArea.innerHTML = '<div class="modal-loading">Loading...</div>';
+            if (headerTitle) {
+                headerTitle.textContent = 'Loading';
+            }
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+            }
+            if (progressBar) {
+                progressBar.style.transform = 'scaleX(0)';
+            }
+            if (progressTrack) {
+                progressTrack.classList.remove('is-active');
+            }
+        };
+
+        const showError = () => {
+            modalContentArea.innerHTML = `
+                <div class="modal-error">
+                    <h3>Something went wrong</h3>
+                    <p>We couldn\'t load that project. Please try again.</p>
+                </div>
+            `;
+            if (headerTitle) {
+                headerTitle.textContent = 'Load error';
+            }
+            if (floatingToggle) {
+                floatingToggle.innerHTML = '';
+                floatingToggle.classList.remove('is-active');
+            }
+            if (progressBar) {
+                progressBar.style.transform = 'scaleX(0)';
+            }
+            if (progressTrack) {
+                progressTrack.classList.remove('is-active');
+            }
+        };
+
+        function updateProgress() {
+            if (!progressBar) {
+                return;
+            }
+            const scrollableHeight = modalBody.scrollHeight - modalBody.clientHeight;
+            const ratio = scrollableHeight > 0 ? modalBody.scrollTop / scrollableHeight : 0;
+            progressBar.style.transform = `scaleX(${ratio})`;
+        }
+
+        const getBaseProjectPath = (discipline) => {
+            return `${baseProjectsPath}${encodeURIComponent(discipline)}/`;
+        };
+
+        const loadManifest = async (discipline) => {
+            if (currentDisciplineManifest && currentDiscipline === discipline) {
+                return currentDisciplineManifest;
+            }
+            try {
+                const disciplinePath = getBaseProjectPath(discipline);
+                const response = await fetch(`${disciplinePath}manifest.json`);
+                if (response.ok) {
+                    currentDisciplineManifest = await response.json();
+                    currentDiscipline = discipline;
+                    return currentDisciplineManifest;
+                }
+            } catch (e) {
+                console.error('Failed to load manifest:', e);
+            }
+            return {};
+        };
+
+        const loadProjectImages = async (projectId, discipline) => {
+            const manifest = await loadManifest(discipline);
+            const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
+            const imageFiles = manifest[projectId] || [];
+            
+            return imageFiles
+                .filter(filename => {
+                    const ext = filename.toLowerCase().split('.').pop();
+                    const isImage = ['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext);
+                    const isThumbnail = filename.toLowerCase().includes('thumbnail');
+                    return isImage && !isThumbnail;
+                })
+                .map(filename => {
+                    // Handle both old format (filename) and new format (assets/filename)
+                    if (filename.startsWith('assets/')) {
+                        // URL encode the assets path components
+                        const pathParts = filename.split('/');
+                        const encodedParts = pathParts.map(part => encodeURIComponent(part));
+                        return `${projectPath}${encodedParts.join('/')}`;
+                    } else {
+                        return `${projectPath}assets/${encodeURIComponent(filename)}`;
+                    }
+                })
+                .sort();
+        };
+
+        const loadProjectText = async (projectId, discipline) => {
+            const projectPath = `${getBaseProjectPath(discipline)}${projectId}/`;
+            const textExtensions = ['txt', 'md', 'text'];
+            const textFiles = ['description.txt', 'info.txt', 'readme.txt', 'description.md', 'info.md', 'readme.md'];
+            
+            for (const filename of textFiles) {
+                try {
+                    const response = await fetch(`${projectPath}${filename}`);
+                    if (response.ok) {
+                        const text = await response.text();
+                        return text.trim();
+                    }
+                } catch (e) {
+                    // File doesn't exist, continue
+                }
+            }
+            
+            return null;
+        };
+
+        const getProjectName = (projectId, descriptionText) => {
+            if (projectNames[projectId]) {
+                return projectNames[projectId];
+            }
+            // Try to extract from description
+            if (descriptionText) {
+                const firstLine = descriptionText.split('\n')[0].trim();
+                if (firstLine && firstLine.length < 100) {
+                    return firstLine;
+                }
+            }
+            // Fallback to formatted folder name
+            return projectId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        };
+
+        const formatProjectDescription = (text, projectName) => {
+            const lines = text.split('\n').filter(line => line.trim());
+            let summary = '';
+            let sectionsHTML = '';
+            let currentSection = null;
+            let currentContent = [];
+            let isFirstLine = true;
+
+            const sectionMap = {
+                'Challenge': 'challenge',
+                'Audience': 'audience',
+                'Context': 'context',
+                'Solution': 'solution',
+                'Results': 'results',
+                'Year': 'year',
+                'Collaborators': 'collaborators',
+                'Goals': 'goals'
+            };
+
+            const closeSection = () => {
+                if (currentSection && currentContent.length > 0) {
+                    const content = currentContent.join('').trim();
+                    if (content) {
+                        sectionsHTML += `<div class="description-section description-${currentSection}">`;
+                        sectionsHTML += `<h3 class="description-section-title">${Object.keys(sectionMap).find(k => sectionMap[k] === currentSection)}</h3>`;
+                        sectionsHTML += `<div class="description-section-content">${content}</div>`;
+                        sectionsHTML += `</div>`;
+                    }
+                    currentContent = [];
+                }
+            };
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+
+                // First line is the summary
+                if (isFirstLine) {
+                    summary = trimmed;
+                    isFirstLine = false;
+                    continue;
+                }
+
+                // Check if this is a section header
+                const isSectionHeader = Object.keys(sectionMap).some(key => trimmed === key);
+                
+                if (isSectionHeader) {
+                    closeSection();
+                    currentSection = sectionMap[trimmed];
+                } else if (currentSection) {
+                    // Check if it's a bullet point
+                    if (trimmed.startsWith('•')) {
+                        currentContent.push(`<p class="description-bullet">${trimmed.substring(1).trim()}</p>`);
+                    } else {
+                        currentContent.push(`<p class="description-paragraph">${trimmed}</p>`);
+                    }
+                }
+            }
+
+            closeSection();
+            return {
+                summary: summary ? `<div class="modal-project-summary">${summary}</div>` : '',
+                sections: sectionsHTML ? `<div class="modal-project-description-wrapper"><div class="modal-project-description">${sectionsHTML}</div></div>` : ''
+            };
+        };
+
+        const openModal = async (projectId, discipline, { skipHistory = false, replaceState = false } = {}) => {
+            if (isLoading) {
+                return;
+            }
+
+            isLoading = true;
+            setModalVisibility(true);
+            showLoading();
+
+            try {
+                const images = await loadProjectImages(projectId, discipline);
+                
+                if (images.length === 0) {
+                    modalContentArea.innerHTML = `
+                        <div class="modal-error">
+                            <h3>No images available</h3>
+                            <p>This project doesn't have any images yet.</p>
+                        </div>
+                    `;
+                    const projectText = await loadProjectText(projectId, discipline);
+                    const projectName = getProjectName(projectId, projectText);
+                    if (headerTitle) {
+                        headerTitle.textContent = projectName;
+                    }
+                    isLoading = false;
+                    return;
+                }
+
+                const projectText = await loadProjectText(projectId, discipline);
+                const projectName = getProjectName(projectId, projectText);
+                if (headerTitle) {
+                    headerTitle.textContent = projectName;
+                }
+                const imagesHTML = images.map(img => 
+                    `<img src="${img}" alt="${projectName}" class="modal-project-image" loading="lazy">`
+                ).join('');
+
+                let contentHTML = '';
+                if (projectText) {
+                    const description = formatProjectDescription(projectText, projectName);
+                    contentHTML += description.summary;
+                }
+                contentHTML += `<div class="modal-project-gallery">${imagesHTML}</div>`;
+                if (projectText) {
+                    const description = formatProjectDescription(projectText, projectName);
+                    contentHTML += description.sections;
+                }
+                contentHTML += `<div class="description-navigation">
+                    <button class="description-nav-btn description-nav-prev" id="desc-prev" aria-label="Previous section">
+                        <img src="/assets/icons/Material icons/ic_chevron_left_48px.svg" alt="" class="nav-icon">
+                    </button>
+                    <button class="description-nav-btn description-nav-next" id="desc-next" aria-label="Next section">
+                        <img src="/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="nav-icon">
+                    </button>
+                </div>`;
+
+                modalContentArea.innerHTML = contentHTML;
+                
+                // Setup description navigation
+                setupDescriptionNavigation();
+                modalBody.scrollTop = 0;
+                
+                if (progressTrack) {
+                    progressTrack.classList.add('is-active');
+                }
+                if (progressBar) {
+                    progressBar.style.transform = 'scaleX(0)';
+                }
+                updateProgress();
+                currentProject = projectId;
+
+                if (!skipHistory) {
+                    setHistoryState(projectId, { replace: replaceState });
+                }
+                if (replaceState && skipHistory) {
+                    setHistoryState(projectId, { replace: true });
+                }
+            } catch (error) {
+                console.error(error);
+                showError();
+            } finally {
+                isLoading = false;
+            }
+        };
+
+        const closeModal = ({ skipHistory = false, replaceState = false } = {}) => {
+            if (modal.style.display !== 'block') {
+                return;
+            }
+
+            setModalVisibility(false);
+            clearModalContent();
+
+            if (!skipHistory) {
+                setHistoryState(null, { replace: replaceState });
+            }
+            if (replaceState && skipHistory) {
+                setHistoryState(null, { replace: true });
+            }
+        };
+
+        const findThumbnail = (projectId) => {
+            // Try multiple thumbnail path patterns
+            const patterns = [
+                `${projectId}.png`,
+                `${projectId}_thumbnail.png`,
+                `thumbnail_${projectId}.png`
+            ];
+            
+            // Try project number variations
+            const numberMatch = projectId.match(/^(\d+)/);
+            if (numberMatch) {
+                const num = numberMatch[1];
+                patterns.push(`${num.padStart(3, '0')}_*.png`);
+            }
+            
+            // Return the first pattern (will try to load, onerror will handle fallback)
+            return `${thumbnailsPath}${projectId}.png`;
+        };
+
+        const loadProjectsGrid = async (discipline) => {
+            const manifest = await loadManifest(discipline);
+            const projects = Object.keys(manifest).sort();
+            
+            if (!projectsGrid) return;
+            
+            projectsGrid.innerHTML = '';
+            
+            projects.forEach((projectId, index) => {
+                const thumbnailPath = findThumbnail(projectId);
+                const itemNumber = index + 1;
+                const spanClasses = getSpanClasses(projectId, itemNumber);
+                
+                const gridItem = document.createElement('div');
+                gridItem.className = `grid-item item-${itemNumber} ${spanClasses}`;
+                gridItem.setAttribute('data-project', projectId);
+                gridItem.style.cursor = 'pointer';
+                
+                const img = document.createElement('img');
+                img.src = thumbnailPath;
+                img.alt = projectId.replace(/_/g, ' ');
+                img.className = 'grid-image';
+                
+                // Try alternative thumbnail paths, then use first asset as fallback
+                img.onerror = function() {
+                    const altPaths = [
+                        `${thumbnailsPath}${projectId}_thumbnail.png`,
+                        `${getBaseProjectPath(discipline)}${projectId}/thumbnail.png`
+                    ];
+                    
+                    // Try alternative paths first
+                    let altIndex = 0;
+                    const tryNextAlt = () => {
+                        if (altIndex < altPaths.length) {
+                            this.src = altPaths[altIndex++];
+                        } else {
+                            // If no thumbnail found, use first asset from project as fallback
+                            const projectAssets = manifest[projectId] || [];
+                            if (projectAssets.length > 0) {
+                                const firstAsset = projectAssets[0];
+                                const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
+                                if (firstAsset.startsWith('assets/')) {
+                                    const pathParts = firstAsset.split('/');
+                                    const encodedParts = pathParts.map(part => encodeURIComponent(part));
+                                    this.src = `${projectPath}${encodedParts.join('/')}`;
+                                } else {
+                                    this.src = `${projectPath}assets/${encodeURIComponent(firstAsset)}`;
+                                }
+                            } else {
+                                // No assets at all, hide the image
+                                this.style.display = 'none';
+                            }
+                        }
+                    };
+                    
+                    // Remove the current error handler and set up the next attempt
+                    this.onerror = tryNextAlt;
+                    tryNextAlt();
+                };
+                
+                gridItem.appendChild(img);
+                
+                gridItem.addEventListener('click', () => {
+                    openModal(projectId, discipline);
+                });
+                
+                projectsGrid.appendChild(gridItem);
+            });
+        };
+
+        const getSpanClasses = (projectId, index) => {
+            // Preserve existing span classes for known projects
+            const spanMap = {
+                '005_roon_design_system': 'span-2',
+                '007_moments': 'span-2',
+                '010_verizon_data_visualization': 'span-2',
+                '013_desen': 'span-2'
+            };
+            return spanMap[projectId] || '';
+        };
+
+        const switchDiscipline = async (newDiscipline) => {
+            currentDiscipline = newDiscipline;
+            currentDisciplineManifest = null; // Reset manifest cache
+            projectNames = {}; // Reset project names
+            
+            if (disciplineTitle) {
+                disciplineTitle.textContent = newDiscipline;
+            }
+            
+            // Update body class for discipline-specific styling
+            document.body.className = '';
+            if (newDiscipline === 'Painter') {
+                document.body.classList.add('discipline-painter');
+            }
+            
+            setDisciplineInURL(newDiscipline);
+            closeModal({ skipHistory: true, replaceState: true });
+            
+            await loadProjectsGrid(newDiscipline);
+        };
+
+        // Discipline dialog toggle
+        if (disciplineToggle) {
+            disciplineToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (disciplineDialog) {
+                    disciplineDialog.classList.toggle('is-open');
+                }
+            });
+        }
+
+        // Close dialog when clicking outside
+        document.addEventListener('click', (e) => {
+            if (disciplineDialog && !disciplineDialog.contains(e.target) && !disciplineToggle.contains(e.target)) {
+                disciplineDialog.classList.remove('is-open');
+            }
+        });
+
+        // Discipline option selection
+        disciplineOptions.forEach(option => {
+            option.addEventListener('click', async () => {
+                const selectedDiscipline = option.dataset.discipline;
+                if (selectedDiscipline !== currentDiscipline) {
+                    await switchDiscipline(selectedDiscipline);
+                }
+                if (disciplineDialog) {
+                    disciplineDialog.classList.remove('is-open');
+                }
+            });
+        });
+
+        modalBody.addEventListener('scroll', updateProgress);
+
+        const setupDescriptionNavigation = () => {
+            const scrollContainer = document.querySelector('.modal-project-description');
+            const prevBtn = document.getElementById('desc-prev');
+            const nextBtn = document.getElementById('desc-next');
+            
+            if (!scrollContainer || !prevBtn || !nextBtn) return;
+            
+            const updateButtons = () => {
+                const scrollLeft = scrollContainer.scrollLeft;
+                const scrollWidth = scrollContainer.scrollWidth;
+                const clientWidth = scrollContainer.clientWidth;
+                
+                prevBtn.disabled = scrollLeft <= 0;
+                nextBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 1;
+            };
+            
+            prevBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+            
+            scrollContainer.addEventListener('scroll', updateButtons);
+            updateButtons();
+        };
+
+        closeBtn.addEventListener('click', () => closeModal());
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (modal.style.display === 'block' && !isDragging) {
+                resetModalPosition();
+            }
+        });
+
+        window.addEventListener('popstate', async (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const project = urlParams.get('project');
+            const discipline = urlParams.get('discipline') || 'Product Designer';
+            
+            if (discipline !== currentDiscipline) {
+                await switchDiscipline(discipline);
+            }
+            
+            if (project) {
+                openModal(project, discipline, { skipHistory: true, replaceState: true });
+            } else {
+                closeModal({ skipHistory: true, replaceState: true });
+            }
+        });
+
+        // Drag functionality - Mouse
+        modalContent.addEventListener('mousedown', function(e) {
+            if (window.innerWidth > 768 && (e.target.classList.contains('modal-header') || e.target.classList.contains('close'))) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startLeft = modalContent.offsetLeft;
+                startTop = modalContent.offsetTop;
+            }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                modalContent.style.left = (startLeft + e.clientX - startX) + 'px';
+                modalContent.style.top = (startTop + e.clientY - startY) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+
+        // Drag functionality - Touch (disabled on mobile for better scrolling)
+        modalContent.addEventListener('touchstart', function(e) {
+            if (window.innerWidth > 768 && (e.target.classList.contains('modal-header') || e.target.classList.contains('close'))) {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startLeft = modalContent.offsetLeft;
+                startTop = modalContent.offsetTop;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging && window.innerWidth > 768) {
+                e.preventDefault();
+                modalContent.style.left = (startLeft + e.touches[0].clientX - startX) + 'px';
+                modalContent.style.top = (startTop + e.touches[0].clientY - startY) + 'px';
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', function() {
+            isDragging = false;
+        });
+
+        // Resize functionality
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Spacebar scrolling for modal (desktop only)
+            if (e.key === ' ' || e.key === 'Spacebar') {
+                if (modal.style.display === 'block' && modalBody) {
+                    // Check if we're not in an input/textarea
+                    const activeElement = document.activeElement;
+                    const isInput = activeElement && (
+                        activeElement.tagName === 'INPUT' ||
+                        activeElement.tagName === 'TEXTAREA' ||
+                        activeElement.isContentEditable
+                    );
+                    
+                    if (!isInput) {
+                        e.preventDefault();
+                        const scrollAmount = window.innerHeight * 0.8; // Scroll 80% of viewport height
+                        const direction = e.shiftKey ? -1 : 1; // Shift+Space scrolls up
+                        modalBody.scrollBy({
+                            top: scrollAmount * direction,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+            
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initial load
+        (async () => {
+            // Set discipline title
+            if (disciplineTitle) {
+                disciplineTitle.textContent = currentDiscipline;
+            }
+            
+            // Set initial body class for discipline-specific styling
+            if (currentDiscipline === 'Painter') {
+                document.body.classList.add('discipline-painter');
+            }
+            
+            // Load projects grid for current discipline
+            await loadProjectsGrid(currentDiscipline);
+            
+            // Open modal if URL includes project param
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialProject = urlParams.get('project');
+            if (initialProject) {
+                openModal(initialProject, currentDiscipline, { skipHistory: true, replaceState: true });
+            } else {
+                setDisciplineInURL(currentDiscipline);
+            }
+        })();
+    </script>
 </body>
 </html>
+

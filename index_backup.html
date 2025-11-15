@@ -16,21 +16,21 @@
     <meta name="twitter:title" content="Design Quick Look">
     <meta name="twitter:description" content="A modern grid showcase">
     
-    <link rel="stylesheet" href="/design_quick_look/styles/design_quick_look.css">
+    <link rel="stylesheet" href="/styles/design_quick_look.css">
 </head>
 <body>
     <!-- Fixed Top Navigation -->
     <nav class="top-nav">
                 <div class="top-left">
                     <p>Izel Maras</p>
-                    <a href="/design_quick_look/about.html" class="resume-link" aria-label="Go to about page">
-                        <img src="/design_quick_look/assets/icons/Material icons/ic_arrow_forward_48px.svg" alt="" class="resume-arrow">
+                    <a href="/about.html" class="resume-link" aria-label="Go to about page">
+                        <img src="/assets/icons/Material icons/ic_arrow_forward_48px.svg" alt="" class="resume-arrow">
                     </a>
                 </div>
         <div class="top-right">
-            <span class="discipline-title" id="discipline-title">Generative Designer</span>
+            <span class="discipline-title" id="discipline-title">Product Designer</span>
             <button class="discipline-toggle" id="discipline-toggle" aria-label="Change discipline">
-                <img src="/design_quick_look/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="discipline-caret">
+                <img src="/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="discipline-caret">
             </button>
         </div>
     </nav>
@@ -38,10 +38,10 @@
     <!-- Discipline Selector Dialog -->
     <div id="discipline-dialog" class="discipline-dialog">
         <div class="discipline-dialog-content">
-            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
+            <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
             <button class="discipline-option" data-discipline="Brand Designer">Brand Designer</button>
             <button class="discipline-option" data-discipline="Illustrator">Illustrator</button>
-            <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
+            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
             <button class="discipline-option" data-discipline="Painter">Painter</button>
             <button class="discipline-option" data-discipline="Immersion Designer">Immersion Designer</button>
         </div>
@@ -69,7 +69,7 @@
                     <div class="modal-floating-toggle"></div>
                 </div>
                 <button type="button" class="close" aria-label="Close modal">
-                    <img src="/design_quick_look/assets/icons/Material icons/ic_close_48px.svg" alt="" class="close-icon">
+                    <img src="/assets/icons/Material icons/ic_close_48px.svg" alt="" class="close-icon">
                 </button>
             </header>
             <div class="modal-body">
@@ -96,19 +96,19 @@
         const disciplineToggle = document.getElementById('discipline-toggle');
         const disciplineDialog = document.getElementById('discipline-dialog');
         const disciplineOptions = document.querySelectorAll('.discipline-option');
-        const baseProjectsPath = '/design_quick_look/assets/projects/';
-        const thumbnailsPath = '/design_quick_look/assets/thubnails/';
+        const baseProjectsPath = '/assets/projects/';
+        const thumbnailsPath = '/assets/thubnails/';
 
-        // Get discipline from URL or default to "Generative Designer"
+        // Get discipline from URL or default to "Product Designer"
         const getCurrentDiscipline = () => {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('discipline') || 'Generative Designer';
+            return urlParams.get('discipline') || 'Product Designer';
         };
 
         // Set discipline in URL
         const setDisciplineInURL = (discipline) => {
             const url = new URL(window.location.href);
-            if (discipline === 'Generative Designer') {
+            if (discipline === 'Product Designer') {
                 url.searchParams.delete('discipline');
             } else {
                 url.searchParams.set('discipline', discipline);
@@ -145,7 +145,7 @@
             }
             
             // Ensure discipline is in URL
-            if (currentDiscipline !== 'Generative Designer') {
+            if (currentDiscipline !== 'Product Designer') {
                 url.searchParams.set('discipline', currentDiscipline);
             }
 
@@ -420,10 +420,10 @@
                 }
                 contentHTML += `<div class="description-navigation">
                     <button class="description-nav-btn description-nav-prev" id="desc-prev" aria-label="Previous section">
-                        <img src="/design_quick_look/assets/icons/Material icons/ic_chevron_left_48px.svg" alt="" class="nav-icon">
+                        <img src="/assets/icons/Material icons/ic_chevron_left_48px.svg" alt="" class="nav-icon">
                     </button>
                     <button class="description-nav-btn description-nav-next" id="desc-next" aria-label="Next section">
-                        <img src="/design_quick_look/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="nav-icon">
+                        <img src="/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="nav-icon">
                     </button>
                 </div>`;
 
@@ -670,7 +670,7 @@
         window.addEventListener('popstate', async (event) => {
             const urlParams = new URLSearchParams(window.location.search);
             const project = urlParams.get('project');
-            const discipline = urlParams.get('discipline') || 'Generative Designer';
+            const discipline = urlParams.get('discipline') || 'Product Designer';
             
             if (discipline !== currentDiscipline) {
                 await switchDiscipline(discipline);
