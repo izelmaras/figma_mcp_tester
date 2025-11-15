@@ -126,6 +126,7 @@ body.discipline-painter .grid-image {
     z-index: 2000;
     height: auto;
     line-height: 1;
+    min-height: 76px;
 }
 
 .top-left {
