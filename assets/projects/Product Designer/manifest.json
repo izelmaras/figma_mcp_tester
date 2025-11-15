@@ -99,20 +99,20 @@
     "assets/asset_001.gif"
   ],
   "011_verizon_design_system": [
-    "assets/asset_001.png",
-    "assets/asset_002.png",
-    "assets/asset_003.png",
-    "assets/asset_004.png",
-    "assets/asset_005.png",
-    "assets/asset_006.png",
-    "assets/asset_007.png",
-    "assets/asset_008.png",
-    "assets/asset_009.png",
-    "assets/asset_010.png",
-    "assets/asset_011.png",
-    "assets/asset_012.png",
-    "assets/asset_013.png",
-    "assets/asset_014.png"
+    "assets/asset_01.png",
+    "assets/asset_02.png",
+    "assets/asset_03.png",
+    "assets/asset_04.png",
+    "assets/asset_05.png",
+    "assets/asset_06.png",
+    "assets/asset_07.png",
+    "assets/asset_08.png",
+    "assets/asset_09.png",
+    "assets/asset_10.png",
+    "assets/asset_11.png",
+    "assets/asset_12.png",
+    "assets/asset_13.png",
+    "assets/asset_14.png"
   ],
   "005_instant_ask": [
     "assets/asset_01.png",
@@ -140,11 +140,5 @@
     "assets/asset_002-1.png",
     "assets/asset_002.png",
     "assets/asset_003.png"
-  ],
-  "loose_assets": [
-    "asset_0.png",
-    "asset_1.gif",
-    "asset_2.gif",
-    "asset_3.png"
   ]
 }
