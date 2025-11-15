@@ -489,6 +489,11 @@ body.discipline-painter .grid-image {
         height: 36px;
     }
 
+    .back-arrow {
+        width: 36px;
+        height: 36px;
+    }
+
     .discipline-dialog {
         top: 80px;
         right: 30px;
