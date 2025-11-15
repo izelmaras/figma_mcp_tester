@@ -1,0 +1,2 @@
+Alike
+Wearable device project handling interface design, UX mapping, coding, 3D printing, and soldering

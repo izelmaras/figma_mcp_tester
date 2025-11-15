@@ -1,11 +1,17 @@
 {
-  "painting_1": [
-    "assets/asset_017.jpg"
-  ],
-  "painting_2": [
-    "assets/asset_029.png"
-  ],
-  "painting_3": [
-    "assets/asset_032.png"
+  "painter_assets": [
+    "asset_0.png",
+    "asset_1.png",
+    "asset_10.png",
+    "asset_11.png",
+    "asset_12.png",
+    "asset_2.jpg",
+    "asset_3.png",
+    "asset_4.png",
+    "asset_5.png",
+    "asset_6.png",
+    "asset_7.png",
+    "asset_8.png",
+    "asset_9.png"
   ]
 }

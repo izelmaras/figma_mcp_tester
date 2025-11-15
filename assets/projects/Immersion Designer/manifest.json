@@ -1,1 +1,20 @@
-{}
+{
+  "perceivable_interface": [
+    "assets/asset_014.png",
+    "assets/asset_015.png",
+    "assets/asset_016.gif",
+    "assets/asset_017.gif",
+    "assets/asset_018.gif",
+    "assets/asset_019.gif"
+  ],
+  "maras_filter": [],
+  "alike": [],
+  "verizon_bus_visualization": [
+    "assets/asset_001.jpg",
+    "assets/asset_002.jpg",
+    "assets/asset_003.png",
+    "assets/asset_004.png",
+    "assets/asset_005.gif",
+    "assets/asset_020.png"
+  ]
+}

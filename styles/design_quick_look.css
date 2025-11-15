@@ -20,6 +20,7 @@
     --color-about-bg: #D3FF8D;
     --color-nda-bg: #FFEE8D;
     --color-painter-bg: #E1E1E1;
+    --color-generative-bg: #8dc6ff;
 }
 
 /* Reset and Base Styles */
@@ -51,6 +52,170 @@ body.nda-page {
     background: var(--color-nda-bg);
 }
 
+
+/* Generative Designer discipline background */
+body.discipline-generative {
+    background: var(--color-generative-bg);
+}
+
+/* Illustrator single column layout */
+body.discipline-illustrator .grid-container {
+    padding: 60px 100px;
+    max-width: none;
+}
+
+body.discipline-illustrator .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+body.discipline-illustrator .grid-item {
+    width: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+    cursor: default;
+}
+
+body.discipline-illustrator .grid-item:hover {
+    opacity: 1;
+    transform: none;
+}
+
+body.discipline-illustrator .grid-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+/* Brand Designer single column layout */
+body.discipline-brand-designer .grid-container {
+    padding: 60px 100px;
+    max-width: none;
+}
+
+body.discipline-brand-designer .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+body.discipline-brand-designer .grid-item {
+    width: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+    cursor: default;
+}
+
+body.discipline-brand-designer .grid-item:hover {
+    opacity: 1;
+    transform: none;
+}
+
+body.discipline-brand-designer .grid-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+body.discipline-brand-designer .brand-designer-video {
+    width: 100%;
+}
+
+body.discipline-brand-designer .brand-designer-video .modal-video-container {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    body.discipline-illustrator .grid-container {
+        padding: 40px 20px;
+    }
+    
+    body.discipline-brand-designer .grid-container {
+        padding: 40px 20px;
+    }
+}
+
+/* Immersion Designer 2-column layout */
+body.discipline-immersion-designer .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+body.discipline-immersion-designer .grid-item {
+    border-radius: 0;
+}
+
+body.discipline-immersion-designer .grid-image {
+    border-radius: 0;
+}
+
+@media (max-width: 768px) {
+    body.discipline-immersion-designer .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Generative Designer simple text tiles layout */
+body.discipline-generative .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+    padding: 60px 40px;
+    align-items: start;
+}
+
+body.discipline-generative .generative-tile {
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background: transparent;
+    border: 1px solid #000;
+    padding: 20px 24px;
+    min-height: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+body.discipline-generative .generative-tile:hover {
+    transform: translate(var(--random-x, 0), var(--random-y, 0)) rotate(var(--random-rotate, 0deg)) scale(1.02);
+    opacity: 0.8;
+}
+
+body.discipline-generative .generative-tile-label {
+    font-family: 'Circular Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    body.discipline-generative .grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 24px;
+        padding: 40px 20px;
+    }
+    
+    body.discipline-generative .generative-tile {
+        padding: 16px 20px;
+        min-height: 60px;
+    }
+    
+    body.discipline-generative .generative-tile-label {
+        font-size: 16px;
+    }
+}
 
 /* Painter discipline background */
 body.discipline-painter {
@@ -91,6 +256,12 @@ body.discipline-painter .grid-item.span-1-5 {
 body.discipline-painter .grid-item {
     border-radius: 0;
     overflow: visible;
+    cursor: default;
+}
+
+body.discipline-painter .grid-item:hover {
+    opacity: 1;
+    transform: none;
 }
 
 body.discipline-painter .grid-image {
@@ -107,8 +278,24 @@ body.discipline-painter .grid-image {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding-top: 200px;
     padding-bottom: 200px;
+}
+
+/* Discipline-specific page container padding */
+body.discipline-generative .page-container,
+body.discipline-immersion-designer .page-container {
+    padding-top: 200px;
+}
+
+/* Product Designer, About, and NDA pages need top padding */
+body:not(.discipline-illustrator):not(.discipline-brand-designer) .page-container {
+    padding-top: 200px;
+}
+
+body.discipline-painter .page-container,
+body.discipline-illustrator .page-container,
+body.discipline-brand-designer .page-container {
+    padding-top: 0;
 }
 
 /* Fixed Top Navigation */
@@ -456,6 +643,9 @@ body.discipline-painter .grid-image {
     overflow: hidden;
     cursor: pointer;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-item.span-2 {
@@ -478,6 +668,7 @@ body.discipline-painter .grid-image {
     display: block;
     border-radius: 24px;
     object-fit: cover;
+    margin: 0 auto;
 }
 
 /* Responsive Design */
@@ -488,8 +679,19 @@ body.discipline-painter .grid-image {
     }
 
     .page-container {
-        padding-top: 150px;
         padding-bottom: 150px;
+    }
+    
+    body.discipline-generative .page-container,
+    body.discipline-immersion-designer .page-container,
+    body:not(.discipline-illustrator):not(.discipline-brand-designer) .page-container {
+        padding-top: 150px;
+    }
+    
+    body.discipline-painter .page-container,
+    body.discipline-illustrator .page-container,
+    body.discipline-brand-designer .page-container {
+        padding-top: 0;
     }
 
     .grid-container {
@@ -541,8 +743,19 @@ body.discipline-painter .grid-image {
     }
 
     .page-container {
-        padding-top: 140px;
         padding-bottom: 120px;
+    }
+    
+    body.discipline-generative .page-container,
+    body.discipline-immersion-designer .page-container,
+    body:not(.discipline-illustrator):not(.discipline-brand-designer) .page-container {
+        padding-top: 140px;
+    }
+    
+    body.discipline-painter .page-container,
+    body.discipline-illustrator .page-container,
+    body.discipline-brand-designer .page-container {
+        padding-top: 0;
     }
 
     .bottom-nav {
@@ -618,8 +831,19 @@ body.discipline-painter .grid-image {
     }
 
     .page-container {
-        padding-top: 120px;
         padding-bottom: 100px;
+    }
+    
+    body.discipline-generative .page-container,
+    body.discipline-immersion-designer .page-container,
+    body:not(.discipline-illustrator):not(.discipline-brand-designer) .page-container {
+        padding-top: 120px;
+    }
+    
+    body.discipline-painter .page-container,
+    body.discipline-illustrator .page-container,
+    body.discipline-brand-designer .page-container {
+        padding-top: 0;
     }
 
     .bottom-nav {
@@ -738,6 +962,8 @@ body.discipline-painter .grid-image {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    min-width: 0;
+    width: 100%;
 }
 
 .close {
@@ -939,9 +1165,15 @@ body.discipline-painter .grid-image {
     color: rgba(0, 0, 0, 0.8);
 }
 
+body.discipline-immersion-designer .modal-project-summary {
+    margin-bottom: 16px;
+}
+
 .modal-project-description-wrapper {
     margin-top: 48px;
     margin-bottom: 48px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .description-title {
@@ -961,6 +1193,8 @@ body.discipline-painter .grid-image {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     position: relative;
+    width: 100%;
+    min-width: 0;
 }
 
 .modal-project-description::-webkit-scrollbar {
@@ -1074,6 +1308,46 @@ body.discipline-painter .grid-image {
 
 .description-nav-btn:disabled .nav-icon {
     opacity: 0.3;
+}
+
+.modal-video-container {
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio default */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+body.discipline-immersion-designer .modal-video-container {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.modal-video-container iframe,
+.modal-video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Second video is 4:3 aspect ratio (2560x1920) */
+.modal-video-container.modal-video-4-3 {
+    padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .modal-video-container {
+        margin-bottom: 24px;
+    }
 }
 
 .modal-project-gallery {

@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Quick Look</title>
+    <title>Izel Maras</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="Design Quick Look">
@@ -39,11 +42,11 @@
     <div id="discipline-dialog" class="discipline-dialog">
         <div class="discipline-dialog-content">
             <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
-            <button class="discipline-option" data-discipline="Brand Designer">Brand Designer</button>
             <button class="discipline-option" data-discipline="Illustrator">Illustrator</button>
-            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
-            <button class="discipline-option" data-discipline="Painter">Painter</button>
             <button class="discipline-option" data-discipline="Immersion Designer">Immersion Designer</button>
+            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
+            <button class="discipline-option" data-discipline="Brand Designer">Brand Designer</button>
+            <button class="discipline-option" data-discipline="Painter">Painter</button>
         </div>
     </div>
 
@@ -119,6 +122,17 @@
         let currentDiscipline = getCurrentDiscipline();
         let currentDisciplineManifest = null;
         let projectNames = {};
+        
+        // Project names for Generative Designer
+        const generativeProjectNames = {
+            'halloween_disco': 'Halloween Disco',
+            'rooftop_party': 'Rooftop Party'
+        };
+        
+        // Project names for Product Designer (with correct capitalization)
+        const productProjectNames = {
+            '001_mypay_dial': 'MyPay Dial'
+        };
 
         let currentProject = null;
         let isDragging = false;
@@ -301,17 +315,21 @@
                     return firstLine;
                 }
             }
-            // Fallback to formatted folder name
-            return projectId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            // Fallback to formatted folder name - remove leading numbers and underscores
+            let formatted = projectId.replace(/^\d+_/, ''); // Remove leading numbers and underscore
+            formatted = formatted.replace(/_/g, ' '); // Replace underscores with spaces
+            formatted = formatted.replace(/\b\w/g, l => l.toUpperCase()); // Capitalize first letter of each word
+            return formatted;
         };
 
-        const formatProjectDescription = (text, projectName) => {
+        const formatProjectDescription = (text, projectName, discipline) => {
             const lines = text.split('\n').filter(line => line.trim());
             let summary = '';
             let sectionsHTML = '';
             let currentSection = null;
             let currentContent = [];
             let isFirstLine = true;
+            let hasSectionHeaders = false;
 
             const sectionMap = {
                 'Challenge': 'challenge',
@@ -323,6 +341,15 @@
                 'Collaborators': 'collaborators',
                 'Goals': 'goals'
             };
+
+            // First pass: check if there are section headers
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (Object.keys(sectionMap).some(key => trimmed === key)) {
+                    hasSectionHeaders = true;
+                    break;
+                }
+            }
 
             const closeSection = () => {
                 if (currentSection && currentContent.length > 0) {
@@ -337,37 +364,67 @@
                 }
             };
 
-            for (const line of lines) {
-                const trimmed = line.trim();
-                if (!trimmed) continue;
-
-                // First line is the summary
-                if (isFirstLine) {
-                    summary = trimmed;
-                    isFirstLine = false;
-                    continue;
+            // For Immersion Designer: first line is title (skip), second line is subtext (summary)
+            if (discipline === 'Immersion Designer' && !hasSectionHeaders) {
+                if (lines.length > 1) {
+                    summary = lines[1].trim(); // Second line is subtext
+                } else if (lines.length > 0) {
+                    summary = lines[0].trim(); // Fallback to first line if only one line
                 }
-
-                // Check if this is a section header
-                const isSectionHeader = Object.keys(sectionMap).some(key => trimmed === key);
-                
-                if (isSectionHeader) {
-                    closeSection();
-                    currentSection = sectionMap[trimmed];
-                } else if (currentSection) {
-                    // Check if it's a bullet point
-                    if (trimmed.startsWith('•')) {
-                        currentContent.push(`<p class="description-bullet">${trimmed.substring(1).trim()}</p>`);
+                // No sections for Immersion Designer simple format
+            }
+            // If no section headers, treat all content after first line as simple description
+            else if (!hasSectionHeaders) {
+                for (let i = 0; i < lines.length; i++) {
+                    const trimmed = lines[i].trim();
+                    if (i === 0) {
+                        summary = trimmed;
                     } else {
                         currentContent.push(`<p class="description-paragraph">${trimmed}</p>`);
                     }
                 }
+                if (currentContent.length > 0) {
+                    sectionsHTML = `<div class="modal-project-description-wrapper"><div class="modal-project-description"><div class="description-section">${currentContent.join('')}</div></div></div>`;
+                }
+            } else {
+                // Original logic for structured descriptions
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed) continue;
+
+                    // First line is the summary
+                    if (isFirstLine) {
+                        summary = trimmed;
+                        isFirstLine = false;
+                        continue;
+                    }
+
+                    // Check if this is a section header
+                    const isSectionHeader = Object.keys(sectionMap).some(key => trimmed === key);
+                    
+                    if (isSectionHeader) {
+                        closeSection();
+                        currentSection = sectionMap[trimmed];
+                    } else if (currentSection) {
+                        // Check if it's a bullet point
+                        if (trimmed.startsWith('•')) {
+                            currentContent.push(`<p class="description-bullet">${trimmed.substring(1).trim()}</p>`);
+                        } else {
+                            currentContent.push(`<p class="description-paragraph">${trimmed}</p>`);
+                        }
+                    }
+                }
+                closeSection();
+                
+                // Wrap sections in carousel container
+                if (sectionsHTML) {
+                    sectionsHTML = `<div class="modal-project-description-wrapper"><div class="modal-project-description">${sectionsHTML}</div></div>`;
+                }
             }
 
-            closeSection();
             return {
                 summary: summary ? `<div class="modal-project-summary">${summary}</div>` : '',
-                sections: sectionsHTML ? `<div class="modal-project-description-wrapper"><div class="modal-project-description">${sectionsHTML}</div></div>` : ''
+                sections: sectionsHTML ? sectionsHTML : ''
             };
         };
 
@@ -383,7 +440,8 @@
             try {
                 const images = await loadProjectImages(projectId, discipline);
                 
-                if (images.length === 0) {
+                // For Immersion Designer, allow modal to open even with no images (they might have videos)
+                if (images.length === 0 && discipline !== 'Immersion Designer') {
                     modalContentArea.innerHTML = `
                         <div class="modal-error">
                             <h3>No images available</h3>
@@ -391,31 +449,76 @@
                         </div>
                     `;
                     const projectText = await loadProjectText(projectId, discipline);
-                    const projectName = getProjectName(projectId, projectText);
+                    let projectName = getProjectName(projectId, projectText);
+                    
                     if (headerTitle) {
                         headerTitle.textContent = projectName;
                     }
                     isLoading = false;
                     return;
                 }
-
+                
                 const projectText = await loadProjectText(projectId, discipline);
-                const projectName = getProjectName(projectId, projectText);
+                let projectName = getProjectName(projectId, projectText);
+                
+                // For Immersion Designer, extract title from first line of description
+                if (discipline === 'Immersion Designer' && projectText) {
+                    const lines = projectText.split('\n').filter(line => line.trim());
+                    if (lines.length > 0) {
+                        projectName = lines[0].trim();
+                    }
+                }
+                
                 if (headerTitle) {
                     headerTitle.textContent = projectName;
                 }
-                const imagesHTML = images.map(img => 
+                
+                // Create images HTML - empty if no images (for Immersion Designer projects with only videos)
+                let imagesHTML = images.length > 0 ? images.map(img => 
                     `<img src="${img}" alt="${projectName}" class="modal-project-image" loading="lazy">`
-                ).join('');
+                ).join('') : '';
 
                 let contentHTML = '';
-                if (projectText) {
-                    const description = formatProjectDescription(projectText, projectName);
+                
+                // For Immersion Designer, add description at the very top
+                if (projectText && discipline === 'Immersion Designer') {
+                    const description = formatProjectDescription(projectText, projectName, discipline);
                     contentHTML += description.summary;
                 }
+                
+                // Add videos for Immersion Designer projects that have videos
+                if (discipline === 'Immersion Designer') {
+                    const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
+                    // Only add video_001.mp4 (most projects have just one video)
+                    const videoPath = `${projectPath}assets/video_001.mp4`;
+                    contentHTML += `<div class="modal-video-container">
+                        <video width="100%" height="auto" controls autoplay muted loop>
+                            <source src="${videoPath}" type="video/mp4">
+                        </video>
+                    </div>`;
+                }
+                
+                // For non-Immersion Designer, add summary after videos
+                if (projectText && discipline !== 'Immersion Designer') {
+                    const description = formatProjectDescription(projectText, projectName, discipline);
+                    contentHTML += description.summary;
+                }
+                
                 contentHTML += `<div class="modal-project-gallery">${imagesHTML}</div>`;
+                
+                // Add Vimeo videos for Desen project at bottom of image grid
+                if (projectId === '013_desen' || projectId.includes('desen')) {
+                    console.log('Adding videos for Desen project:', projectId);
+                    contentHTML += `<div class="modal-video-container">
+                        <iframe src="https://player.vimeo.com/video/810272827?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1276" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="DesenGQ"></iframe>
+                    </div>
+                    <div class="modal-video-container modal-video-4-3">
+                        <iframe src="https://player.vimeo.com/video/810260456?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="2560" height="1920" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Desen Super8_Dile Benden"></iframe>
+                    </div>`;
+                }
+                
                 if (projectText) {
-                    const description = formatProjectDescription(projectText, projectName);
+                    const description = formatProjectDescription(projectText, projectName, discipline);
                     contentHTML += description.sections;
                 }
                 contentHTML += `<div class="description-navigation">
@@ -493,80 +596,284 @@
 
         const loadProjectsGrid = async (discipline) => {
             const manifest = await loadManifest(discipline);
-            const projects = Object.keys(manifest).sort();
+            let projects = Object.keys(manifest).filter(key => key !== 'loose_assets');
+            
+            // Custom sort order for Product Designer
+            if (discipline === 'Product Designer') {
+                const customOrder = [
+                    '001_mypay_dial',
+                    '005_instant_ask',
+                    '003_verizon_assistant',
+                    '006_creator_tool',
+                    '004_seismic_alarm',
+                    '002_roon_design_system',
+                    '007_moments',
+                    '012_watchface',
+                    '008_multi_condition',
+                    '010_verizon_data_visualization',
+                    '011_verizon_design_system'
+                ];
+                // Sort projects according to custom order, then alphabetically for any not in the list
+                projects = projects.sort((a, b) => {
+                    const indexA = customOrder.indexOf(a);
+                    const indexB = customOrder.indexOf(b);
+                    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                    if (indexA !== -1) return -1;
+                    if (indexB !== -1) return 1;
+                    return a.localeCompare(b);
+                });
+            } else {
+                projects = projects.sort();
+            }
             
             if (!projectsGrid) return;
             
             projectsGrid.innerHTML = '';
             
-            projects.forEach((projectId, index) => {
-                const thumbnailPath = findThumbnail(projectId);
-                const itemNumber = index + 1;
-                const spanClasses = getSpanClasses(projectId, itemNumber);
+            // For Illustrator, display assets in single column (no modals)
+            if (discipline === 'Illustrator') {
+                const illustratorAssets = manifest['illustrator_assets'] || [];
+                const basePath = getBaseProjectPath(discipline);
                 
-                const gridItem = document.createElement('div');
-                gridItem.className = `grid-item item-${itemNumber} ${spanClasses}`;
-                gridItem.setAttribute('data-project', projectId);
-                gridItem.style.cursor = 'pointer';
-                
-                const img = document.createElement('img');
-                img.src = thumbnailPath;
-                img.alt = projectId.replace(/_/g, ' ');
-                img.className = 'grid-image';
-                
-                // Try alternative thumbnail paths, then use first asset as fallback
-                img.onerror = function() {
-                    const altPaths = [
-                        `${thumbnailsPath}${projectId}_thumbnail.png`,
-                        `${getBaseProjectPath(discipline)}${projectId}/thumbnail.png`
-                    ];
+                illustratorAssets.forEach((assetFilename, index) => {
+                    const gridItem = document.createElement('div');
+                    gridItem.className = 'grid-item illustrator-item';
                     
-                    // Try alternative paths first
-                    let altIndex = 0;
-                    const tryNextAlt = () => {
-                        if (altIndex < altPaths.length) {
-                            this.src = altPaths[altIndex++];
-                        } else {
-                            // If no thumbnail found, use first asset from project as fallback
-                            const projectAssets = manifest[projectId] || [];
-                            if (projectAssets.length > 0) {
-                                const firstAsset = projectAssets[0];
-                                const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
-                                if (firstAsset.startsWith('assets/')) {
-                                    const pathParts = firstAsset.split('/');
-                                    const encodedParts = pathParts.map(part => encodeURIComponent(part));
-                                    this.src = `${projectPath}${encodedParts.join('/')}`;
-                                } else {
-                                    this.src = `${projectPath}assets/${encodeURIComponent(firstAsset)}`;
-                                }
-                            } else {
-                                // No assets at all, hide the image
-                                this.style.display = 'none';
-                            }
+                    const img = document.createElement('img');
+                    // Assets are directly in the Illustrator folder, not in assets subfolder
+                    // Construct path: basePath already includes encoded discipline name and trailing slash
+                    const imagePath = `${basePath}${assetFilename}`;
+                    img.src = imagePath;
+                    img.alt = `Illustration ${index + 1}`;
+                    img.className = 'grid-image';
+                    
+                    // Add error handling with retry logic for connection issues
+                    let retryCount = 0;
+                    const maxRetries = 2;
+                    img.onerror = function() {
+                        retryCount++;
+                        console.error(`Failed to load Illustrator image: ${imagePath} (attempt ${retryCount}/${maxRetries + 1})`);
+                        if (retryCount <= maxRetries) {
+                            // Retry with cache-busting parameter
+                            this.src = `${imagePath}?retry=${retryCount}&t=${Date.now()}`;
                         }
                     };
                     
-                    // Remove the current error handler and set up the next attempt
-                    this.onerror = tryNextAlt;
-                    tryNextAlt();
-                };
+                    gridItem.appendChild(img);
+                    // No click handler - modals disabled for Illustrator
+                    projectsGrid.appendChild(gridItem);
+                });
+            }
+            // For Painter, display assets in single column (no modals) - similar to Illustrator
+            else if (discipline === 'Painter') {
+                const painterAssets = manifest['painter_assets'] || [];
+                const basePath = getBaseProjectPath(discipline);
                 
-                gridItem.appendChild(img);
+                painterAssets.forEach((assetFilename, index) => {
+                    const gridItem = document.createElement('div');
+                    gridItem.className = 'grid-item painter-item';
+                    
+                    const img = document.createElement('img');
+                    // Assets are directly in the Painter folder, not in assets subfolder
+                    const imagePath = `${basePath}${assetFilename}`;
+                    img.src = imagePath;
+                    img.alt = `Painting ${index + 1}`;
+                    img.className = 'grid-image';
+                    
+                    gridItem.appendChild(img);
+                    // No click handler - modals disabled for Painter
+                    projectsGrid.appendChild(gridItem);
+                });
+            }
+            // For Brand Designer, display assets in single column (no modals)
+            else if (discipline === 'Brand Designer') {
+                const brandDesignerAssets = manifest['brand_designer_assets'] || [];
+                const basePath = getBaseProjectPath(discipline);
                 
-                gridItem.addEventListener('click', () => {
-                    openModal(projectId, discipline);
+                // Display images first
+                brandDesignerAssets.forEach((assetFilename, index) => {
+                    const gridItem = document.createElement('div');
+                    gridItem.className = 'grid-item brand-designer-item';
+                    
+                    const img = document.createElement('img');
+                    // Assets are directly in the Brand Designer folder, not in assets subfolder
+                    img.src = `${basePath}${encodeURIComponent(assetFilename)}`;
+                    img.alt = `Brand Design ${index + 1}`;
+                    img.className = 'grid-image';
+                    
+                    gridItem.appendChild(img);
+                    // No click handler - modals disabled for Brand Designer
+                    projectsGrid.appendChild(gridItem);
                 });
                 
-                projectsGrid.appendChild(gridItem);
-            });
+                // Add videos at the end of the grid
+                const videos = ['video_001.mp4', 'video_002.mp4'];
+                videos.forEach((videoFilename) => {
+                    const videoItem = document.createElement('div');
+                    videoItem.className = 'grid-item brand-designer-item brand-designer-video';
+                    const videoPath = `${basePath}${encodeURIComponent(videoFilename)}`;
+                    videoItem.innerHTML = `<div class="modal-video-container">
+                        <video width="100%" height="auto" controls autoplay muted loop>
+                            <source src="${videoPath}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>`;
+                    projectsGrid.appendChild(videoItem);
+                });
+            }
+            // For Generative Designer, use simple text tiles with outlines
+            else if (discipline === 'Generative Designer') {
+                projects.forEach((projectId, index) => {
+                    const projectName = getProjectName(projectId, null) || projectId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    
+                    const tileItem = document.createElement('div');
+                    tileItem.className = 'generative-tile';
+                    tileItem.setAttribute('data-project', projectId);
+                    tileItem.style.cursor = 'pointer';
+                    
+                    // Random positioning for organic feel
+                    const randomX = Math.random() * 20 - 10; // -10% to +10%
+                    const randomY = Math.random() * 15 - 7.5; // -7.5% to +7.5%
+                    const randomRotate = Math.random() * 4 - 2; // -2deg to +2deg
+                    tileItem.style.setProperty('--random-x', `${randomX}%`);
+                    tileItem.style.setProperty('--random-y', `${randomY}%`);
+                    tileItem.style.setProperty('--random-rotate', `${randomRotate}deg`);
+                    tileItem.style.transform = `translate(${randomX}%, ${randomY}%) rotate(${randomRotate}deg)`;
+                    
+                    const label = document.createElement('div');
+                    label.className = 'generative-tile-label';
+                    label.textContent = projectName;
+                    
+                    tileItem.appendChild(label);
+                    
+                    tileItem.addEventListener('click', () => {
+                        window.location.href = `/generative_design/${projectId}/`;
+                    });
+                    
+                    projectsGrid.appendChild(tileItem);
+                });
+            } else {
+                // Regular grid layout for other disciplines
+                projects.forEach((projectId, index) => {
+                    const itemNumber = index + 1;
+                    const spanClasses = getSpanClasses(projectId, itemNumber);
+                    
+                    const gridItem = document.createElement('div');
+                    gridItem.className = `grid-item item-${itemNumber} ${spanClasses}`;
+                    gridItem.setAttribute('data-project', projectId);
+                    // Set cursor based on discipline
+                    if (discipline !== 'Painter' && discipline !== 'Illustrator' && discipline !== 'Brand Designer') {
+                        gridItem.style.cursor = 'pointer';
+                    } else {
+                        gridItem.style.cursor = 'default';
+                    }
+                    
+                    const img = document.createElement('img');
+                    const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
+                    
+                    // For Immersion Designer, prioritize thumbnail from assets folder
+                    if (discipline === 'Immersion Designer') {
+                        img.src = `${projectPath}assets/thumbnail.png`;
+                    } else {
+                        // Prioritize thumbnail.png in project folder first
+                        img.src = `${projectPath}thumbnail.png`;
+                    }
+                    img.alt = projectId.replace(/_/g, ' ');
+                    img.className = 'grid-image';
+                    
+                    // Try alternative thumbnail paths, then use first asset as fallback
+                    img.onerror = function() {
+                        const altPaths = [
+                            // Try project-specific thumbnail names
+                            `${projectPath}${projectId}_thumbnail.png`,
+                            // Try common thumbnail variations in project folder
+                            `${projectPath}assets/thumbnail.png`,
+                            `${projectPath}assets/thumbnail.jpg`,
+                            `${projectPath}assets/thumbnail.gif`,
+                            // Try old thumbnails path
+                            `${thumbnailsPath}${projectId}_thumbnail.png`,
+                            `${thumbnailsPath}${projectId}.png`,
+                            `${thumbnailsPath}thumbnail_${projectId}.png`
+                        ];
+                        
+                        // Try alternative paths first
+                        let altIndex = 0;
+                        const tryNextAlt = () => {
+                            if (altIndex < altPaths.length) {
+                                this.src = altPaths[altIndex++];
+                            } else {
+                                // If no thumbnail found, use first asset from project as fallback
+                                const projectAssets = manifest[projectId] || [];
+                                if (projectAssets.length > 0) {
+                                    const firstAsset = projectAssets[0];
+                                    if (firstAsset.startsWith('assets/')) {
+                                        const pathParts = firstAsset.split('/');
+                                        const encodedParts = pathParts.map(part => encodeURIComponent(part));
+                                        this.src = `${projectPath}${encodedParts.join('/')}`;
+                                    } else {
+                                        this.src = `${projectPath}assets/${encodeURIComponent(firstAsset)}`;
+                                    }
+                                } else {
+                                    // No assets at all, but still show thumbnail if it exists
+                                    // Don't hide - project might have videos only
+                                }
+                            }
+                        };
+                        
+                        // Remove the current error handler and set up the next attempt
+                        this.onerror = tryNextAlt;
+                        tryNextAlt();
+                    };
+                    
+                    gridItem.appendChild(img);
+                    
+                    // Skip modal for Painter, Illustrator, and Brand Designer
+                    if (discipline !== 'Painter' && discipline !== 'Illustrator' && discipline !== 'Brand Designer') {
+                        gridItem.addEventListener('click', () => {
+                            openModal(projectId, discipline);
+                        });
+                    }
+                    
+                    projectsGrid.appendChild(gridItem);
+                });
+                
+                // Add loose assets at the end for Product Designer (non-clickable)
+                if (discipline === 'Product Designer') {
+                    const basePath = getBaseProjectPath(discipline);
+                    const looseAssets = manifest['loose_assets'] || [];
+                    
+                    looseAssets.forEach((assetFilename) => {
+                        const gridItem = document.createElement('div');
+                        gridItem.className = 'grid-item';
+                        gridItem.style.cursor = 'default';
+                        gridItem.style.pointerEvents = 'none'; // Make completely non-interactive
+                        // Don't set data-project attribute - these are not projects
+                        
+                        const img = document.createElement('img');
+                        img.src = `${basePath}${encodeURIComponent(assetFilename)}`;
+                        img.alt = assetFilename.replace(/_/g, ' ');
+                        img.className = 'grid-image';
+                        img.style.pointerEvents = 'none'; // Also disable on image
+                        
+                        // Only append if image loads successfully (skip missing files)
+                        img.onerror = function() {
+                            gridItem.remove();
+                        };
+                        
+                        gridItem.appendChild(img);
+                        projectsGrid.appendChild(gridItem);
+                    });
+                }
+            }
         };
 
         const getSpanClasses = (projectId, index) => {
             // Preserve existing span classes for known projects
             const spanMap = {
-                '005_roon_design_system': 'span-2',
+                '002_roon_design_system': 'span-2',
                 '007_moments': 'span-2',
                 '010_verizon_data_visualization': 'span-2',
+                '012_watchface': 'span-1',
                 '013_desen': 'span-2'
             };
             return spanMap[projectId] || '';
@@ -577,6 +884,15 @@
             currentDisciplineManifest = null; // Reset manifest cache
             projectNames = {}; // Reset project names
             
+            // Load Generative Designer project names
+            if (newDiscipline === 'Generative Designer') {
+                Object.assign(projectNames, generativeProjectNames);
+            }
+            // Load Product Designer project names
+            if (newDiscipline === 'Product Designer') {
+                Object.assign(projectNames, productProjectNames);
+            }
+            
             if (disciplineTitle) {
                 disciplineTitle.textContent = newDiscipline;
             }
@@ -585,6 +901,14 @@
             document.body.className = '';
             if (newDiscipline === 'Painter') {
                 document.body.classList.add('discipline-painter');
+            } else if (newDiscipline === 'Generative Designer') {
+                document.body.classList.add('discipline-generative');
+            } else if (newDiscipline === 'Illustrator') {
+                document.body.classList.add('discipline-illustrator');
+            } else if (newDiscipline === 'Brand Designer') {
+                document.body.classList.add('discipline-brand-designer');
+            } else if (newDiscipline === 'Immersion Designer') {
+                document.body.classList.add('discipline-immersion-designer');
             }
             
             setDisciplineInURL(newDiscipline);
@@ -767,9 +1091,26 @@
                 disciplineTitle.textContent = currentDiscipline;
             }
             
+            // Load Generative Designer project names
+            if (currentDiscipline === 'Generative Designer') {
+                Object.assign(projectNames, generativeProjectNames);
+            }
+            // Load Product Designer project names
+            if (currentDiscipline === 'Product Designer') {
+                Object.assign(projectNames, productProjectNames);
+            }
+            
             // Set initial body class for discipline-specific styling
             if (currentDiscipline === 'Painter') {
                 document.body.classList.add('discipline-painter');
+            } else if (currentDiscipline === 'Generative Designer') {
+                document.body.classList.add('discipline-generative');
+            } else if (currentDiscipline === 'Illustrator') {
+                document.body.classList.add('discipline-illustrator');
+            } else if (currentDiscipline === 'Brand Designer') {
+                document.body.classList.add('discipline-brand-designer');
+            } else if (currentDiscipline === 'Immersion Designer') {
+                document.body.classList.add('discipline-immersion-designer');
             }
             
             // Load projects grid for current discipline
