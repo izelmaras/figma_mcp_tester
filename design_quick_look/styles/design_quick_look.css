@@ -18,6 +18,7 @@
     --color-background: #ffffff;
     --color-text: #000000;
     --color-about-bg: #D3FF8D;
+    --color-nda-bg: #FFEE8D;
     --color-painter-bg: #E1E1E1;
 }
 
@@ -43,6 +44,11 @@ body {
 /* About page background */
 body.about-page {
     background: var(--color-about-bg);
+}
+
+/* NDA page background */
+body.nda-page {
+    background: var(--color-nda-bg);
 }
 
 
@@ -195,6 +201,21 @@ body.discipline-painter .grid-image {
 
 .back-link:hover .back-arrow {
     opacity: 1;
+}
+
+.home-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.home-link p {
+    margin: 0;
+    padding: 0;
+}
+
+.page-content iframe {
+    max-width: 100%;
+    border-radius: 12px;
 }
 
 .top-right {
