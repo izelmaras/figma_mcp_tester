@@ -241,7 +241,7 @@
 
         const loadProjectImages = async (projectId, discipline) => {
             const manifest = await loadManifest(discipline);
-            const projectPath = `${getBaseProjectPath(discipline)}${projectId}/`;
+            const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
             const imageFiles = manifest[projectId] || [];
             
             return imageFiles
@@ -254,9 +254,12 @@
                 .map(filename => {
                     // Handle both old format (filename) and new format (assets/filename)
                     if (filename.startsWith('assets/')) {
-                        return `${projectPath}${filename}`;
+                        // URL encode the assets path components
+                        const pathParts = filename.split('/');
+                        const encodedParts = pathParts.map(part => encodeURIComponent(part));
+                        return `${projectPath}${encodedParts.join('/')}`;
                     } else {
-                        return `${projectPath}assets/${filename}`;
+                        return `${projectPath}assets/${encodeURIComponent(filename)}`;
                     }
                 })
                 .sort();
