@@ -16,10 +16,10 @@ THUMBNAILS_DIR = ASSETS_DIR / 'thubnails'
 
 # List of disciplines
 DISCIPLINES = [
-    'Product Designer',
+    'Generative Designer',
     'Brand Designer',
     'Illustrator',
-    'Generative Designer',
+    'Product Designer',
     'Painter',
     'Immersion Designer'
 ]

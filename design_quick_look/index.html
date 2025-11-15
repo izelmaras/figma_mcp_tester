@@ -28,7 +28,7 @@
                     </a>
                 </div>
         <div class="top-right">
-            <span class="discipline-title" id="discipline-title">Product Designer</span>
+            <span class="discipline-title" id="discipline-title">Generative Designer</span>
             <button class="discipline-toggle" id="discipline-toggle" aria-label="Change discipline">
                 <img src="/design_quick_look/assets/icons/Material icons/ic_chevron_right_48px.svg" alt="" class="discipline-caret">
             </button>
@@ -38,10 +38,10 @@
     <!-- Discipline Selector Dialog -->
     <div id="discipline-dialog" class="discipline-dialog">
         <div class="discipline-dialog-content">
-            <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
+            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
             <button class="discipline-option" data-discipline="Brand Designer">Brand Designer</button>
             <button class="discipline-option" data-discipline="Illustrator">Illustrator</button>
-            <button class="discipline-option" data-discipline="Generative Designer">Generative Designer</button>
+            <button class="discipline-option" data-discipline="Product Designer">Product Designer</button>
             <button class="discipline-option" data-discipline="Painter">Painter</button>
             <button class="discipline-option" data-discipline="Immersion Designer">Immersion Designer</button>
         </div>
@@ -99,16 +99,16 @@
         const baseProjectsPath = '/design_quick_look/assets/projects/';
         const thumbnailsPath = '/design_quick_look/assets/thubnails/';
 
-        // Get discipline from URL or default to "Product Designer"
+        // Get discipline from URL or default to "Generative Designer"
         const getCurrentDiscipline = () => {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('discipline') || 'Product Designer';
+            return urlParams.get('discipline') || 'Generative Designer';
         };
 
         // Set discipline in URL
         const setDisciplineInURL = (discipline) => {
             const url = new URL(window.location.href);
-            if (discipline === 'Product Designer') {
+            if (discipline === 'Generative Designer') {
                 url.searchParams.delete('discipline');
             } else {
                 url.searchParams.set('discipline', discipline);
@@ -145,7 +145,7 @@
             }
             
             // Ensure discipline is in URL
-            if (currentDiscipline !== 'Product Designer') {
+            if (currentDiscipline !== 'Generative Designer') {
                 url.searchParams.set('discipline', currentDiscipline);
             }
 
@@ -670,7 +670,7 @@
         window.addEventListener('popstate', async (event) => {
             const urlParams = new URLSearchParams(window.location.search);
             const project = urlParams.get('project');
-            const discipline = urlParams.get('discipline') || 'Product Designer';
+            const discipline = urlParams.get('discipline') || 'Generative Designer';
             
             if (discipline !== currentDiscipline) {
                 await switchDiscipline(discipline);
