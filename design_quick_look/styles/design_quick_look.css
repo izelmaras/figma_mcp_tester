@@ -52,7 +52,7 @@ body.discipline-painter .grid {
 }
 
 body.discipline-painter .grid-container {
-    padding-top: 40px;
+    padding-top: 0;
 }
 
 body.discipline-painter .grid-item {
