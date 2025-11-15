@@ -136,8 +136,16 @@ body.discipline-brand-designer .brand-designer-video .modal-video-container {
         padding: 40px 20px;
     }
     
+    body.discipline-illustrator .grid {
+        gap: 16px;
+    }
+    
     body.discipline-brand-designer .grid-container {
         padding: 40px 20px;
+    }
+    
+    body.discipline-brand-designer .grid {
+        gap: 16px;
     }
 }
 
@@ -308,21 +316,29 @@ body.discipline-brand-designer .page-container {
     justify-content: space-between;
     align-items: center;
     padding: 40px;
+    padding-top: calc(40px + env(safe-area-inset-top));
+    padding-left: calc(40px + env(safe-area-inset-left));
+    padding-right: calc(40px + env(safe-area-inset-right));
     font-size: 84px;
     background: none;
     z-index: 2000;
-    height: 136px;
+    min-height: 136px;
+    height: auto;
     line-height: 1;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .top-left {
-    white-space: pre;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 12px;
     line-height: 1;
     height: auto;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .top-left p {
@@ -416,6 +432,14 @@ body.discipline-brand-designer .page-container {
     color: var(--color-text);
 }
 
+@media (max-width: 768px) {
+    .about-text {
+        font-size: 20px;
+        max-width: 100%;
+        padding: 0 30px;
+    }
+}
+
 .desen-link {
     color: var(--color-text);
     text-decoration: underline;
@@ -431,10 +455,12 @@ body.discipline-brand-designer .page-container {
     align-items: center;
     gap: 12px;
     text-align: right;
-    white-space: pre;
+    white-space: nowrap;
     line-height: 1;
     height: auto;
     min-height: 76px;
+    flex-shrink: 0;
+    overflow: visible;
 }
 
 .discipline-title {
@@ -548,6 +574,9 @@ body.discipline-brand-designer .page-container {
     left: 0;
     right: 0;
     padding: 40px;
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+    padding-left: calc(40px + env(safe-area-inset-left));
+    padding-right: calc(40px + env(safe-area-inset-right));
     font-size: 84px;
     background: none;
     z-index: 2000;
@@ -704,16 +733,55 @@ body.discipline-brand-designer .page-container {
         font-size: 25.6px;
         padding: 30px;
     }
+    
+    .bottom-nav {
+        padding-bottom: calc(30px + env(safe-area-inset-bottom));
+        padding-left: calc(30px + env(safe-area-inset-left));
+        padding-right: calc(30px + env(safe-area-inset-right));
+    }
 
     .top-nav {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+        padding-top: calc(20px + env(safe-area-inset-top));
+        padding-left: calc(30px + env(safe-area-inset-left));
+        padding-right: calc(30px + env(safe-area-inset-right));
+        min-height: auto;
+    }
+    
+    body.about-page .top-nav {
+        gap: 0px;
+    }
+    
+    body.about-page .top-right {
+        margin-top: -15px;
+    }
+    
+    /* Normalize page container top padding for all pages on mobile */
+    .page-container {
+        padding-top: 180px !important;
+    }
+
+    .top-left {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .top-left p {
+        height: auto;
     }
 
     .top-right {
-        text-align: right;
+        text-align: left;
         gap: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        overflow: visible;
+        width: 100%;
+        justify-content: flex-start;
+        min-height: auto;
     }
 
     .discipline-caret {
@@ -732,8 +800,8 @@ body.discipline-brand-designer .page-container {
     }
 
     .discipline-dialog {
-        top: 80px;
-        right: 30px;
+        top: calc(80px + env(safe-area-inset-top));
+        right: calc(30px + env(safe-area-inset-right));
         min-width: 200px;
     }
 
@@ -744,18 +812,18 @@ body.discipline-brand-designer .page-container {
 
     .page-container {
         padding-bottom: 120px;
+        padding-top: 120px !important;
     }
     
     body.discipline-generative .page-container,
     body.discipline-immersion-designer .page-container,
-    body:not(.discipline-illustrator):not(.discipline-brand-designer) .page-container {
-        padding-top: 140px;
+    body:not(.discipline-illustrator):not(.discipline-brand-designer):not(.discipline-painter):not(.about-page) .page-container {
+        padding-top: 160px !important;
     }
     
-    body.discipline-painter .page-container,
-    body.discipline-illustrator .page-container,
-    body.discipline-brand-designer .page-container {
-        padding-top: 0;
+    body.about-page .page-container,
+    body.discipline-painter .page-container {
+        padding-top: 200px !important;
     }
 
     .bottom-nav {
@@ -765,6 +833,10 @@ body.discipline-brand-designer .page-container {
     .grid-container {
         padding: 0 20px 40px 20px;
     }
+    
+    body.discipline-painter .grid-container {
+        padding: 0 20px 40px 10px;
+    }
 
     .header {
         margin-bottom: 48px;
@@ -772,7 +844,22 @@ body.discipline-brand-designer .page-container {
 
     .grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        gap: 16px;
+    }
+    
+    body.discipline-illustrator .grid,
+    body.discipline-brand-designer .grid,
+    body.discipline-immersion-designer .grid {
+        gap: 16px;
+    }
+    
+    body.discipline-painter .grid {
+        gap: 300px;
+        max-width: 100%;
+    }
+    
+    body.discipline-painter .grid-image {
+        width: 80%;
     }
 
     .grid-item {
@@ -824,32 +911,81 @@ body.discipline-brand-designer .page-container {
         font-size: 32px;
         padding: 30px;
     }
+    
+    .bottom-nav {
+        padding-bottom: calc(30px + env(safe-area-inset-bottom));
+        padding-left: calc(30px + env(safe-area-inset-left));
+        padding-right: calc(30px + env(safe-area-inset-right));
+    }
 
     .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+        padding-top: calc(20px + env(safe-area-inset-top));
+        padding-left: calc(30px + env(safe-area-inset-left));
+        padding-right: calc(30px + env(safe-area-inset-right));
+        min-height: auto;
+    }
+    
+    body.about-page .top-nav {
+        gap: 0px;
+    }
+    
+    body.about-page .top-right {
+        margin-top: -15px;
+    }
+    
+    /* Normalize page container top padding for all pages on mobile */
+    .page-container {
+        padding-top: 180px !important;
+    }
+
+    .top-left {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .top-left p {
+        height: auto;
+    }
+
+    .top-right {
+        text-align: left;
+        gap: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        overflow: visible;
+        width: 100%;
+        justify-content: flex-start;
+        min-height: auto;
     }
 
     .page-container {
         padding-bottom: 100px;
+        padding-top: 120px !important;
     }
     
     body.discipline-generative .page-container,
     body.discipline-immersion-designer .page-container,
-    body:not(.discipline-illustrator):not(.discipline-brand-designer) .page-container {
-        padding-top: 120px;
+    body:not(.discipline-illustrator):not(.discipline-brand-designer):not(.discipline-painter):not(.about-page) .page-container {
+        padding-top: 160px !important;
     }
     
-    body.discipline-painter .page-container,
-    body.discipline-illustrator .page-container,
-    body.discipline-brand-designer .page-container {
-        padding-top: 0;
+    body.about-page .page-container,
+    body.discipline-painter .page-container {
+        padding-top: 200px !important;
     }
 
     .bottom-nav {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+    }
+    
+    body.discipline-painter .grid-container {
+        padding: 0 20px 40px 10px;
     }
 
     .modal-body {
