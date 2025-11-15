@@ -251,7 +251,14 @@
                     const isThumbnail = filename.toLowerCase().includes('thumbnail');
                     return isImage && !isThumbnail;
                 })
-                .map(filename => `${projectPath}${filename}`)
+                .map(filename => {
+                    // Handle both old format (filename) and new format (assets/filename)
+                    if (filename.startsWith('assets/')) {
+                        return `${projectPath}${filename}`;
+                    } else {
+                        return `${projectPath}assets/${filename}`;
+                    }
+                })
                 .sort();
         };
 

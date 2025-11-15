@@ -27,10 +27,21 @@ DISCIPLINES = [
 def get_project_images(project_dir):
     """Get all image files from a project directory, excluding thumbnails."""
     images = []
-    for file in sorted(project_dir.iterdir()):
-        if file.is_file() and file.suffix.lower() in ['.png', '.jpg', '.jpeg', '.gif', '.webp']:
-            if 'thumbnail' not in file.name.lower():
-                images.append(file.name)
+    assets_dir = project_dir / 'assets'
+    
+    # Check if assets folder exists (new structure)
+    if assets_dir.exists() and assets_dir.is_dir():
+        for file in sorted(assets_dir.iterdir()):
+            if file.is_file() and file.suffix.lower() in ['.png', '.jpg', '.jpeg', '.gif', '.webp']:
+                if 'thumbnail' not in file.name.lower():
+                    images.append(f"assets/{file.name}")
+    else:
+        # Fallback to old structure (files in project root)
+        for file in sorted(project_dir.iterdir()):
+            if file.is_file() and file.suffix.lower() in ['.png', '.jpg', '.jpeg', '.gif', '.webp']:
+                if 'thumbnail' not in file.name.lower():
+                    images.append(file.name)
+    
     return images
 
 def update_manifest_for_discipline(discipline):
