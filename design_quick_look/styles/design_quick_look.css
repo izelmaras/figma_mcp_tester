@@ -37,6 +37,11 @@ body.about-page {
     background: #F37957;
 }
 
+body.about-page .page-container {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
 .resume-link-page {
     font-size: inherit;
     letter-spacing: inherit;
