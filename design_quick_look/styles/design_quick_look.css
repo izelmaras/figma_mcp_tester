@@ -43,7 +43,7 @@ body.about-page .page-container {
 }
 
 .resume-link-page {
-    font-size: 84px;
+    font-size: inherit;
     letter-spacing: inherit;
     line-height: 1;
     color: inherit;
@@ -52,7 +52,7 @@ body.about-page .page-container {
     margin: 0;
     padding: 0;
     display: inline-block;
-    height: auto;
+    height: 76px;
     align-self: flex-start;
 }
 
