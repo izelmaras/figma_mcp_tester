@@ -168,6 +168,35 @@ body.discipline-painter .grid-image {
     opacity: 1;
 }
 
+.back-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    margin-right: 12px;
+}
+
+.back-link:hover {
+    transform: scale(1.1);
+}
+
+.back-arrow {
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    filter: brightness(0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.back-link:hover .back-arrow {
+    opacity: 1;
+}
+
 .top-right {
     display: flex;
     align-items: center;
