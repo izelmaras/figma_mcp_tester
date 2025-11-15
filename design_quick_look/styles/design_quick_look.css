@@ -32,6 +32,15 @@ body {
     position: relative;
 }
 
+/* Painter discipline background */
+body.discipline-painter {
+    background-image: url('/design_quick_look/assets/projects/Painter/painter_background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 /* Page Container */
 .page-container {
     position: relative;

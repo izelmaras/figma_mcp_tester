@@ -554,6 +554,12 @@
                 disciplineTitle.textContent = newDiscipline;
             }
             
+            // Update body class for discipline-specific styling
+            document.body.className = '';
+            if (newDiscipline === 'Painter') {
+                document.body.classList.add('discipline-painter');
+            }
+            
             setDisciplineInURL(newDiscipline);
             closeModal({ skipHistory: true, replaceState: true });
             
@@ -732,6 +738,11 @@
             // Set discipline title
             if (disciplineTitle) {
                 disciplineTitle.textContent = currentDiscipline;
+            }
+            
+            // Set initial body class for discipline-specific styling
+            if (currentDiscipline === 'Painter') {
+                document.body.classList.add('discipline-painter');
             }
             
             // Load projects grid for current discipline
