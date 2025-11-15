@@ -58,6 +58,37 @@ body {
 
 .top-left {
     white-space: pre;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resume-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+
+.resume-link:hover {
+    transform: scale(1.1);
+}
+
+.resume-arrow {
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    filter: brightness(0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.resume-link:hover .resume-arrow {
+    opacity: 1;
 }
 
 .top-right {
@@ -298,6 +329,11 @@ body {
     }
 
     .discipline-caret {
+        width: 36px;
+        height: 36px;
+    }
+
+    .resume-arrow {
         width: 36px;
         height: 36px;
     }
