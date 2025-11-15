@@ -225,7 +225,7 @@ body.discipline-painter .grid-image {
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     color: var(--color-text);
 }
 
