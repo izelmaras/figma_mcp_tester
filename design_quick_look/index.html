@@ -513,15 +513,42 @@
                 img.src = thumbnailPath;
                 img.alt = projectId.replace(/_/g, ' ');
                 img.className = 'grid-image';
+                
+                // Try alternative thumbnail paths, then use first asset as fallback
                 img.onerror = function() {
-                    // Try alternative thumbnail paths
                     const altPaths = [
                         `${thumbnailsPath}${projectId}_thumbnail.png`,
-                        `${getBaseProjectPath(discipline)}${projectId}/thumbnail.png`,
-                        `${getBaseProjectPath(discipline)}${projectId}/*thumbnail*.png`
+                        `${getBaseProjectPath(discipline)}${projectId}/thumbnail.png`
                     ];
-                    // For now, just hide if not found
-                    this.style.display = 'none';
+                    
+                    // Try alternative paths first
+                    let altIndex = 0;
+                    const tryNextAlt = () => {
+                        if (altIndex < altPaths.length) {
+                            this.src = altPaths[altIndex++];
+                        } else {
+                            // If no thumbnail found, use first asset from project as fallback
+                            const projectAssets = manifest[projectId] || [];
+                            if (projectAssets.length > 0) {
+                                const firstAsset = projectAssets[0];
+                                const projectPath = `${getBaseProjectPath(discipline)}${encodeURIComponent(projectId)}/`;
+                                if (firstAsset.startsWith('assets/')) {
+                                    const pathParts = firstAsset.split('/');
+                                    const encodedParts = pathParts.map(part => encodeURIComponent(part));
+                                    this.src = `${projectPath}${encodedParts.join('/')}`;
+                                } else {
+                                    this.src = `${projectPath}assets/${encodeURIComponent(firstAsset)}`;
+                                }
+                            } else {
+                                // No assets at all, hide the image
+                                this.style.display = 'none';
+                            }
+                        }
+                    };
+                    
+                    // Remove the current error handler and set up the next attempt
+                    this.onerror = tryNextAlt;
+                    tryNextAlt();
                 };
                 
                 gridItem.appendChild(img);
