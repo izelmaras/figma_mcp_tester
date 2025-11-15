@@ -1,14 +1,14 @@
 /* Import Fonts */
 @font-face {
     font-family: 'Circular Pro';
-    src: url('/fonts/CircularPro-Book.otf') format('opentype');
+    src: url('/assets/fonts/CircularPro-Book.otf') format('opentype');
     font-weight: 450;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Circular Pro';
-    src: url('/fonts/CircularPro-Bold.otf') format('opentype');
+    src: url('/assets/fonts/CircularPro-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
