@@ -51,6 +51,9 @@ body.about-page .page-container {
     transition: opacity 0.2s ease;
     margin: 0;
     padding: 0;
+    display: inline-block;
+    height: auto;
+    align-self: flex-start;
 }
 
 .resume-link-page:hover {
